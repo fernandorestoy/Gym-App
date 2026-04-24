@@ -1,1594 +1,210 @@
-// ========================================
-// ANTIGRAVITY GYM - Exercise Database
-// 6 muscle groups × 18 exercises = 108 total
-// ========================================
-
-export const muscleGroups = [
-  { id: "gluteos-piernas", name: "Glúteos y Piernas", icon: "🦵", color: "#E74C3C" },
-  { id: "brazos",          name: "Brazos",            icon: "💪", color: "#3498DB" },
-  { id: "pecho",           name: "Pecho",             icon: "🏋️", color: "#2ECC71" },
-  { id: "espalda",         name: "Espalda",           icon: "🔄", color: "#9B59B6" },
-  { id: "hombros",         name: "Hombros",           icon: "🙆", color: "#F39C12" },
-  { id: "core",            name: "Core / Abdominales", icon: "🎯", color: "#1ABC9C" },
-];
+/**
+ * Exercise Database — Antigravity
+ *
+ * Structure: grouped object keyed by muscle group
+ * Groups: chest | back | biceps | triceps | shoulders | abs | legs
+ *
+ * Per-exercise fields:
+ *   id          {string}  Stable kebab-case ID, prefixed by group, zero-padded. e.g. "chest-001"
+ *                         Unique across the entire library. Never reassigned once set.
+ *   name        {string}  Display name in English. Title case.
+ *   group       {string}  Must match the parent key exactly. e.g. "chest"
+ *   description {string}  2–4 sentences. Action-focused how-to. No "you should" — direct imperative.
+ *   videoId     {string}  YouTube video ID only (not full URL). e.g. "dQw4w9WgXcQ"
+ *                         Thumbnail computed as: https://img.youtube.com/vi/${videoId}/hqdefault.jpg
+ *                         Watch URL computed as: https://youtu.be/${videoId}
+ *   svgKey      {string}  Key into svgIllustrations map. camelCase. e.g. "benchPress"
+ */
 
 export const exercises = {
 
-  // ==============================
-  // GLÚTEOS Y PIERNAS (18)
-  // ==============================
-  "gluteos-piernas": [
-    // --- Mancuernas (6) ---
+  chest: [
     {
-      id: "sentadilla-goblet",
-      name: "Sentadilla Goblet",
-      equipment: "mancuernas",
-      description: "Una sentadilla profunda sosteniendo una mancuerna contra el pecho. Ideal para trabajar cuádriceps y glúteos con buena postura.",
-      steps: [
-        "Sostén una mancuerna verticalmente contra tu pecho con ambas manos.",
-        "Párate con los pies al ancho de los hombros, puntas ligeramente hacia afuera.",
-        "Baja controladamente flexionando rodillas y caderas, manteniendo el pecho arriba.",
-        "Desciende hasta que los muslos estén paralelos al suelo o más abajo.",
-        "Empuja con los talones para subir a la posición inicial."
-      ],
-      tips: "Mantén los codos apuntando hacia abajo entre las rodillas. No dejes que las rodillas colapsen hacia adentro.",
+      id: "chest-001",
+      name: "Flat Barbell Bench Press",
+      group: "chest",
+      description: "Lie flat on a bench, grip the bar slightly wider than shoulder-width, and unrack it over your chest. Lower the bar with control to mid-chest, touching lightly, then press it back up to full lockout. Keep your shoulder blades pinched together and feet flat on the floor throughout.",
+      videoId: "4Y2ZdHCOXok",
+      svgKey: "benchPress",
     },
     {
-      id: "zancada-caminando",
-      name: "Zancada Caminando",
-      equipment: "mancuernas",
-      description: "Zancadas hacia adelante alternando piernas mientras caminas. Excelente para glúteos, cuádriceps y equilibrio.",
-      steps: [
-        "Sostén una mancuerna en cada mano a los lados del cuerpo.",
-        "Da un paso largo hacia adelante con la pierna derecha.",
-        "Baja la rodilla trasera hacia el suelo sin tocarlo.",
-        "Empuja con el pie delantero y avanza con la otra pierna.",
-        "Repite alternando piernas mientras avanzas."
-      ],
-      tips: "Mantén el torso erguido y la mirada al frente. La rodilla delantera no debe pasar la punta del pie.",
+      id: "chest-002",
+      name: "Incline Barbell Bench Press",
+      group: "chest",
+      description: "Set a bench to 30–45 degrees, grip the bar slightly wider than shoulder-width, and lower it to your upper chest. Press back up powerfully while keeping your elbows at roughly 60–75 degrees from your torso. The incline angle shifts emphasis to the upper (clavicular) head of the pec.",
+      videoId: "NsEbXsTwas8",
+      svgKey: "inclineBenchPress",
     },
     {
-      id: "peso-muerto-rumano-mancuernas",
-      name: "Peso Muerto Rumano",
-      equipment: "mancuernas",
-      description: "Movimiento de bisagra de cadera que trabaja intensamente isquiotibiales y glúteos.",
-      steps: [
-        "Sostén una mancuerna en cada mano frente a tus muslos.",
-        "Con las rodillas ligeramente flexionadas, inclina el torso hacia adelante desde la cadera.",
-        "Baja las mancuernas por la parte frontal de las piernas.",
-        "Siente el estiramiento en los isquiotibiales al bajar.",
-        "Contrae los glúteos para volver a la posición de pie."
-      ],
-      tips: "Mantén la espalda recta durante todo el movimiento. Las mancuernas deben deslizarse cerca de las piernas.",
-    },
-    {
-      id: "sentadilla-sumo",
-      name: "Sentadilla Sumo",
-      equipment: "mancuernas",
-      description: "Sentadilla con postura amplia que enfatiza aductores y glúteos.",
-      steps: [
-        "Párate con los pies más anchos que los hombros, puntas hacia afuera a 45°.",
-        "Sostén una mancuerna con ambas manos colgando entre las piernas.",
-        "Baja flexionando las rodillas hacia los lados, manteniendo la espalda recta.",
-        "Desciende hasta que los muslos estén paralelos al suelo.",
-        "Empuja con ambos pies para subir."
-      ],
-      tips: "Mantén el pecho abierto y los hombros hacia atrás. Las rodillas deben seguir la dirección de las puntas de los pies.",
-    },
-    {
-      id: "step-up",
-      name: "Step-Up con Mancuernas",
-      equipment: "mancuernas",
-      description: "Subir a un banco o step con peso. Trabaja cuádriceps, glúteos y equilibrio de forma unilateral.",
-      steps: [
-        "Sostén una mancuerna en cada mano y colócate frente a un banco.",
-        "Coloca el pie derecho completamente sobre el banco.",
-        "Empuja con la pierna de arriba para subir todo el cuerpo.",
-        "Controla el descenso bajando la pierna izquierda primero.",
-        "Completa las repeticiones con una pierna antes de cambiar."
-      ],
-      tips: "No te impulses con la pierna de abajo. Todo el trabajo debe ser de la pierna que está en el banco.",
-    },
-    {
-      id: "sentadilla-bulgara",
-      name: "Sentadilla Búlgara",
-      equipment: "mancuernas",
-      description: "Sentadilla unilateral con el pie trasero elevado. Uno de los mejores ejercicios para glúteos y cuádriceps.",
-      steps: [
-        "Coloca el empeine del pie trasero sobre un banco detrás de ti.",
-        "Sostén una mancuerna en cada mano a los lados.",
-        "Flexiona la rodilla delantera bajando la cadera hacia el suelo.",
-        "La rodilla trasera desciende casi hasta tocar el suelo.",
-        "Empuja con el pie delantero para subir."
-      ],
-      tips: "Mantén el torso ligeramente inclinado hacia adelante. El peso debe recaer mayormente en la pierna delantera.",
-    },
-
-    // --- Máquina (6) ---
-    {
-      id: "prensa-piernas",
-      name: "Prensa de Piernas",
-      equipment: "maquina",
-      description: "Ejercicio en máquina que permite trabajar cuádriceps y glúteos con cargas pesadas de forma segura.",
-      steps: [
-        "Siéntate en la máquina con la espalda bien apoyada en el respaldo.",
-        "Coloca los pies en la plataforma al ancho de los hombros.",
-        "Desbloquea los seguros y sostén el peso con las piernas.",
-        "Baja la plataforma flexionando las rodillas hasta 90°.",
-        "Empuja para extender las piernas sin bloquear las rodillas."
-      ],
-      tips: "No bloquees las rodillas al extender. Mantén la zona lumbar pegada al asiento.",
-    },
-    {
-      id: "extension-cuadriceps",
-      name: "Extensión de Cuádriceps",
-      equipment: "maquina",
-      description: "Aislamiento de cuádriceps en máquina. Perfecto para definir la parte frontal del muslo.",
-      steps: [
-        "Siéntate en la máquina con la espalda apoyada.",
-        "Ajusta el rodillo para que quede sobre tus tobillos.",
-        "Agarra los mangos laterales para estabilizarte.",
-        "Extiende las piernas levantando el peso hasta la posición recta.",
-        "Baja lentamente controlando el peso."
-      ],
-      tips: "Evita usar impulso. Contrae los cuádriceps al máximo arriba y baja lentamente (3-4 segundos).",
-    },
-    {
-      id: "curl-isquiotibiales",
-      name: "Curl de Isquiotibiales",
-      equipment: "maquina",
-      description: "Aislamiento de isquiotibiales acostado en máquina.",
-      steps: [
-        "Acuéstate boca abajo en la máquina.",
-        "Ajusta el rodillo para que quede sobre tus talones.",
-        "Agarra los mangos frontales para estabilizarte.",
-        "Flexiona las rodillas llevando los talones hacia los glúteos.",
-        "Baja lentamente a la posición inicial."
-      ],
-      tips: "No levantes la cadera del banco al flexionar. Aprieta los isquiotibiales al máximo arriba.",
-    },
-    {
-      id: "hack-squat",
-      name: "Hack Squat",
-      equipment: "maquina",
-      description: "Sentadilla guiada en máquina que permite trabajar cuádriceps con gran carga y menos estrés lumbar.",
-      steps: [
-        "Coloca la espalda contra el respaldo de la máquina.",
-        "Posiciona los pies al ancho de los hombros en la plataforma.",
-        "Desbloquea los seguros y sostén el peso.",
-        "Baja flexionando las rodillas hasta 90° o más.",
-        "Empuja para subir sin bloquear las rodillas."
-      ],
-      tips: "Pies más abajo en la plataforma = más cuádriceps. Pies más arriba = más glúteos e isquiotibiales.",
-    },
-    {
-      id: "aduccion-cadera",
-      name: "Aducción de Cadera",
-      equipment: "maquina",
-      description: "Trabaja los músculos internos del muslo (aductores) en máquina específica.",
-      steps: [
-        "Siéntate en la máquina con la espalda apoyada.",
-        "Coloca las piernas en las almohadillas externas con las piernas abiertas.",
-        "Agarra los mangos laterales.",
-        "Junta las piernas contra la resistencia de forma controlada.",
-        "Abre lentamente las piernas volviendo a la posición inicial."
-      ],
-      tips: "Mantén la espalda pegada al respaldo. No uses impulso, el movimiento debe ser lento y controlado.",
-    },
-    {
-      id: "abduccion-cadera",
-      name: "Abducción de Cadera",
-      equipment: "maquina",
-      description: "Trabaja los músculos externos de la cadera (abductores y glúteo medio) en máquina.",
-      steps: [
-        "Siéntate en la máquina con las piernas juntas contra las almohadillas internas.",
-        "Apoya la espalda en el respaldo.",
-        "Agarra los mangos laterales.",
-        "Abre las piernas empujando contra la resistencia.",
-        "Junta las piernas lentamente controlando el retorno."
-      ],
-      tips: "Aprieta los glúteos al máximo cuando las piernas están abiertas. Mantén una pausa de 1 segundo arriba.",
-    },
-
-    // --- Cintas/Cables/Bandas (6) ---
-    {
-      id: "patada-gluteo-polea",
-      name: "Patada de Glúteo en Polea",
-      equipment: "cintas",
-      description: "Extensión de cadera en polea baja que aísla los glúteos de forma efectiva.",
-      steps: [
-        "Coloca una tobillera conectada a la polea baja en tu tobillo.",
-        "Agárrate de la máquina para mantener el equilibrio.",
-        "Con la pierna de trabajo, extiende la cadera llevando el pie hacia atrás y arriba.",
-        "Aprieta el glúteo al máximo en la posición final.",
-        "Regresa lentamente a la posición inicial."
-      ],
-      tips: "Mantén el core apretado y no arquees la espalda baja. El movimiento debe ser solo de la cadera.",
-    },
-    {
-      id: "sentadilla-banda",
-      name: "Sentadilla con Banda",
-      equipment: "cintas",
-      description: "Sentadilla con banda elástica de resistencia alrededor de las rodillas para activar más los glúteos.",
-      steps: [
-        "Coloca una banda de resistencia justo por encima de las rodillas.",
-        "Párate con los pies al ancho de los hombros.",
-        "Empuja las rodillas hacia afuera contra la banda.",
-        "Baja a posición de sentadilla manteniendo la tensión.",
-        "Sube empujando con los talones y manteniendo rodillas hacia afuera."
-      ],
-      tips: "La banda debe crear tensión constante. No dejes que las rodillas colapsen hacia adentro en ningún momento.",
-    },
-    {
-      id: "peso-muerto-banda",
-      name: "Peso Muerto con Banda",
-      equipment: "cintas",
-      description: "Peso muerto usando banda elástica pisada con los pies para resistencia progresiva.",
-      steps: [
-        "Pisa la banda con ambos pies al ancho de los hombros.",
-        "Agarra el otro extremo con ambas manos.",
-        "Con rodillas ligeramente flexionadas, inclínate hacia adelante.",
-        "Siente el estiramiento en los isquiotibiales.",
-        "Extiende la cadera para volver arriba contra la resistencia de la banda."
-      ],
-      tips: "La banda ofrece más resistencia arriba. Enfócate en apretar los glúteos al final del movimiento.",
-    },
-    {
-      id: "clamshell-banda",
-      name: "Clamshell con Banda",
-      equipment: "cintas",
-      description: "Ejercicio lateral acostado con banda para activar glúteo medio. Excelente para estabilidad de cadera.",
-      steps: [
-        "Acuéstate de lado con una banda alrededor de las rodillas.",
-        "Flexiona las rodillas a 90° con los pies juntos.",
-        "Apoya la cabeza en el brazo inferior.",
-        "Abre la rodilla superior contra la resistencia de la banda, manteniendo los pies juntos.",
-        "Baja lentamente la rodilla y repite."
-      ],
-      tips: "No rotes la cadera hacia atrás al abrir. El movimiento es solo de rotación externa de cadera.",
-    },
-    {
-      id: "puente-gluteos-banda",
-      name: "Puente de Glúteos con Banda",
-      equipment: "cintas",
-      description: "Hip thrust en suelo con banda de resistencia. Activa intensamente los glúteos.",
-      steps: [
-        "Acuéstate boca arriba con las rodillas flexionadas y pies en el suelo.",
-        "Coloca una banda de resistencia justo por encima de las rodillas.",
-        "Empuja las rodillas hacia afuera contra la banda.",
-        "Eleva la cadera apretando los glúteos hasta formar una línea recta.",
-        "Baja lentamente y repite sin apoyar completamente la cadera."
-      ],
-      tips: "Mantén el mentón pegado al pecho. Aprieta los glúteos 2 segundos arriba en cada repetición.",
-    },
-    {
-      id: "monster-walk",
-      name: "Monster Walk con Banda",
-      equipment: "cintas",
-      description: "Caminar lateral y diagonal con banda de resistencia. Quema intensa en glúteos y abductores.",
-      steps: [
-        "Coloca una banda de resistencia alrededor de los tobillos.",
-        "Flexiona ligeramente las rodillas en posición de semi-sentadilla.",
-        "Da pasos diagonales hacia adelante y hacia los lados.",
-        "Mantén tensión constante en la banda en todo momento.",
-        "Recorre la distancia indicada y regresa."
-      ],
-      tips: "Mantén las rodillas siempre hacia afuera. No dejes que los pies se junten demasiado entre pasos.",
+      id: "chest-003",
+      name: "Dumbbell Flat Fly",
+      group: "chest",
+      description: "Lie on a flat bench holding dumbbells above your chest with a slight bend in your elbows. Lower the weights in a wide arc until you feel a deep stretch across your chest, then squeeze them back together at the top. Maintain the same elbow angle throughout — this is not a pressing movement.",
+      videoId: "eozdVDA78K0",
+      svgKey: "dumbbellFly",
     },
   ],
 
-  // ==============================
-  // BRAZOS (18)
-  // ==============================
-  "brazos": [
-    // --- Mancuernas (6) ---
+  back: [
     {
-      id: "curl-biceps",
-      name: "Curl de Bíceps",
-      equipment: "mancuernas",
-      description: "El ejercicio clásico para bíceps. Flexión de codo con mancuernas para desarrollar la parte frontal del brazo.",
-      steps: [
-        "Párate con una mancuerna en cada mano, brazos extendidos a los lados.",
-        "Mantén los codos pegados al cuerpo.",
-        "Flexiona los codos levantando las mancuernas hacia los hombros.",
-        "Gira las palmas hacia arriba durante la subida (supinación).",
-        "Baja lentamente a la posición inicial."
-      ],
-      tips: "No balancees el cuerpo para impulsar el peso. Si necesitas hacerlo, reduce el peso.",
+      id: "back-001",
+      name: "Barbell Bent-Over Row",
+      group: "back",
+      description: "Hinge at the hips until your torso is roughly parallel to the floor, keeping your lower back flat. Pull the bar into your lower abdomen by driving your elbows back and squeezing your shoulder blades together. Lower with control and avoid using momentum from your legs.",
+      videoId: "FWJR5Ve8bnQ",
+      svgKey: "bentOverRow",
     },
     {
-      id: "curl-martillo",
-      name: "Curl Martillo",
-      equipment: "mancuernas",
-      description: "Variante del curl con agarre neutro que trabaja bíceps y braquial para dar grosor al brazo.",
-      steps: [
-        "Sostén las mancuernas con las palmas mirándose entre sí (agarre neutro).",
-        "Mantén los codos pegados al torso.",
-        "Flexiona los codos subiendo las mancuernas sin rotar las muñecas.",
-        "Aprieta en la parte superior del movimiento.",
-        "Baja controladamente."
-      ],
-      tips: "El agarre neutro es más natural para las muñecas. Mantén las palmas siempre mirándose.",
+      id: "back-002",
+      name: "Pull-Up",
+      group: "back",
+      description: "Hang from a bar with an overhand grip slightly wider than shoulder-width. Pull yourself up until your chin clears the bar by driving your elbows down toward your hips. Lower slowly under control — the descent is where much of the back development happens.",
+      videoId: "eGo4IYlbE5g",
+      svgKey: "pullUp",
     },
     {
-      id: "extension-triceps-overhead",
-      name: "Extensión de Tríceps Overhead",
-      equipment: "mancuernas",
-      description: "Extensión de tríceps por encima de la cabeza. Trabaja especialmente la cabeza larga del tríceps.",
-      steps: [
-        "Sostén una mancuerna con ambas manos por encima de la cabeza.",
-        "Los brazos deben estar extendidos, codos cerca de las orejas.",
-        "Baja la mancuerna detrás de la cabeza flexionando los codos.",
-        "Desciende hasta que los antebrazos toquen los bíceps.",
-        "Extiende los codos para volver a la posición inicial."
-      ],
-      tips: "Mantén los codos apuntando al techo. No los dejes abrirse hacia los lados.",
-    },
-    {
-      id: "curl-concentrado",
-      name: "Curl Concentrado",
-      equipment: "mancuernas",
-      description: "Curl sentado con el codo apoyado en el muslo. Máximo aislamiento del bíceps.",
-      steps: [
-        "Siéntate en un banco con las piernas abiertas.",
-        "Apoya el codo de tu brazo de trabajo contra la parte interna del muslo.",
-        "Sostén una mancuerna con el brazo extendido.",
-        "Flexiona el codo llevando la mancuerna hacia el hombro.",
-        "Baja lentamente y repite."
-      ],
-      tips: "El muslo actúa como soporte fijo. No muevas el codo de su posición durante el ejercicio.",
-    },
-    {
-      id: "kickback-triceps",
-      name: "Kickback de Tríceps",
-      equipment: "mancuernas",
-      description: "Extensión de tríceps hacia atrás con el torso inclinado. Excelente para la contracción final.",
-      steps: [
-        "Inclina el torso hacia adelante, apoyando una mano y rodilla en un banco.",
-        "Sostén una mancuerna con el brazo libre, codo a 90°.",
-        "Mantén el brazo superior paralelo al suelo.",
-        "Extiende el codo llevando la mancuerna hacia atrás.",
-        "Aprieta el tríceps arriba y regresa a 90°."
-      ],
-      tips: "Solo se mueve el antebrazo. El brazo superior permanece fijo y paralelo al suelo.",
-    },
-    {
-      id: "curl-zottman",
-      name: "Curl Zottman",
-      equipment: "mancuernas",
-      description: "Curl que combina supinación al subir y pronación al bajar, trabajando bíceps y antebrazos.",
-      steps: [
-        "Sostén mancuernas con palmas hacia arriba.",
-        "Realiza un curl clásico subiendo las mancuernas.",
-        "Arriba, gira las palmas hacia abajo (pronación).",
-        "Baja las mancuernas con las palmas mirando al suelo.",
-        "Abajo, gira las palmas de nuevo hacia arriba y repite."
-      ],
-      tips: "La fase de bajada con pronación trabaja los antebrazos. Baja más lento de lo que subes.",
-    },
-
-    // --- Máquina (6) ---
-    {
-      id: "curl-maquina-biceps",
-      name: "Curl de Bíceps en Máquina",
-      equipment: "maquina",
-      description: "Curl guiado en máquina que aísla los bíceps con movimiento controlado.",
-      steps: [
-        "Siéntate en la máquina y ajusta la altura del asiento.",
-        "Coloca los brazos sobre la almohadilla y agarra los mangos.",
-        "Los codos deben estar alineados con el eje de la máquina.",
-        "Flexiona los codos llevando los mangos hacia ti.",
-        "Baja lentamente controlando la resistencia."
-      ],
-      tips: "La máquina guía el movimiento. Enfócate en sentir la contracción del bíceps.",
-    },
-    {
-      id: "extension-triceps-maquina",
-      name: "Extensión de Tríceps en Máquina",
-      equipment: "maquina",
-      description: "Extensión de tríceps sentado en máquina específica. Aislamiento perfecto del tríceps.",
-      steps: [
-        "Siéntate y ajusta la máquina para que los codos queden a la altura del eje.",
-        "Agarra los mangos con los codos flexionados.",
-        "Extiende los codos empujando los mangos hacia abajo.",
-        "Aprieta los tríceps al final de la extensión.",
-        "Regresa lentamente a la posición inicial."
-      ],
-      tips: "No levantes los codos del soporte. Mantén la espalda pegada al respaldo.",
-    },
-    {
-      id: "curl-predicador-maquina",
-      name: "Curl Predicador en Máquina",
-      equipment: "maquina",
-      description: "Curl con los brazos apoyados en ángulo para aislar el bíceps y eliminar el impulso.",
-      steps: [
-        "Siéntate y apoya los brazos en la almohadilla inclinada.",
-        "Agarra los mangos con los brazos extendidos.",
-        "Flexiona los codos levantando contra la resistencia.",
-        "Aprieta los bíceps en la parte superior.",
-        "Baja controladamente sin extender completamente."
-      ],
-      tips: "La almohadilla elimina la posibilidad de hacer trampa. Usa un peso que puedas controlar.",
-    },
-    {
-      id: "dip-asistido",
-      name: "Dip Asistido en Máquina",
-      equipment: "maquina",
-      description: "Fondos con asistencia de la máquina. Trabaja tríceps, pecho y hombros con peso controlable.",
-      steps: [
-        "Selecciona el peso de asistencia (más peso = más fácil).",
-        "Agarra las barras laterales y coloca las rodillas en la plataforma.",
-        "Comienza con los brazos extendidos.",
-        "Baja flexionando los codos hasta 90°.",
-        "Empuja para subir extendiendo los brazos completamente."
-      ],
-      tips: "Para enfocarte en tríceps, mantén el cuerpo lo más vertical posible. Inclinarse enfatiza el pecho.",
-    },
-    {
-      id: "curl-scott-maquina",
-      name: "Curl Scott en Máquina",
-      equipment: "maquina",
-      description: "Variante del curl predicador en banco Scott con máquina para un aislamiento total del bíceps.",
-      steps: [
-        "Siéntate con los brazos sobre la almohadilla Scott.",
-        "Ajusta la altura para que las axilas toquen la parte superior de la almohadilla.",
-        "Agarra la barra o mangos con las palmas hacia arriba.",
-        "Flexiona los codos subiendo contra la resistencia.",
-        "Baja lentamente hasta casi extender los brazos."
-      ],
-      tips: "No extiendas completamente los codos abajo para proteger la articulación. Mantén tensión constante.",
-    },
-    {
-      id: "press-frances-maquina",
-      name: "Press Francés en Máquina",
-      equipment: "maquina",
-      description: "Extensión de tríceps acostado en máquina Smith o con barra guiada.",
-      steps: [
-        "Acuéstate en un banco plano bajo la barra guiada.",
-        "Agarra la barra con las manos al ancho de los hombros.",
-        "Comienza con los brazos extendidos sobre el pecho.",
-        "Baja la barra flexionando los codos hacia la frente.",
-        "Extiende los codos para volver a la posición inicial."
-      ],
-      tips: "Baja hacia la frente, no hacia la nariz. Mantén los codos apuntando al techo.",
-    },
-
-    // --- Cintas/Cables/Bandas (6) ---
-    {
-      id: "curl-cable",
-      name: "Curl con Cable",
-      equipment: "cintas",
-      description: "Curl de bíceps usando polea baja para tensión constante durante todo el movimiento.",
-      steps: [
-        "Colócate frente a una polea baja y agarra la barra o mango.",
-        "Mantén los codos pegados al cuerpo.",
-        "Flexiona los codos tirando del cable hacia arriba.",
-        "Contrae los bíceps en la parte superior.",
-        "Baja controladamente manteniendo la tensión."
-      ],
-      tips: "El cable mantiene tensión constante, incluso arriba. Aprovéchalo para apretar más en la contracción.",
-    },
-    {
-      id: "pushdown-triceps",
-      name: "Pushdown de Tríceps",
-      equipment: "cintas",
-      description: "El ejercicio clásico de tríceps en polea alta. Extensión hacia abajo con cuerda o barra.",
-      steps: [
-        "Colócate frente a la polea alta y agarra la cuerda o barra.",
-        "Mantén los codos pegados a los lados del cuerpo.",
-        "Extiende los codos empujando el peso hacia abajo.",
-        "Al final, separa ligeramente las manos si usas cuerda.",
-        "Regresa lentamente a la posición inicial sin mover los codos."
-      ],
-      tips: "Los codos son el punto de pivote fijo. Si se mueven, estás usando demasiado peso.",
-    },
-    {
-      id: "curl-banda",
-      name: "Curl con Banda Elástica",
-      equipment: "cintas",
-      description: "Curl de bíceps usando banda de resistencia. La resistencia aumenta a medida que subes.",
-      steps: [
-        "Pisa la banda con ambos pies y agarra los extremos.",
-        "Comienza con los brazos extendidos a los lados.",
-        "Flexiona los codos llevando las manos hacia los hombros.",
-        "Aprieta los bíceps arriba donde la resistencia es máxima.",
-        "Baja controladamente."
-      ],
-      tips: "La resistencia progresiva de la banda es ideal para sentir más trabajo arriba. Haz una pausa en la contracción.",
-    },
-    {
-      id: "extension-banda-overhead",
-      name: "Extensión Overhead con Banda",
-      equipment: "cintas",
-      description: "Extensión de tríceps sobre la cabeza usando banda elástica para resistencia.",
-      steps: [
-        "Pisa un extremo de la banda con un pie.",
-        "Lleva el otro extremo por detrás de la espalda hasta arriba de la cabeza.",
-        "Agarra la banda con ambas manos detrás de la cabeza.",
-        "Extiende los codos llevando las manos hacia el techo.",
-        "Baja controladamente detrás de la cabeza."
-      ],
-      tips: "Mantén los codos apuntando hacia adelante. La banda ofrecerá más resistencia al extender completamente.",
-    },
-    {
-      id: "curl-inverso-polea",
-      name: "Curl Inverso en Polea",
-      equipment: "cintas",
-      description: "Curl con agarre prono (palmas abajo) en polea baja. Trabaja braquiorradial y antebrazos.",
-      steps: [
-        "Agarra la barra de la polea baja con las palmas mirando hacia abajo.",
-        "Mantén los codos pegados al cuerpo.",
-        "Flexiona los codos levantando la barra hacia los hombros.",
-        "Mantén las muñecas firmes durante todo el movimiento.",
-        "Baja lentamente controlando el peso."
-      ],
-      tips: "Usa menos peso que en un curl normal. El agarre prono trabaja músculos diferentes y más pequeños.",
-    },
-    {
-      id: "extension-triceps-banda",
-      name: "Extensión de Tríceps con Banda",
-      equipment: "cintas",
-      description: "Pushdown de tríceps usando banda elástica anclada en un punto alto.",
-      steps: [
-        "Ancla la banda en un punto alto (puerta, barra).",
-        "Agarra ambos extremos con las manos.",
-        "Mantén los codos pegados al cuerpo.",
-        "Extiende los codos empujando la banda hacia abajo.",
-        "Regresa lentamente controlando la resistencia."
-      ],
-      tips: "Funciona igual que el pushdown en polea. Ideal para entrenar en casa o viajes.",
+      id: "back-003",
+      name: "Lat Pulldown",
+      group: "back",
+      description: "Sit at a cable machine with your thighs secured under the pad and grip the bar slightly wider than shoulder-width. Pull the bar down to your upper chest by driving your elbows toward your hips while leaning back slightly. Squeeze your lats at the bottom and return the bar slowly to full arm extension.",
+      videoId: "CAwf7n6Luuc",
+      svgKey: "latPulldown",
     },
   ],
 
-  // ==============================
-  // PECHO (18)
-  // ==============================
-  "pecho": [
-    // --- Mancuernas (6) ---
+  biceps: [
     {
-      id: "press-pecho-plano",
-      name: "Press de Pecho Plano",
-      equipment: "mancuernas",
-      description: "El ejercicio fundamental para pecho. Press con mancuernas en banco plano para desarrollo completo del pectoral.",
-      steps: [
-        "Acuéstate en un banco plano con una mancuerna en cada mano.",
-        "Coloca las mancuernas a la altura del pecho con los codos a 45°.",
-        "Empuja las mancuernas hacia arriba extendiendo los brazos.",
-        "Las mancuernas deben casi tocarse arriba.",
-        "Baja controladamente hasta que los codos estén al nivel del banco."
-      ],
-      tips: "Los codos a 45° protegen el hombro. No los abras a 90° del cuerpo.",
+      id: "biceps-001",
+      name: "Barbell Curl",
+      group: "biceps",
+      description: "Stand holding a barbell with an underhand grip at shoulder width, arms fully extended. Curl the bar up toward your shoulders by contracting your biceps, keeping your elbows pinned to your sides. Lower the bar slowly back to full extension — do not swing your torso.",
+      videoId: "LY1V6UbRHFM",
+      svgKey: "barbellCurl",
     },
     {
-      id: "press-inclinado-mancuernas",
-      name: "Press Inclinado",
-      equipment: "mancuernas",
-      description: "Press en banco inclinado (30-45°) para enfatizar la parte superior del pecho.",
-      steps: [
-        "Ajusta el banco a 30-45 grados de inclinación.",
-        "Acuéstate con una mancuerna en cada mano a la altura del pecho.",
-        "Empuja las mancuernas hacia arriba y ligeramente hacia adentro.",
-        "Baja las mancuernas hasta que los codos estén al nivel del pecho.",
-        "Repite manteniendo la espalda contra el banco."
-      ],
-      tips: "30° trabaja más pecho superior. 45° involucra más el hombro frontal. Usa 30° como estándar.",
+      id: "biceps-002",
+      name: "Dumbbell Hammer Curl",
+      group: "biceps",
+      description: "Hold dumbbells at your sides with a neutral (palms-facing-in) grip. Curl both dumbbells simultaneously up toward your shoulders without rotating your wrists. This neutral grip targets the brachialis and brachioradialis alongside the biceps for overall arm thickness.",
+      videoId: "zC3nLlEvin4",
+      svgKey: "hammerCurl",
     },
     {
-      id: "aperturas-mancuernas",
-      name: "Aperturas con Mancuernas",
-      equipment: "mancuernas",
-      description: "Movimiento de apertura en banco plano para estirar y contraer las fibras del pectoral.",
-      steps: [
-        "Acuéstate en banco plano con mancuernas arriba, brazos casi extendidos.",
-        "Gira las palmas para que se miren entre sí.",
-        "Baja los brazos hacia los lados en arco, manteniendo codos ligeramente flexionados.",
-        "Desciende hasta sentir un buen estiramiento en el pecho.",
-        "Lleva las mancuernas de vuelta arriba en el mismo arco."
-      ],
-      tips: "No bajes demasiado para proteger el hombro. Los codos siempre ligeramente flexionados, como abrazando un árbol.",
-    },
-    {
-      id: "press-declinado-mancuernas",
-      name: "Press Declinado",
-      equipment: "mancuernas",
-      description: "Press en banco declinado para enfatizar la parte inferior del pectoral.",
-      steps: [
-        "Ajusta el banco en posición de declive (-15 a -30°).",
-        "Asegura tus piernas en los soportes del banco.",
-        "Sostén una mancuerna en cada mano a la altura del pecho bajo.",
-        "Empuja las mancuernas hacia arriba.",
-        "Baja controladamente al pecho inferior."
-      ],
-      tips: "No uses un ángulo extremo. -15° a -20° es suficiente para enfatizar el pecho inferior.",
-    },
-    {
-      id: "pullover-mancuerna",
-      name: "Pullover con Mancuerna",
-      equipment: "mancuernas",
-      description: "Movimiento de arco sobre la cabeza que trabaja pecho y serrato. Excelente para expandir la caja torácica.",
-      steps: [
-        "Acuéstate en un banco plano sosteniendo una mancuerna con ambas manos sobre el pecho.",
-        "Mantén los brazos casi extendidos.",
-        "Baja la mancuerna por detrás de la cabeza en un arco controlado.",
-        "Siente el estiramiento en pecho y lats.",
-        "Regresa al punto de inicio contrayendo el pecho."
-      ],
-      tips: "No flexiones los codos demasiado. El arco largo maximiza el trabajo del pecho.",
-    },
-    {
-      id: "squeeze-press",
-      name: "Squeeze Press",
-      equipment: "mancuernas",
-      description: "Press con las mancuernas juntas y presionándose durante todo el movimiento. Contracción máxima del pecho.",
-      steps: [
-        "Acuéstate en banco plano con las mancuernas juntas sobre el pecho.",
-        "Presiona una mancuerna contra la otra (agarre neutro).",
-        "Mantén la presión entre las mancuernas durante todo el movimiento.",
-        "Baja las mancuernas juntas al pecho.",
-        "Empuja hacia arriba sin dejar de presionar una contra otra."
-      ],
-      tips: "La clave es la presión lateral constante entre las mancuernas. Esto activa más el pecho interno.",
-    },
-
-    // --- Máquina (6) ---
-    {
-      id: "press-pecho-maquina",
-      name: "Press de Pecho en Máquina",
-      equipment: "maquina",
-      description: "Press horizontal guiado en máquina. Seguro para principiantes y útil para ir al fallo.",
-      steps: [
-        "Siéntate en la máquina con la espalda bien apoyada.",
-        "Ajusta la altura para que los mangos estén al nivel del pecho medio.",
-        "Agarra los mangos y empuja hacia adelante extendiendo los brazos.",
-        "No bloquees los codos al final.",
-        "Regresa lentamente al punto de inicio."
-      ],
-      tips: "La máquina es perfecta para las últimas series al fallo. No hay riesgo de que el peso te caiga encima.",
-    },
-    {
-      id: "pec-deck",
-      name: "Pec Deck (Mariposa)",
-      equipment: "maquina",
-      description: "Aperturas en máquina para aislamiento del pectoral. Movimiento guiado y seguro.",
-      steps: [
-        "Siéntate con la espalda apoyada y los brazos abiertos en los soportes.",
-        "Los codos deben estar a la altura de los hombros.",
-        "Lleva los brazos hacia adelante juntando los soportes frente a ti.",
-        "Aprieta el pecho al máximo cuando los brazos están juntos.",
-        "Abre los brazos lentamente a la posición inicial."
-      ],
-      tips: "No necesitas juntar completamente los brazos. Aprieta con fuerza cuando estén lo más cerca posible.",
-    },
-    {
-      id: "press-inclinado-maquina",
-      name: "Press Inclinado en Máquina",
-      equipment: "maquina",
-      description: "Press inclinado guiado para trabajar el pecho superior de forma segura.",
-      steps: [
-        "Siéntate en la máquina de press inclinado.",
-        "Ajusta el asiento para que los mangos queden a la altura del pecho superior.",
-        "Agarra los mangos y empuja hacia adelante y arriba.",
-        "Extiende los brazos sin bloquear los codos.",
-        "Regresa controladamente."
-      ],
-      tips: "La máquina inclinada es excelente para principiantes que aún no dominan el press inclinado con peso libre.",
-    },
-    {
-      id: "crossover-maquina",
-      name: "Crossover en Máquina",
-      equipment: "maquina",
-      description: "Cruce de cables en máquina de poleas para trabajar el pecho desde diferentes ángulos.",
-      steps: [
-        "Colócate en el centro de la máquina de cables con un mango en cada mano.",
-        "Da un paso adelante para crear tensión en los cables.",
-        "Con los brazos casi extendidos, junta las manos frente al pecho.",
-        "Cruza ligeramente las manos para máxima contracción.",
-        "Abre los brazos lentamente controlando el retorno."
-      ],
-      tips: "Poleas arriba = pecho inferior. Poleas abajo = pecho superior. Centro = pecho medio.",
-    },
-    {
-      id: "smith-press-pecho",
-      name: "Press en Smith Machine",
-      equipment: "maquina",
-      description: "Press de pecho en barra guiada Smith para movimiento estable y controlado.",
-      steps: [
-        "Coloca un banco plano bajo la barra de la Smith Machine.",
-        "Acuéstate y agarra la barra un poco más ancho que los hombros.",
-        "Desbloquea la barra y bájala al pecho medio.",
-        "Empuja la barra hacia arriba hasta extender los brazos.",
-        "Bloquea la barra al terminar la serie."
-      ],
-      tips: "La barra guiada permite enfocarte en empujar sin preocuparte del equilibrio. Ideal para ir al fallo solo.",
-    },
-    {
-      id: "press-declinado-maquina",
-      name: "Press Declinado en Máquina",
-      equipment: "maquina",
-      description: "Press declinado guiado para enfatizar el pecho inferior con seguridad.",
-      steps: [
-        "Siéntate en la máquina de press declinado.",
-        "Ajusta el asiento para que los mangos estén al nivel del pecho bajo.",
-        "Agarra los mangos con firmeza.",
-        "Empuja hacia adelante y ligeramente abajo.",
-        "Regresa lentamente a la posición inicial."
-      ],
-      tips: "El ángulo declinado reduce la participación del hombro frontal, aislando más el pecho inferior.",
-    },
-
-    // --- Cintas/Cables/Bandas (6) ---
-    {
-      id: "crossover-cables",
-      name: "Crossover con Cables",
-      equipment: "cintas",
-      description: "Cruce de cables desde poleas altas. Excelente para definición y contracción del pecho.",
-      steps: [
-        "Colócate entre dos poleas altas con un mango en cada mano.",
-        "Da un paso adelante e inclina ligeramente el torso.",
-        "Con los brazos casi extendidos, junta las manos abajo frente a ti.",
-        "Aprieta el pecho al juntar las manos.",
-        "Abre los brazos de forma controlada."
-      ],
-      tips: "Mantén una flexión ligera en los codos durante todo el movimiento. No uses impulso.",
-    },
-    {
-      id: "press-bandas-pecho",
-      name: "Press de Pecho con Bandas",
-      equipment: "cintas",
-      description: "Press horizontal usando banda elástica anclada detrás del cuerpo.",
-      steps: [
-        "Ancla la banda detrás de ti a la altura del pecho.",
-        "Agarra los extremos con cada mano.",
-        "Comienza con los codos flexionados a los lados.",
-        "Empuja las manos hacia adelante extendiendo los brazos.",
-        "Regresa lentamente a la posición inicial."
-      ],
-      tips: "La resistencia aumenta al extender. Perfecto para entrenamiento en casa.",
-    },
-    {
-      id: "aperturas-cables-bajo",
-      name: "Aperturas con Cables (Bajo)",
-      equipment: "cintas",
-      description: "Aperturas desde poleas bajas para trabajar la parte superior del pecho.",
-      steps: [
-        "Colócate entre dos poleas bajas con un mango en cada mano.",
-        "Da un paso adelante para crear tensión.",
-        "Con los brazos casi extendidos, lleva las manos hacia arriba y adentro.",
-        "Junta las manos a la altura de la cara.",
-        "Baja los brazos de forma controlada."
-      ],
-      tips: "Desde abajo hacia arriba enfatiza el pecho superior. Mantén la tensión constante.",
-    },
-    {
-      id: "aperturas-cables-alto",
-      name: "Aperturas con Cables (Alto)",
-      equipment: "cintas",
-      description: "Aperturas desde poleas altas para trabajar la parte inferior del pecho.",
-      steps: [
-        "Colócate entre dos poleas altas con un mango en cada mano.",
-        "Da un paso adelante con ligera inclinación del torso.",
-        "Con los brazos abiertos y casi extendidos, junta las manos abajo.",
-        "Las manos se encuentran a la altura del ombligo.",
-        "Abre los brazos lentamente."
-      ],
-      tips: "Desde arriba hacia abajo enfatiza el pecho inferior. Controla el movimiento en ambas direcciones.",
-    },
-    {
-      id: "press-inclinado-cable",
-      name: "Press Inclinado con Cable",
-      equipment: "cintas",
-      description: "Press inclinado unilateral usando polea baja para tensión constante.",
-      steps: [
-        "Coloca un banco inclinado frente a una polea baja.",
-        "Agarra el mango con una mano desde la polea.",
-        "Realiza un press empujando hacia arriba y adentro.",
-        "Baja controladamente.",
-        "Completa las repeticiones y cambia de lado."
-      ],
-      tips: "El cable ofrece tensión constante que las mancuernas no dan. Excelente para finalizar el entrenamiento.",
-    },
-    {
-      id: "cruce-cable-unilateral",
-      name: "Cruce de Cable Unilateral",
-      equipment: "cintas",
-      description: "Cruce con un solo brazo para corregir desbalances y mejorar la conexión mente-músculo.",
-      steps: [
-        "Colócate al lado de una polea alta y agarra el mango con una mano.",
-        "Da un paso para crear tensión en el cable.",
-        "Lleva la mano cruzando el cuerpo hacia el lado opuesto.",
-        "Aprieta el pecho al máximo en la contracción.",
-        "Regresa lentamente y repite. Cambia de lado."
-      ],
-      tips: "Trabajar un lado a la vez permite concentrar toda la atención en la contracción del pectoral.",
+      id: "biceps-003",
+      name: "Incline Dumbbell Curl",
+      group: "biceps",
+      description: "Set a bench to 60–70 degrees, sit back against it, and let your arms hang straight down. Curl the dumbbells up while keeping your upper arms stationary and perpendicular to the floor throughout. The incline position pre-stretches the long head of the biceps for a greater range of motion.",
+      videoId: "soxrZlIl35U",
+      svgKey: "inclineDumbbellCurl",
     },
   ],
 
-  // ==============================
-  // ESPALDA (18)
-  // ==============================
-  "espalda": [
-    // --- Mancuernas (6) ---
+  triceps: [
     {
-      id: "remo-mancuerna",
-      name: "Remo con Mancuerna",
-      equipment: "mancuernas",
-      description: "Remo unilateral apoyado en banco. Trabaja dorsales, romboides y bíceps.",
-      steps: [
-        "Apoya una mano y la rodilla del mismo lado en un banco.",
-        "Sostén una mancuerna con la mano libre, brazo extendido.",
-        "Tira de la mancuerna hacia la cadera, llevando el codo hacia atrás.",
-        "Aprieta la espalda al máximo arriba.",
-        "Baja controladamente y repite."
-      ],
-      tips: "Piensa en llevar el codo al techo, no en tirar con la mano. Esto activa más la espalda.",
+      id: "triceps-001",
+      name: "Triceps Rope Pushdown",
+      group: "triceps",
+      description: "Stand at a cable machine with the rope attached to the high pulley. Keeping your upper arms pinned to your sides, push the rope down and apart until your arms are fully extended. Squeeze your triceps hard at the bottom before slowly returning to the start position.",
+      videoId: "vB5OHsJ3EME",
+      svgKey: "ropePushdown",
     },
     {
-      id: "remo-inclinado-bilateral",
-      name: "Remo Inclinado Bilateral",
-      equipment: "mancuernas",
-      description: "Remo con ambas mancuernas e inclinado hacia adelante. Trabaja toda la espalda media.",
-      steps: [
-        "Sostén una mancuerna en cada mano.",
-        "Inclina el torso hacia adelante a 45° con rodillas ligeramente flexionadas.",
-        "Deja los brazos colgar extendidos.",
-        "Tira de ambas mancuernas hacia las caderas simultáneamente.",
-        "Baja controladamente."
-      ],
-      tips: "Mantén la espalda recta. Si se redondea, reduce el peso. La posición del torso es clave.",
+      id: "triceps-002",
+      name: "Overhead Triceps Extension (Dumbbell)",
+      group: "triceps",
+      description: "Hold one dumbbell with both hands and raise it overhead to full extension. Lower the dumbbell behind your head by bending at the elbows, keeping your upper arms vertical and close to your ears. Press back up to full extension — this overhead position maximally stretches the long head of the triceps.",
+      videoId: "YbX7Wd8jQ-Q",
+      svgKey: "overheadExtension",
     },
     {
-      id: "peso-muerto-mancuernas",
-      name: "Peso Muerto con Mancuernas",
-      equipment: "mancuernas",
-      description: "El peso muerto convencional adaptado con mancuernas. Trabaja toda la cadena posterior.",
-      steps: [
-        "Coloca las mancuernas en el suelo a los lados de tus pies.",
-        "Con pies al ancho de hombros, baja a agarrar las mancuernas.",
-        "Mantén la espalda recta y el pecho arriba.",
-        "Levántate extendiendo caderas y rodillas simultáneamente.",
-        "Baja controladamente devolviendo las mancuernas al suelo."
-      ],
-      tips: "El peso muerto es un ejercicio de piernas Y espalda. Mantén las mancuernas cerca del cuerpo.",
+      id: "triceps-003",
+      name: "Close-Grip Bench Press",
+      group: "triceps",
+      description: "Lie flat on a bench and grip the bar with your hands shoulder-width apart or slightly narrower. Lower the bar to your lower chest while keeping your elbows close to your torso at roughly 45 degrees. Press back up to lockout — the narrow grip shifts the load from the pecs to the triceps.",
+      videoId: "cXbSJHtjrQQ",
+      svgKey: "closeGripBenchPress",
     },
-    {
-      id: "pullover-espalda",
-      name: "Pullover para Espalda",
-      equipment: "mancuernas",
-      description: "Pullover enfocado en dorsales. El mismo movimiento que el de pecho pero con enfoque en los lats.",
-      steps: [
-        "Acuéstate perpendicular en un banco, solo los hombros apoyados.",
-        "Sostén una mancuerna con ambas manos sobre el pecho.",
-        "Baja la mancuerna por detrás de la cabeza en un arco.",
-        "Siente el estiramiento profundo en los dorsales.",
-        "Regresa contrayendo los lats, no el pecho."
-      ],
-      tips: "Para enfocarte en espalda, piensa en tirar con los codos. Para pecho, piensa en apretar las manos.",
-    },
-    {
-      id: "remo-kroc",
-      name: "Remo Kroc",
-      equipment: "mancuernas",
-      description: "Remo unilateral pesado con rango de movimiento extendido. Para fuerza y grosor de espalda.",
-      steps: [
-        "Similar al remo con mancuerna pero usa una mancuerna más pesada.",
-        "Permite un ligero impulso del cuerpo para mover el peso.",
-        "Tira de la mancuerna alto, pasando la cadera.",
-        "Baja lentamente extendiendo completamente el brazo abajo.",
-        "El rango de movimiento extendido es clave."
-      ],
-      tips: "Este remo permite más peso y algo de trampa controlada. No es para principiantes.",
-    },
-    {
-      id: "encogimientos-mancuernas",
-      name: "Encogimientos de Hombros",
-      equipment: "mancuernas",
-      description: "Encogimiento de trapecios con mancuernas. Desarrolla los trapecios superiores.",
-      steps: [
-        "Sostén una mancuerna pesada en cada mano a los lados.",
-        "Con los brazos extendidos, encoge los hombros hacia las orejas.",
-        "Mantén la contracción arriba por 1-2 segundos.",
-        "Baja los hombros lentamente.",
-        "No rotes los hombros, el movimiento es solo arriba y abajo."
-      ],
-      tips: "Piensa en llevar los hombros a las orejas. No uses los brazos para levantar el peso.",
-    },
+  ],
 
-    // --- Máquina (6) ---
+  shoulders: [
     {
-      id: "jalon-pecho",
-      name: "Jalón al Pecho",
-      equipment: "maquina",
-      description: "Lat pulldown. El ejercicio principal de máquina para dorsales. Simula las dominadas.",
-      steps: [
-        "Siéntate en la máquina con los muslos bajo los soportes.",
-        "Agarra la barra ancha con las palmas mirando hacia adelante.",
-        "Inclina ligeramente el torso hacia atrás.",
-        "Tira de la barra hacia el pecho superior.",
-        "Sube lentamente controlando la barra."
-      ],
-      tips: "Tira con los codos hacia abajo y atrás, no con las manos. Imagina que no tienes manos.",
+      id: "shoulders-001",
+      name: "Dumbbell Overhead Press",
+      group: "shoulders",
+      description: "Sit or stand holding dumbbells at shoulder height with palms facing forward. Press the dumbbells overhead to full arm extension, bringing them together slightly at the top. Lower with control back to shoulder height — avoid arching your lower back by bracing your core throughout.",
+      videoId: "qEwKCR5JCog",
+      svgKey: "dumbbellOverheadPress",
     },
     {
-      id: "remo-sentado-maquina",
-      name: "Remo Sentado en Máquina",
-      equipment: "maquina",
-      description: "Remo horizontal sentado en máquina de cables para espalda media y dorsales.",
-      steps: [
-        "Siéntate con los pies en los soportes y las rodillas ligeramente flexionadas.",
-        "Agarra los mangos con los brazos extendidos.",
-        "Tira hacia tu abdomen llevando los codos hacia atrás.",
-        "Junta las escápulas al final del movimiento.",
-        "Extiende los brazos lentamente."
-      ],
-      tips: "No te balancees hacia adelante y atrás. El movimiento debe ser de los brazos y la espalda.",
+      id: "shoulders-002",
+      name: "Dumbbell Lateral Raise",
+      group: "shoulders",
+      description: "Stand holding dumbbells at your sides with a slight bend in your elbows. Raise the dumbbells out to your sides until your arms are parallel to the floor, leading with your elbows. Lower slowly — resist gravity on the way down for greater medial deltoid development.",
+      videoId: "3VcKaXpzqRo",
+      svgKey: "lateralRaise",
     },
     {
-      id: "jalon-agarre-cerrado",
-      name: "Jalón con Agarre Cerrado",
-      equipment: "maquina",
-      description: "Lat pulldown con agarre estrecho y neutro para enfatizar la parte baja de los dorsales.",
-      steps: [
-        "Coloca un mango en V en la polea alta.",
-        "Siéntate y asegura tus muslos bajo los soportes.",
-        "Agarra el mango con las palmas mirándose.",
-        "Tira del mango hacia el pecho bajo/esternón.",
-        "Sube controladamente."
-      ],
-      tips: "El agarre cerrado permite mayor rango de movimiento. Lleva los codos lo más atrás posible.",
-    },
-    {
-      id: "remo-tbar",
-      name: "Remo T-Bar",
-      equipment: "maquina",
-      description: "Remo con barra T anclada al suelo. Trabaja dorsales, romboides y trapecio medio.",
-      steps: [
-        "Colócate sobre la barra T con las piernas a cada lado.",
-        "Inclina el torso a 45° y agarra los mangos.",
-        "Tira de la barra hacia el pecho manteniendo la espalda recta.",
-        "Aprieta las escápulas al máximo arriba.",
-        "Baja controladamente."
-      ],
-      tips: "Mantén el pecho arriba y la espalda recta. No uses impulso del cuerpo para tirar.",
-    },
-    {
-      id: "pulldown-brazos-rectos",
-      name: "Pulldown con Brazos Rectos",
-      equipment: "maquina",
-      description: "Aislamiento de dorsales en polea alta con los brazos extendidos.",
-      steps: [
-        "Colócate frente a una polea alta con una barra recta.",
-        "Agarra la barra con los brazos casi extendidos.",
-        "Con los brazos rectos, empuja la barra hacia abajo hasta los muslos.",
-        "Contrae los dorsales al máximo abajo.",
-        "Regresa lentamente arriba."
-      ],
-      tips: "Los brazos actúan como palancas. El movimiento viene del hombro, no del codo.",
-    },
-    {
-      id: "hiperextension",
-      name: "Hiperextensión",
-      equipment: "maquina",
-      description: "Extensión de espalda en banco romano. Fortalece erectores espinales y glúteos.",
-      steps: [
-        "Colócate en el banco de hiperextensión con la cadera en el borde.",
-        "Cruza los brazos en el pecho o coloca las manos detrás de la cabeza.",
-        "Baja el torso hacia el suelo de forma controlada.",
-        "Sube contrayendo los erectores y glúteos hasta quedar en línea recta.",
-        "No subas más allá de la posición horizontal."
-      ],
-      tips: "No hiperextiendas la espalda baja. Sube solo hasta que el cuerpo forme una línea recta.",
-    },
-
-    // --- Cintas/Cables/Bandas (6) ---
-    {
-      id: "remo-cable",
-      name: "Remo con Cable",
-      equipment: "cintas",
-      description: "Remo horizontal con polea para tensión constante en los dorsales.",
-      steps: [
-        "Siéntate frente a la polea baja con un mango de tu elección.",
-        "Mantén la espalda recta y las rodillas ligeramente flexionadas.",
-        "Tira del mango hacia el abdomen.",
-        "Aprieta las escápulas al final.",
-        "Extiende los brazos lentamente."
-      ],
-      tips: "Prueba diferentes mangos (V, ancho, cuerda) para trabajar ángulos distintos.",
-    },
-    {
-      id: "face-pull",
+      id: "shoulders-003",
       name: "Face Pull",
-      equipment: "cintas",
-      description: "Tirón hacia la cara con cuerda en polea. Trabaja trapecio medio, romboides y rotadores externos.",
-      steps: [
-        "Coloca una cuerda en la polea a la altura de la cara.",
-        "Agarra los extremos con las palmas mirando hacia abajo.",
-        "Tira de la cuerda hacia la cara, separando los extremos.",
-        "Los codos deben terminar altos y hacia atrás.",
-        "Regresa controladamente."
-      ],
-      tips: "Excelente para salud del hombro y postura. Debería estar en todo programa de entrenamiento.",
-    },
-    {
-      id: "jalon-banda",
-      name: "Jalón con Banda",
-      equipment: "cintas",
-      description: "Simulación de lat pulldown usando banda elástica anclada arriba.",
-      steps: [
-        "Ancla una banda en un punto alto.",
-        "Arrodíllate y agarra los extremos con las manos.",
-        "Tira de la banda hacia abajo llevando los codos a los lados.",
-        "Aprieta los dorsales en la contracción.",
-        "Extiende los brazos lentamente arriba."
-      ],
-      tips: "Ideal para entrenar en casa o como calentamiento antes de las dominadas.",
-    },
-    {
-      id: "remo-bajo-cable",
-      name: "Remo Bajo con Cable",
-      equipment: "cintas",
-      description: "Remo desde polea baja con agarre amplio para espalda media y romboides.",
-      steps: [
-        "Siéntate frente a la polea baja con una barra ancha.",
-        "Agarra la barra con las manos más anchas que los hombros.",
-        "Tira de la barra hacia el pecho bajo/estómago.",
-        "Junta las escápulas atrás.",
-        "Extiende los brazos lentamente."
-      ],
-      tips: "El agarre ancho enfatiza más los romboides y la espalda media vs. el agarre estrecho.",
-    },
-    {
-      id: "pullover-cable",
-      name: "Pullover con Cable",
-      equipment: "cintas",
-      description: "Pullover en polea alta para aislamiento de dorsales con tensión constante.",
-      steps: [
-        "Colócate frente a una polea alta.",
-        "Agarra la barra con los brazos extendidos sobre la cabeza.",
-        "Con los codos ligeramente flexionados, baja la barra en arco hasta los muslos.",
-        "Contrae los dorsales al máximo abajo.",
-        "Regresa arriba lentamente."
-      ],
-      tips: "Muy similar al pulldown de brazos rectos pero permite mayor rango de movimiento.",
-    },
-    {
-      id: "remo-alto-cable",
-      name: "Remo Alto con Cable",
-      equipment: "cintas",
-      description: "Remo desde polea alta hacia la cara/pecho para trapecio y deltoides posteriores.",
-      steps: [
-        "Coloca la polea en posición alta.",
-        "Agarra la cuerda o barra con ambas manos.",
-        "Da un paso atrás para crear tensión.",
-        "Tira hacia el pecho/cuello manteniendo los codos altos.",
-        "Regresa controladamente."
-      ],
-      tips: "Los codos altos trabajan más el trapecio medio y deltoides posterior vs. los codos bajos que trabajan más los lats.",
+      group: "shoulders",
+      description: "Attach a rope to a cable machine at face height. Pull the rope toward your face by driving your elbows back and outward, separating your hands as the rope reaches your forehead. This exercise directly targets the rear delts and external rotators — crucial for shoulder health and posture.",
+      videoId: "rep-qVOkqgk",
+      svgKey: "facePull",
     },
   ],
 
-  // ==============================
-  // HOMBROS (18)
-  // ==============================
-  "hombros": [
-    // --- Mancuernas (6) ---
+  abs: [
     {
-      id: "press-militar-mancuernas",
-      name: "Press Militar",
-      equipment: "mancuernas",
-      description: "El press fundamental para hombros. Trabaja principalmente el deltoides anterior y medio.",
-      steps: [
-        "Siéntate en un banco con respaldo a 90° o de pie.",
-        "Sostén una mancuerna en cada mano a la altura de los hombros.",
-        "Las palmas miran hacia adelante.",
-        "Empuja las mancuernas hacia arriba hasta extender los brazos.",
-        "Baja controladamente a la posición inicial."
-      ],
-      tips: "No arquees la espalda baja. Si necesitas hacerlo, el peso es demasiado. Usa un cinturón si es necesario.",
+      id: "abs-001",
+      name: "Plank",
+      group: "abs",
+      description: "Start in a push-up position but rest on your forearms instead of your hands. Keep your body in a straight line from head to heels by squeezing your core, glutes, and quads simultaneously. Hold for the target duration — do not let your hips sag or pike upward.",
+      videoId: "ASdvN_XEl_c",
+      svgKey: "plank",
     },
     {
-      id: "elevacion-lateral",
-      name: "Elevación Lateral",
-      equipment: "mancuernas",
-      description: "El mejor ejercicio para el deltoides medio. Da amplitud y forma redonda al hombro.",
-      steps: [
-        "Sostén una mancuerna en cada mano a los lados del cuerpo.",
-        "Inclina ligeramente el torso hacia adelante.",
-        "Levanta los brazos hacia los lados hasta la altura de los hombros.",
-        "Mantén los codos ligeramente flexionados, como vertiendo agua de una jarra.",
-        "Baja lentamente."
-      ],
-      tips: "Meñique ligeramente más alto que el pulgar al subir. No levantes más allá del hombro.",
+      id: "abs-002",
+      name: "Cable Crunch",
+      group: "abs",
+      description: "Kneel at a cable machine with the rope attachment at the high pulley. Hold the rope beside your head and crunch your elbows toward your knees by flexing your spine — not by pulling with your arms. The movement is entirely spinal flexion; your hips stay stationary throughout.",
+      videoId: "2fbujeH3F0E",
+      svgKey: "cableCrunch",
     },
     {
-      id: "elevacion-frontal",
-      name: "Elevación Frontal",
-      equipment: "mancuernas",
-      description: "Elevación hacia adelante para el deltoides anterior. Complementa el press militar.",
-      steps: [
-        "Sostén las mancuernas frente a tus muslos con palmas hacia el cuerpo.",
-        "Levanta un brazo hacia adelante hasta la altura del hombro.",
-        "Mantén el codo ligeramente flexionado.",
-        "Baja lentamente y alterna con el otro brazo.",
-        "Mantén el core apretado para no balancearte."
-      ],
-      tips: "No levantes más allá de la horizontal. El movimiento es lento y controlado, no de impulso.",
-    },
-    {
-      id: "pajaros-reversefly",
-      name: "Pájaros (Reverse Fly)",
-      equipment: "mancuernas",
-      description: "Aperturas inversas inclinado para el deltoides posterior. Esencial para hombros completos.",
-      steps: [
-        "Inclina el torso hacia adelante a 90° o siéntate en el borde de un banco inclinado.",
-        "Sostén mancuernas debajo del pecho con palmas mirándose.",
-        "Levanta los brazos hacia los lados como alas de pájaro.",
-        "Aprieta las escápulas arriba.",
-        "Baja lentamente."
-      ],
-      tips: "Usa peso ligero. El deltoides posterior es un músculo pequeño que responde mejor al control que al peso.",
-    },
-    {
-      id: "press-arnold",
-      name: "Press Arnold",
-      equipment: "mancuernas",
-      description: "Press con rotación inventado por Arnold Schwarzenegger. Trabaja los tres heads del deltoides.",
-      steps: [
-        "Siéntate con mancuernas frente al pecho, palmas mirando hacia ti.",
-        "Mientras empujas hacia arriba, rota las mancuernas.",
-        "Al final del press, las palmas miran hacia adelante.",
-        "Baja rotando en sentido inverso.",
-        "Las palmas terminan mirándote de nuevo abajo."
-      ],
-      tips: "La rotación continua trabaja el hombro completo. Usa menos peso que en un press militar normal.",
-    },
-    {
-      id: "encogimientos-hombros",
-      name: "Encogimientos de Hombros",
-      equipment: "mancuernas",
-      description: "Encogimientos para trapecio superior. Desarrolla la parte superior de la espalda y cuello.",
-      steps: [
-        "Sostén mancuernas pesadas a los lados del cuerpo.",
-        "Con los brazos completamente extendidos, encoge los hombros hacia las orejas.",
-        "Mantén 2 segundos en la contracción máxima.",
-        "Baja los hombros lentamente.",
-        "No rotes los hombros, solo arriba y abajo."
-      ],
-      tips: "Puedes usar bastante peso en este ejercicio. Los trapecios son músculos fuertes.",
-    },
-
-    // --- Máquina (6) ---
-    {
-      id: "press-hombro-maquina",
-      name: "Press de Hombros en Máquina",
-      equipment: "maquina",
-      description: "Press vertical guiado en máquina para desarrollo del deltoides con movimiento seguro.",
-      steps: [
-        "Siéntate con la espalda apoyada en el respaldo.",
-        "Ajusta el asiento para que los mangos estén a la altura de los hombros.",
-        "Agarra los mangos con agarre pronado.",
-        "Empuja hacia arriba extendiendo los brazos.",
-        "Baja lentamente a la posición inicial."
-      ],
-      tips: "La máquina es ideal para principiantes y para las últimas series al fallo.",
-    },
-    {
-      id: "elevacion-lateral-maquina",
-      name: "Elevación Lateral en Máquina",
-      equipment: "maquina",
-      description: "Elevación lateral guiada para aislamiento del deltoides medio.",
-      steps: [
-        "Siéntate en la máquina con los brazos a los lados.",
-        "Coloca los brazos contra las almohadillas laterales.",
-        "Levanta los brazos hacia los lados contra la resistencia.",
-        "Sube hasta la altura de los hombros.",
-        "Baja lentamente controlando el peso."
-      ],
-      tips: "La máquina elimina el impulso, haciendo el ejercicio más estricto. Usa peso moderado.",
-    },
-    {
-      id: "reverse-pec-deck",
-      name: "Reverse Pec Deck",
-      equipment: "maquina",
-      description: "Pájaros en la máquina pec deck invertida. Aísla el deltoides posterior.",
-      steps: [
-        "Siéntate mirando hacia la máquina pec deck.",
-        "Ajusta los mangos para que estén frente a ti.",
-        "Agarra los mangos y abre los brazos hacia atrás.",
-        "Aprieta las escápulas y el deltoides posterior.",
-        "Regresa lentamente al frente."
-      ],
-      tips: "Mantén los codos ligeramente flexionados. Enfócate en sentir el deltoides posterior, no la espalda.",
-    },
-    {
-      id: "smith-press-hombro",
-      name: "Press en Smith Machine (Hombros)",
-      equipment: "maquina",
-      description: "Press militar en barra guiada Smith para máxima estabilidad.",
-      steps: [
-        "Coloca un banco con respaldo bajo la barra Smith.",
-        "Siéntate y agarra la barra un poco más ancho que los hombros.",
-        "Desbloquea y baja la barra hasta la barbilla.",
-        "Empuja hacia arriba sin bloquear los codos.",
-        "Repite con movimiento controlado."
-      ],
-      tips: "Permite usar más peso que con mancuernas de forma segura. No bajes la barra detrás de la cabeza.",
-    },
-    {
-      id: "maquina-encogimientos",
-      name: "Encogimientos en Máquina Smith",
-      equipment: "maquina",
-      description: "Encogimientos de trapecios usando la barra guiada Smith.",
-      steps: [
-        "Colócate de pie dentro de la Smith Machine.",
-        "Agarra la barra a la altura de los muslos con agarre pronado.",
-        "Desbloquea la barra.",
-        "Encoge los hombros hacia arriba lo más alto posible.",
-        "Mantén 1-2 segundos y baja lentamente."
-      ],
-      tips: "La barra guiada permite enfocarte solo en el encogimiento sin preocuparte del equilibrio.",
-    },
-    {
-      id: "press-sentado-maquina-hombro",
-      name: "Press Sentado con Mango",
-      equipment: "maquina",
-      description: "Press de hombros con mangos convergentes que siguen un arco natural.",
-      steps: [
-        "Siéntate en la máquina con la espalda bien apoyada.",
-        "Agarra los mangos a la altura de los hombros.",
-        "Empuja hacia arriba siguiendo el arco de la máquina.",
-        "Extiende los brazos sin bloquear los codos.",
-        "Baja de forma controlada."
-      ],
-      tips: "Los mangos convergentes permiten un movimiento más natural que una barra recta.",
-    },
-
-    // --- Cintas/Cables/Bandas (6) ---
-    {
-      id: "elevacion-lateral-cable",
-      name: "Elevación Lateral con Cable",
-      equipment: "cintas",
-      description: "Elevación lateral unilateral con polea baja. Tensión constante durante todo el rango.",
-      steps: [
-        "Colócate de lado a una polea baja, mano lejana agarra el cable.",
-        "El cable pasa por delante o detrás del cuerpo.",
-        "Levanta el brazo lateralmente hasta la altura del hombro.",
-        "Mantén una pausa breve arriba.",
-        "Baja lentamente y repite. Cambia de lado."
-      ],
-      tips: "El cable mantiene tensión abajo, donde las mancuernas no la tienen. Excelente complemento.",
-    },
-    {
-      id: "face-pull-cable",
-      name: "Face Pull con Cable",
-      equipment: "cintas",
-      description: "Tirón hacia la cara con cuerda. Esencial para salud del hombro y deltoides posterior.",
-      steps: [
-        "Coloca una cuerda en la polea a la altura de la cara.",
-        "Agarra los extremos y da un paso atrás.",
-        "Tira hacia la cara separando los extremos de la cuerda.",
-        "Los pulgares deben terminar apuntando hacia atrás.",
-        "Regresa lentamente."
-      ],
-      tips: "Haz este ejercicio en cada sesión de hombros. Es preventivo y correctivo para problemas de hombro.",
-    },
-    {
-      id: "elevacion-frontal-banda",
-      name: "Elevación Frontal con Banda",
-      equipment: "cintas",
-      description: "Elevación frontal usando banda de resistencia para deltoides anterior.",
-      steps: [
-        "Pisa la banda con ambos pies.",
-        "Agarra los extremos con las manos frente a tus muslos.",
-        "Levanta los brazos hacia adelante hasta la altura del hombro.",
-        "Mantén los codos casi extendidos.",
-        "Baja lentamente."
-      ],
-      tips: "La banda ofrece más resistencia arriba. Perfecto para un pump al final del entrenamiento.",
-    },
-    {
-      id: "press-banda-hombros",
-      name: "Press con Banda",
-      equipment: "cintas",
-      description: "Press de hombros usando banda elástica. Ideal para calentamiento o entrenamiento en casa.",
-      steps: [
-        "Pisa la banda con ambos pies al centro.",
-        "Lleva los extremos a la altura de los hombros.",
-        "Empuja hacia arriba extendiendo los brazos.",
-        "La resistencia aumenta a medida que subes.",
-        "Baja controladamente."
-      ],
-      tips: "Excelente como primer ejercicio de calentamiento antes del press pesado.",
-    },
-    {
-      id: "rotacion-externa-banda",
-      name: "Rotación Externa con Banda",
-      equipment: "cintas",
-      description: "Rotación externa del hombro para fortalecer el manguito rotador. Preventivo y rehabilitador.",
-      steps: [
-        "Ancla la banda a la altura del codo a un lado.",
-        "Agarra la banda con la mano más lejana.",
-        "Mantén el codo pegado al cuerpo a 90°.",
-        "Rota el antebrazo hacia afuera contra la resistencia.",
-        "Regresa lentamente y repite."
-      ],
-      tips: "Usa resistencia ligera. Es un ejercicio de salud articular, no de fuerza bruta.",
-    },
-    {
-      id: "pull-apart-banda",
-      name: "Pull-Apart con Banda",
-      equipment: "cintas",
-      description: "Separar la banda horizontalmente frente al pecho. Trabaja deltoides posterior y romboides.",
-      steps: [
-        "Sostén la banda frente a ti con ambas manos al ancho de los hombros.",
-        "Brazos extendidos a la altura del pecho.",
-        "Separa las manos tirando la banda hasta que toque tu pecho.",
-        "Aprieta las escápulas y el deltoides posterior.",
-        "Regresa lentamente al frente."
-      ],
-      tips: "Puedes hacer muchas repeticiones (20-30). Es un excelente ejercicio de calentamiento y postura.",
+      id: "abs-003",
+      name: "Hanging Leg Raise",
+      group: "abs",
+      description: "Hang from a pull-up bar with your arms fully extended and your body still. Raise your legs by flexing your hips and rounding your lower back slightly at the top — this posterior pelvic tilt ensures the abs do the work, not just the hip flexors. Lower slowly without swinging.",
+      videoId: "hdng3Nm1x_E",
+      svgKey: "hangingLegRaise",
     },
   ],
 
-  // ==============================
-  // CORE / ABDOMINALES (18)
-  // ==============================
-  "core": [
-    // --- Mancuernas (6) ---
+  legs: [
     {
-      id: "crunch-mancuerna",
-      name: "Crunch con Mancuerna",
-      equipment: "mancuernas",
-      description: "Crunch abdominal con peso adicional sostenido contra el pecho para mayor resistencia.",
-      steps: [
-        "Acuéstate boca arriba con las rodillas flexionadas.",
-        "Sostén una mancuerna contra el pecho con ambas manos.",
-        "Eleva los hombros y parte superior de la espalda del suelo.",
-        "Contrae los abdominales al máximo arriba.",
-        "Baja lentamente sin apoyar completamente los hombros."
-      ],
-      tips: "No tires del cuello. El movimiento debe venir de la contracción abdominal, no del impulso.",
+      id: "legs-001",
+      name: "Barbell Back Squat",
+      group: "legs",
+      description: "Position the bar across your upper traps, step back, and set your feet shoulder-width apart with toes slightly out. Descend by pushing your knees out in line with your toes and sitting your hips back and down until your thighs are parallel to the floor or below. Drive through your entire foot to stand back up.",
+      videoId: "ultWZbUMPL8",
+      svgKey: "backSquat",
     },
     {
-      id: "russian-twist",
-      name: "Russian Twist",
-      equipment: "mancuernas",
-      description: "Rotación del torso sentado con peso. Trabaja oblicuos y todo el core rotacional.",
-      steps: [
-        "Siéntate con las rodillas flexionadas, pies ligeramente elevados del suelo.",
-        "Inclina el torso hacia atrás a 45°.",
-        "Sostén una mancuerna con ambas manos frente al pecho.",
-        "Rota el torso llevando la mancuerna de un lado a otro.",
-        "Cada toque a un lado cuenta como una repetición."
-      ],
-      tips: "La rotación viene del torso, no de los brazos. Mantén el pecho mirando en la dirección del peso.",
+      id: "legs-002",
+      name: "Romanian Deadlift",
+      group: "legs",
+      description: "Stand holding a barbell at hip height with an overhand grip. Hinge at your hips while keeping your back flat, pushing your hips backward as the bar travels down your thighs to mid-shin level. Drive your hips forward to return to standing — feel the stretch in your hamstrings at the bottom.",
+      videoId: "JCXUYuzwNrM",
+      svgKey: "romanianDeadlift",
     },
     {
-      id: "plancha-remo",
-      name: "Plancha con Remo (Renegade Row)",
-      equipment: "mancuernas",
-      description: "Plancha activa con remo alternado. Trabaja core, espalda y estabilidad simultáneamente.",
-      steps: [
-        "Colócate en posición de plancha con una mancuerna en cada mano.",
-        "Los pies separados al ancho de los hombros para estabilidad.",
-        "Rema una mancuerna hacia la cadera manteniendo la plancha.",
-        "Baja la mancuerna y repite con el otro brazo.",
-        "No rotes la cadera durante el remo."
-      ],
-      tips: "Abre más los pies para mayor estabilidad. El objetivo principal es no rotar la cadera.",
-    },
-    {
-      id: "woodchop-mancuerna",
-      name: "Woodchop con Mancuerna",
-      equipment: "mancuernas",
-      description: "Movimiento diagonal de cortar leña con mancuerna. Excelente para oblicuos y core funcional.",
-      steps: [
-        "Párate con los pies al ancho de los hombros.",
-        "Sostén una mancuerna con ambas manos arriba a un lado.",
-        "Realiza un movimiento diagonal llevando la mancuerna hacia abajo al lado opuesto.",
-        "Rota el torso y las caderas durante el movimiento.",
-        "Regresa por el mismo camino diagonal."
-      ],
-      tips: "Controla el movimiento, especialmente al bajar. No dejes que la gravedad haga el trabajo.",
-    },
-    {
-      id: "farmers-carry",
-      name: "Farmer's Carry",
-      equipment: "mancuernas",
-      description: "Caminar con peso pesado en cada mano. Core, agarre, trapecios y estabilidad total.",
-      steps: [
-        "Levanta una mancuerna pesada en cada mano.",
-        "Mantén la postura erguida, hombros atrás y core apretado.",
-        "Camina con pasos normales manteniendo la estabilidad.",
-        "No dejes que el peso te incline hacia los lados.",
-        "Camina la distancia o tiempo indicado."
-      ],
-      tips: "Parece simple pero es extremadamente efectivo. Usa el peso más pesado que puedas sostener.",
-    },
-    {
-      id: "side-bend",
-      name: "Flexión Lateral (Side Bend)",
-      equipment: "mancuernas",
-      description: "Flexión lateral del tronco con mancuerna. Trabaja oblicuos de forma aislada.",
-      steps: [
-        "Sostén una mancuerna en una mano al costado.",
-        "La otra mano detrás de la cabeza o en la cadera.",
-        "Inclínate lateralmente hacia el lado de la mancuerna.",
-        "Regresa a la posición vertical y continúa hacia el lado opuesto (ligera inclinación).",
-        "Completa las repeticiones y cambia la mancuerna de lado."
-      ],
-      tips: "Solo sostén peso en un lado a la vez. Si usas peso en ambos lados, se anulan entre sí.",
-    },
-
-    // --- Máquina (6) ---
-    {
-      id: "crunch-maquina",
-      name: "Crunch en Máquina",
-      equipment: "maquina",
-      description: "Crunch guiado en máquina con resistencia ajustable para abdominales superiores.",
-      steps: [
-        "Siéntate en la máquina de abdominales y ajusta el peso.",
-        "Coloca los pies bajo los rodillos y agarra los mangos superiores.",
-        "Flexiona el torso hacia abajo contrayendo los abdominales.",
-        "Mantén la contracción 1-2 segundos abajo.",
-        "Regresa lentamente a la posición inicial."
-      ],
-      tips: "No uses los brazos para tirar. La fuerza debe venir exclusivamente de la contracción abdominal.",
-    },
-    {
-      id: "rotacion-torso-maquina",
-      name: "Rotación de Torso en Máquina",
-      equipment: "maquina",
-      description: "Rotación del torso en máquina específica para oblicuos con resistencia controlada.",
-      steps: [
-        "Siéntate en la máquina con las piernas aseguradas.",
-        "Agarra los mangos del torso.",
-        "Rota el torso hacia un lado contra la resistencia.",
-        "Regresa al centro de forma controlada.",
-        "Completa las repeticiones y cambia de lado."
-      ],
-      tips: "Mueve solo el torso, no la cadera. La cadera debe permanecer fija mirando al frente.",
-    },
-    {
-      id: "elevacion-piernas-romana",
-      name: "Elevación de Piernas en Silla Romana",
-      equipment: "maquina",
-      description: "Elevación de piernas colgando en la silla romana. Trabaja abdominales inferiores intensamente.",
-      steps: [
-        "Colócate en la silla romana apoyando los antebrazos y la espalda.",
-        "Deja las piernas colgar.",
-        "Levanta las rodillas hacia el pecho (versión básica) o las piernas rectas (avanzada).",
-        "Contrae los abdominales al máximo arriba.",
-        "Baja las piernas lentamente sin balancearte."
-      ],
-      tips: "Evita el balanceo. Si te balanceas, estás usando impulso en vez de abdominales.",
-    },
-    {
-      id: "ab-roller-maquina",
-      name: "Ab Roller / Rueda Abdominal",
-      equipment: "maquina",
-      description: "Ejercicio con rueda abdominal. Uno de los ejercicios más efectivos para el core completo.",
-      steps: [
-        "Arrodíllate con la rueda frente a ti.",
-        "Agarra los mangos de la rueda con ambas manos.",
-        "Rueda hacia adelante extendiendo el cuerpo lentamente.",
-        "Extiéndete lo más lejos que puedas sin que tu espalda se hunda.",
-        "Contrae el core para volver a la posición inicial."
-      ],
-      tips: "Empieza con rangos cortos y ve aumentando. Es un ejercicio muy intenso para principiantes.",
-    },
-    {
-      id: "hiperextension-inversa",
-      name: "Hiperextensión Inversa",
-      equipment: "maquina",
-      description: "Extensión inversa en banco para glúteos y espalda baja. El torso queda fijo y las piernas se mueven.",
-      steps: [
-        "Acuéstate boca abajo en el banco con las caderas en el borde.",
-        "Sostente del banco con las manos.",
-        "Las piernas cuelgan detrás del banco.",
-        "Levanta las piernas extendiendo la cadera hasta la horizontal.",
-        "Baja lentamente las piernas."
-      ],
-      tips: "No levantes las piernas más allá de la horizontal. El movimiento es controlado, no explosivo.",
-    },
-    {
-      id: "crunch-polea-alta",
-      name: "Crunch en Polea Alta",
-      equipment: "maquina",
-      description: "Crunch arrodillado con cuerda en polea alta. Permite cargas progresivas para abdominales.",
-      steps: [
-        "Arrodíllate frente a la polea alta sosteniendo la cuerda detrás de la cabeza.",
-        "Mantén las caderas fijas.",
-        "Flexiona el torso hacia abajo acercando los codos a las rodillas.",
-        "Contrae fuertemente los abdominales abajo.",
-        "Regresa lentamente a la posición inicial."
-      ],
-      tips: "El movimiento viene de la flexión del tronco, no de la cadera. La cadera no se mueve.",
-    },
-
-    // --- Cintas/Cables/Bandas (6) ---
-    {
-      id: "pallof-press",
-      name: "Pallof Press con Cable",
-      equipment: "cintas",
-      description: "Press anti-rotación con cable. Uno de los mejores ejercicios de estabilidad del core.",
-      steps: [
-        "Colócate de lado a una polea a la altura del pecho.",
-        "Agarra el mango con ambas manos frente al pecho.",
-        "Extiende los brazos hacia adelante contra la resistencia rotacional.",
-        "Mantén 2-3 segundos con los brazos extendidos sin rotar.",
-        "Regresa las manos al pecho y repite."
-      ],
-      tips: "El objetivo es resistir la rotación. Si rota tu torso, reduce el peso.",
-    },
-    {
-      id: "woodchop-cable",
-      name: "Woodchop con Cable",
-      equipment: "cintas",
-      description: "Corte diagonal con cable para oblicuos y core rotacional con tensión constante.",
-      steps: [
-        "Coloca la polea en posición alta.",
-        "Agarra el mango con ambas manos.",
-        "Tira en diagonal desde arriba de un hombro hasta la cadera opuesta.",
-        "Rota el torso y las caderas durante el movimiento.",
-        "Regresa controladamente y repite."
-      ],
-      tips: "Puedes hacer de arriba a abajo o de abajo a arriba. Ambas direcciones trabajan los oblicuos.",
-    },
-    {
-      id: "crunch-cable",
-      name: "Crunch con Cable",
-      equipment: "cintas",
-      description: "Crunch de pie con polea alta. Permite trabajar abdominales de pie con resistencia.",
-      steps: [
-        "Colócate de espaldas a la polea alta.",
-        "Agarra la cuerda detrás de la cabeza.",
-        "Flexiona el torso hacia adelante y abajo.",
-        "Contrae los abdominales como un crunch pero de pie.",
-        "Regresa a la posición erguida lentamente."
-      ],
-      tips: "Variante de pie que permite más carga que un crunch en el suelo.",
-    },
-    {
-      id: "anti-rotacion-banda",
-      name: "Anti-Rotación con Banda",
-      equipment: "cintas",
-      description: "Similar al Pallof press pero con banda elástica. Ejercicio de estabilidad del core.",
-      steps: [
-        "Ancla la banda a la altura del pecho en un lado.",
-        "Agarra la banda con ambas manos frente al pecho.",
-        "Extiende los brazos hacia adelante resistiendo la rotación.",
-        "Mantén 3-5 segundos.",
-        "Regresa y repite. Cambia de lado."
-      ],
-      tips: "Puedes hacer este ejercicio en cualquier lugar con una banda. Ideal para calentamiento del core.",
-    },
-    {
-      id: "dead-bug-banda",
-      name: "Dead Bug con Banda",
-      equipment: "cintas",
-      description: "Ejercicio de estabilización boca arriba con banda para core profundo y coordinación.",
-      steps: [
-        "Acuéstate boca arriba con una banda anclada detrás de ti.",
-        "Sostén la banda con las manos sobre el pecho, brazos extendidos.",
-        "Levanta las piernas con rodillas a 90°.",
-        "Extiende una pierna y el brazo opuesto lentamente.",
-        "Regresa y alterna con el otro lado."
-      ],
-      tips: "La espalda baja debe permanecer pegada al suelo en todo momento. Si se despega, estás yendo demasiado lejos.",
-    },
-    {
-      id: "plancha-banda",
-      name: "Plancha con Banda",
-      equipment: "cintas",
-      description: "Plancha con banda de resistencia para aumentar la dificultad del ejercicio clásico de core.",
-      steps: [
-        "Coloca la banda alrededor de los antebrazos.",
-        "Adopta la posición de plancha sobre los antebrazos.",
-        "Mantén el cuerpo en línea recta de cabeza a pies.",
-        "Separa los brazos contra la resistencia de la banda.",
-        "Mantén la posición por el tiempo indicado."
-      ],
-      tips: "La banda añade un componente de inestabilidad lateral. Mantén el core extremadamente apretado.",
+      id: "legs-003",
+      name: "Leg Press",
+      group: "legs",
+      description: "Sit in the leg press machine with your feet shoulder-width apart on the platform. Lower the platform toward your chest until your thighs reach 90 degrees, then press back up to near-full extension — stop just short of locking out your knees. Keep your lower back flat against the pad throughout.",
+      videoId: "IZxyjW7MPJQ",
+      svgKey: "legPress",
     },
   ],
+
 };
