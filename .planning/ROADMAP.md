@@ -32,7 +32,7 @@ Decimal phases appear between their surrounding integers in numeric order.
   5. No drop shadows, gradients, or 3D effects appear anywhere in the rendered output
 **Plans**: 2 plans
 Plans:
-- [ ] 01-01-PLAN.md — HTML shell + CSS design tokens (index.html + css/styles.css)
+- [x] 01-01-PLAN.md — HTML shell + CSS design tokens (index.html + css/styles.css)
 - [ ] 01-02-PLAN.md — Exercise data schema + app entry point (js/exercises.js + js/app.js)
 **UI hint**: yes
 
@@ -89,7 +89,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Data Architecture + Design System | 0/2 | Not started | - |
+| 1. Data Architecture + Design System | 1/2 | In Progress|  |
 | 2. App Shell + Home Screen | 0/TBD | Not started | - |
 | 3. Exercise Screen + Randomization + Cards | 0/TBD | Not started | - |
 | 4. Exercise Content Population | 0/TBD | Not started | - |
