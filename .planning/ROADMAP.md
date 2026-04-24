@@ -46,7 +46,10 @@ Plans:
   3. A back button on the exercise screen returns the user to the home screen
   4. Every tappable element has a minimum 48px touch target height
   5. The layout is usable on a 375px mobile viewport, a tablet, and a desktop without horizontal scrolling
-**Plans**: TBD
+**Plans**: 2 plans
+Plans:
+- [ ] 02-01-PLAN.md — muscleGroups export + CSS home/exercise screen styles + test updates (js/exercises.js, css/styles.css, test/app.test.js)
+- [ ] 02-02-PLAN.md — app.js full rewrite: routing, utilities, workoutDays, renderers, event delegation (js/app.js)
 **UI hint**: yes
 
 ### Phase 3: Exercise Screen + Randomization + Cards
@@ -90,7 +93,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. Data Architecture + Design System | 2/2 | Complete | 2026-04-24 |
-| 2. App Shell + Home Screen | 0/TBD | Not started | - |
+| 2. App Shell + Home Screen | 0/2 | Not started | - |
 | 3. Exercise Screen + Randomization + Cards | 0/TBD | Not started | - |
 | 4. Exercise Content Population | 0/TBD | Not started | - |
 | 5. Polish + Animation | 0/TBD | Not started | - |
