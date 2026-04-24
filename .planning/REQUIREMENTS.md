@@ -76,7 +76,7 @@
 |-------------|-------|--------|
 | DATA-01 | Phase 1 | Pending |
 | DATA-02 | Phase 1 | Pending |
-| DATA-03 | Phase 1 | Pending |
+| DATA-03 | Phase 4 | Pending |
 | DATA-04 | Phase 1 | Pending |
 | ROUT-01 | Phase 3 | Pending |
 | ROUT-02 | Phase 3 | Pending |
@@ -85,21 +85,21 @@
 | ROUT-05 | Phase 3 | Pending |
 | ROUT-06 | Phase 3 | Pending |
 | ROUT-07 | Phase 3 | Pending |
-| CARD-01 | Phase 2 | Pending |
+| CARD-01 | Phase 3 | Pending |
 | CARD-02 | Phase 3 | Pending |
-| CARD-03 | Phase 2 | Pending |
-| CARD-04 | Phase 2 | Pending |
-| DSNG-01 | Phase 2 | Pending |
-| DSNG-02 | Phase 2 | Pending |
-| DSNG-03 | Phase 2 | Pending |
-| DSNG-04 | Phase 2 | Pending |
-| DSNG-05 | Phase 2 | Pending |
+| CARD-03 | Phase 3 | Pending |
+| CARD-04 | Phase 3 | Pending |
+| DSNG-01 | Phase 1 | Pending |
+| DSNG-02 | Phase 1 | Pending |
+| DSNG-03 | Phase 1 | Pending |
+| DSNG-04 | Phase 1 | Pending |
+| DSNG-05 | Phase 1 | Pending |
 | DSNG-06 | Phase 2 | Pending |
 | DSNG-07 | Phase 2 | Pending |
 | NAV-01 | Phase 2 | Pending |
 | NAV-02 | Phase 2 | Pending |
 | NAV-03 | Phase 2 | Pending |
-| PERF-01 | Phase 4 | Pending |
+| PERF-01 | Phase 5 | Pending |
 | PERF-02 | Phase 1 | Pending |
 
 **Coverage:**
@@ -109,4 +109,4 @@
 
 ---
 *Requirements defined: 2026-04-22*
-*Last updated: 2026-04-22 after initial definition*
+*Last updated: 2026-04-24 after roadmap creation — traceability updated to match final phase structure*
