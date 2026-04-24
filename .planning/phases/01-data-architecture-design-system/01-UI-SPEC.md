@@ -55,7 +55,7 @@ Exceptions:
 | Role | Size | Weight | Line Height | Font | CSS Variable |
 |------|------|--------|-------------|------|-------------|
 | Body | 16px | 400 | 1.6 | Inter | `--font-body: 'Inter', sans-serif` |
-| Label / Tag | 12px | 600 | 1.2 | Inter | (same family, uppercase) |
+| Label / Tag | 12px | 400 | 1.2 | Inter | (same family, uppercase) |
 | Heading (exercise name) | 20px | 300 | 1.2 | Crimson Pro | `--font-heading: 'Crimson Pro', serif` |
 | Display (app title / routine title) | 28px | 300 | 1.1 | Crimson Pro | (same family) |
 
@@ -63,13 +63,14 @@ Notes:
 - Body minimum 16px — 15px is floor per ARCHITECTURE.md; 16px chosen for gym bright-light legibility
 - Crimson Pro at weight 300 per REQUIREMENTS.md (DSNG-04). The current `index.html` loads Inter at wght 400;600;700;800 only — Crimson Pro import is entirely absent. Phase 1 replaces this.
 - Do NOT use Teal or Dusty Rose as text color on any background. Navy on Cream is the only body text pairing (contrast ~9.4:1, WCAG AAA). Source: ARCHITECTURE.md contrast table.
-- Labels/tags: Inter, weight 600, uppercase, 12px, used for muscle group pills (Sage Green background)
+- Labels/tags: Inter, weight 400, uppercase, 12px, used for muscle group pills (Sage Green background)
+- Global weight set: exactly 2 weights — weight 300 (Crimson Pro only) and weight 400 (Inter only)
 
 **Google Fonts import to replace the existing `<head>` link (verbatim):**
 ```html
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@300;400&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@300&family=Inter:wght@400&display=swap" rel="stylesheet">
 ```
 
 **Source:** REQUIREMENTS.md (DSNG-04), STACK.md (Fonts section), phase_context
@@ -164,7 +165,7 @@ The complete `:root` block Phase 1 must establish (verbatim):
   <title>Antigravity</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@300;400&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@300&family=Inter:wght@400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
