@@ -30,7 +30,10 @@ Decimal phases appear between their surrounding integers in numeric order.
   3. Every exercise id follows the stable kebab-case pattern (e.g., `chest-001`) with no duplicates across the library
   4. CSS custom properties for the full brand palette (Navy, Teal, Cream, Dusty Rose, Sage Green) are defined in `:root` and visibly applied to typography and background
   5. No drop shadows, gradients, or 3D effects appear anywhere in the rendered output
-**Plans**: TBD
+**Plans**: 2 plans
+Plans:
+- [ ] 01-01-PLAN.md — HTML shell + CSS design tokens (index.html + css/styles.css)
+- [ ] 01-02-PLAN.md — Exercise data schema + app entry point (js/exercises.js + js/app.js)
 **UI hint**: yes
 
 ### Phase 2: App Shell + Home Screen
@@ -86,7 +89,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Data Architecture + Design System | 0/TBD | Not started | - |
+| 1. Data Architecture + Design System | 0/2 | Not started | - |
 | 2. App Shell + Home Screen | 0/TBD | Not started | - |
 | 3. Exercise Screen + Randomization + Cards | 0/TBD | Not started | - |
 | 4. Exercise Content Population | 0/TBD | Not started | - |
