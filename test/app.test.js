@@ -17,7 +17,7 @@ function countGroups(routine) {
 
 test("exercise database has complete, unique exercise definitions", () => {
   assert.equal(muscleGroups.length, 7);
-  assert.equal(allExercises.length, 108);
+  assert.equal(allExercises.length, 126);
 
   for (const [groupId, groupExercises] of Object.entries(exercises)) {
     assert.equal(groupExercises.length, 18, `${groupId} should have 18 exercises`);
@@ -39,12 +39,12 @@ test("every exercise renders an inline SVG illustration and unknown ids fall bac
   for (const exercise of allExercises) {
     const svg = getSvg(exercise.id, "#E74C3C");
     assert.match(svg.trim(), /^<svg[\s>]/, `${exercise.id} should render SVG`);
-    assert.match(svg, /Ilustración del ejercicio/);
+    assert.match(svg, /Exercise illustration/);
   }
 
   const fallback = getSvg("unknown-exercise", "#E74C3C");
   assert.match(fallback.trim(), /^<svg[\s>]/);
-  assert.match(fallback, /Ejercicio/);
+  assert.match(fallback, /Exercise/);
 });
 
 test("exercise SVG internals are namespaced by exercise id", () => {
