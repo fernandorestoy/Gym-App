@@ -1046,15 +1046,15 @@ export function getSvg(exerciseId, accentColor = "#E74C3C") {
   // Movement arrow
   const arrowSvg = drawArrow(170, 140, 230, 140, accentColor + "88");
 
-  return `<svg viewBox="0 0 400 280" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Ilustración del ejercicio">
+  return `<svg viewBox="0 0 400 280" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Exercise illustration">
     <defs>
       <style>text { user-select: none; }</style>
-      <linearGradient id="bgGrad" x1="0" y1="0" x2="0" y2="1">
+      <linearGradient id="bgGrad-${exerciseId}" x1="0" y1="0" x2="0" y2="1">
         <stop offset="0%" stop-color="#F0EBE3"/>
         <stop offset="100%" stop-color="#E4DDD4"/>
       </linearGradient>
     </defs>
-    <rect width="400" height="260" rx="10" fill="url(#bgGrad)"/>
+    <rect width="400" height="260" rx="10" fill="url(#bgGrad-${exerciseId})"/>
     <line x1="200" y1="15" x2="200" y2="245" stroke="#D5CEC5" stroke-width="1" stroke-dasharray="4,4"/>
     ${extraSvg}
     ${equipSvg}
@@ -1062,9 +1062,9 @@ export function getSvg(exerciseId, accentColor = "#E74C3C") {
     ${endFig.svg}
     ${arrowSvg}
     <rect x="60" y="262" width="100" height="18" rx="4" fill="#333340"/>
-    ${label(110, 274, "INICIO", "#999", 10)}
+    ${label(110, 274, "START", "#999", 10)}
     <rect x="240" y="262" width="120" height="18" rx="4" fill="${accentColor}33"/>
-    ${label(300, 274, "FIN", accentColor, 10)}
+    ${label(300, 274, "END", accentColor, 10)}
   </svg>`;
 }
 
@@ -1074,9 +1074,9 @@ function getFallbackSvg(accentColor) {
     200, 160,
     { color: "#9C8878", accentColor, muscles: [], scale: 1 }
   );
-  return `<svg viewBox="0 0 400 280" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Ilustración del ejercicio">
+  return `<svg viewBox="0 0 400 280" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Exercise illustration">
     <rect width="400" height="260" rx="10" fill="#F0EBE3"/>
     ${fig.svg}
-    ${label(200, 274, "Ejercicio", "#888", 11)}
+    ${label(200, 274, "Exercise", "#888", 11)}
   </svg>`;
 }
