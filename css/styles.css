@@ -236,9 +236,26 @@ p {
 .exercise-list {
   display: flex;
   flex-direction: column;
-  gap: var(--space-sm);
+  gap: var(--space-xl);
   width: 100%;
   padding-bottom: var(--space-2xl);
+}
+
+.exercise-pair {
+  display: flex;
+  flex-direction: column;
+  border: 2px solid var(--color-teal);
+  border-radius: var(--radius-card);
+  overflow: hidden;
+}
+
+.exercise-pair .exercise-card {
+  border: none;
+  border-radius: 0;
+}
+
+.exercise-pair .exercise-card + .exercise-card {
+  border-top: 1px solid rgba(130, 205, 216, 0.4);
 }
 
 .exercise-card {

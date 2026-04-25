@@ -231,6 +231,13 @@ function renderHome() {
 
 function renderExercise(routine) {
   const exerciseList = routine.build();
+  const mainExs = exerciseList.filter(e => (e._group || e.group) !== 'abs');
+  const absExs  = exerciseList.filter(e => (e._group || e.group) === 'abs');
+
+  const pairs = absExs.length > 0
+    ? mainExs.map((ex, i) => [ex, absExs[i]].filter(Boolean))
+    : exerciseList.map(ex => [ex]);
+
   return `
     <div class="exercise-screen">
       <div class="exercise-header">
@@ -243,7 +250,11 @@ function renderExercise(routine) {
         aria-label="Generate new exercises"
       >New exercises</button>
       <div class="exercise-list">
-        ${exerciseList.map(ex => renderCard(ex)).join('')}
+        ${pairs.map(pair => `
+          <div class="exercise-pair">
+            ${pair.map(ex => renderCard(ex)).join('')}
+          </div>
+        `).join('')}
       </div>
     </div>
   `;
