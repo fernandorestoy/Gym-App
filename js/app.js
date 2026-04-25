@@ -6,6 +6,7 @@
  */
 
 import { exercises } from './exercises.js';
+import { getSvg } from './svgIllustrations.js';
 
 // =============================================================================
 // ROUTING STATE
@@ -54,6 +55,41 @@ export function pickRandom(source, count, randFn = Math.random) {
 }
 
 // =============================================================================
+// LOCALSTORAGE RECENCY HELPERS (private — not exported)
+// =============================================================================
+
+/**
+ * Read recent exercise IDs for a routine from localStorage.
+ * Returns [] on SecurityError (private browsing) or missing key.
+ *
+ * @param {string} routineId — e.g. "day2"
+ * @returns {string[]}
+ */
+function getRecentIds(routineId) {
+  try {
+    const raw = localStorage.getItem(`gymup_recent_${routineId}`);
+    return raw ? JSON.parse(raw) : [];
+  } catch {
+    return [];
+  }
+}
+
+/**
+ * Write the exercise IDs from a completed build to localStorage.
+ * Silently no-ops on SecurityError or when localStorage is unavailable.
+ *
+ * @param {string} routineId — e.g. "day2"
+ * @param {string[]} ids — exercise IDs from the most recent build
+ */
+function storeRecentIds(routineId, ids) {
+  try {
+    localStorage.setItem(`gymup_recent_${routineId}`, JSON.stringify(ids));
+  } catch {
+    // SecurityError — private browsing or storage full. Ignore silently.
+  }
+}
+
+// =============================================================================
 // ROUTINE DEFINITIONS (exported — required by test contract)
 // =============================================================================
 
@@ -76,41 +112,69 @@ export const workoutDays = [
     id: 'day1',
     label: 'Arms / Shoulders + Abs',
     build() {
-      return [
-        ...pickRandom(exercises.biceps,    1).map(e => ({ ...e, _group: 'biceps' })),
-        ...pickRandom(exercises.triceps,   1).map(e => ({ ...e, _group: 'triceps' })),
-        ...pickRandom(exercises.shoulders, 1).map(e => ({ ...e, _group: 'shoulders' })),
-        ...pickRandom(exercises.abs,       3).map(e => ({ ...e, _group: 'abs' })),
+      const recentIds = getRecentIds(this.id);
+      const filter = (pool, need) => {
+        const f = pool.filter(e => !recentIds.includes(e.id));
+        return f.length >= need ? f : pool;
+      };
+      const result = [
+        ...pickRandom(filter(exercises.biceps,    1), 1).map(e => ({ ...e, _group: 'biceps' })),
+        ...pickRandom(filter(exercises.triceps,   1), 1).map(e => ({ ...e, _group: 'triceps' })),
+        ...pickRandom(filter(exercises.shoulders, 1), 1).map(e => ({ ...e, _group: 'shoulders' })),
+        ...pickRandom(filter(exercises.abs,       3), 3).map(e => ({ ...e, _group: 'abs' })),
       ];
+      storeRecentIds(this.id, result.map(e => e.id));
+      return result;
     },
   },
   {
     id: 'day2',
     label: 'Chest + Abs',
     build() {
-      return [
-        ...pickRandom(exercises.chest, 3).map(e => ({ ...e, _group: 'chest' })),
-        ...pickRandom(exercises.abs,   3).map(e => ({ ...e, _group: 'abs' })),
+      const recentIds = getRecentIds(this.id);
+      const filter = (pool, need) => {
+        const f = pool.filter(e => !recentIds.includes(e.id));
+        return f.length >= need ? f : pool;
+      };
+      const result = [
+        ...pickRandom(filter(exercises.chest, 3), 3).map(e => ({ ...e, _group: 'chest' })),
+        ...pickRandom(filter(exercises.abs,   3), 3).map(e => ({ ...e, _group: 'abs' })),
       ];
+      storeRecentIds(this.id, result.map(e => e.id));
+      return result;
     },
   },
   {
     id: 'day3',
     label: 'Back + Abs',
     build() {
-      return [
-        ...pickRandom(exercises.back, 3).map(e => ({ ...e, _group: 'back' })),
-        ...pickRandom(exercises.abs,  3).map(e => ({ ...e, _group: 'abs' })),
+      const recentIds = getRecentIds(this.id);
+      const filter = (pool, need) => {
+        const f = pool.filter(e => !recentIds.includes(e.id));
+        return f.length >= need ? f : pool;
+      };
+      const result = [
+        ...pickRandom(filter(exercises.back, 3), 3).map(e => ({ ...e, _group: 'back' })),
+        ...pickRandom(filter(exercises.abs,  3), 3).map(e => ({ ...e, _group: 'abs' })),
       ];
+      storeRecentIds(this.id, result.map(e => e.id));
+      return result;
     },
   },
   {
     id: 'day4',
     label: 'Legs',
     build() {
-      return [
-        ...pickRandom(exercises.legs, 3).map(e => ({ ...e, _group: 'legs' })),
+      const recentIds = getRecentIds(this.id);
+      const filter = (pool, need) => {
+        const f = pool.filter(e => !recentIds.includes(e.id));
+        return f.length >= need ? f : pool;
+      };
+      const result = [
+        ...pickRandom(filter(exercises.legs, 3), 3).map(e => ({ ...e, _group: 'legs' })),
       ];
+      storeRecentIds(this.id, result.map(e => e.id));
+      return result;
     },
   },
 ];
