@@ -1,5 +1,5 @@
 /**
- * Antigravity — App Entry Point
+ * GymUp — App Entry Point
  *
  * Phase 2: Routing state, screen renderers, event delegation.
  * Phase 3 adds: exercise cards, Fisher-Yates recency exclusion, Regenerate button.
@@ -122,7 +122,7 @@ export const workoutDays = [
 function renderHome() {
   return `
     <div class="home-screen">
-      <h1 class="app-title">Antigravity</h1>
+      <h1 class="app-title">GymUp</h1>
       <p class="home-subtitle">Choose your routine</p>
       <div class="routine-grid" role="list">
         ${workoutDays.map(day => `
