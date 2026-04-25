@@ -568,15 +568,13 @@ render();
 
 ## Open Questions
 
+**RESOLVED — 2026-04-25**
+
 1. **`muscleGroups.length` assertion: 6 or 7?**
-   - What we know: `exercises.js` has 7 keys (chest, back, biceps, triceps, shoulders, abs, legs). The test at line 19 asserts `muscleGroups.length === 6`.
-   - What's unclear: Is the test intentionally excluding one group (abs? legs?) from `muscleGroups`, or is the count wrong?
-   - Recommendation: Before updating, the planner should confirm which 6 groups are in scope. If `abs` is not a "primary" muscle group (it's always paired with another), the intended array may be 6 without abs. Treat this as a question for the plan's first task.
+   - **RESOLVED: 7.** All 7 English group keys (chest, back, biceps, triceps, shoulders, abs, legs) are included. The test assertion of 6 was stale from the old Spanish schema. 02-01 Task 2 Change 1 updates it to 7.
 
 2. **workoutDays `_group` values: what string should be set?**
-   - What we know: `build()` must set `_group` on each returned exercise, and the test checks specific group label strings. The current test uses Spanish strings.
-   - What's unclear: Should `_group` match the `exercises.js` group key exactly (e.g., `"chest"`) or be a display-friendly English label?
-   - Recommendation: Match the `exercises.js` group key exactly for consistency. Update the test to use English keys. This keeps the data model clean and avoids a translation layer.
+   - **RESOLVED: exact `exercises.js` key string (English lowercase).** `_group` must equal the parent key in `exercises.js` exactly — `'chest'`, `'back'`, etc. No display-friendly labels. 02-01 Task 2 Change 3 updates the test to use these English keys.
 
 ---
 

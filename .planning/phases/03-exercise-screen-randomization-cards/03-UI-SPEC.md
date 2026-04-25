@@ -66,7 +66,7 @@ Notes:
 - Exercise description: Inter 16px weight 400, line-height 1.6, color `--color-navy`. This is a reading-in-bright-light context — do not reduce below 16px.
 - Muscle group tag: Inter 12px weight 400, uppercase, letter-spacing 0.05em. Background: `var(--color-teal)` at 15% opacity (`rgba(130, 205, 216, 0.15)`). Text color: `var(--color-navy)`. Do NOT use `--color-sage` on text smaller than 18px bold.
 - Exercise name: Crimson Pro 20px weight 300, color `--color-navy`. This is the primary scan target at the gym — do not reduce below 20px.
-- YouTube button label: Inter 14px weight 400, color `--color-navy`. This is a secondary element — can be 14px because it accompanies the thumbnail image, not standalone text.
+- YouTube button label: Inter 16px weight 400, color `--color-navy`. Matches body size for gym legibility.
 - "Watch video" is the button label — see Copywriting section.
 
 **Source:** 01-UI-SPEC.md (inherited), REQUIREMENTS.md (DSNG-04, DSNG-06), css/styles.css
@@ -186,7 +186,7 @@ width: 100%
 text-align: center
 padding: var(--space-sm)             /* 8px */
 font-family: var(--font-body)
-font-size: 14px
+font-size: 16px
 font-weight: 400
 color: var(--color-navy)
 background-color: var(--color-cream)
