@@ -1,8 +1,8 @@
-# Antigravity
+# GymUp
 
 ## What This Is
 
-Antigravity is a personal web-based workout guidance app for Fernando Restoy. It presents 4 muscle-group routines, randomly generating 6 exercises per session from a library of 30+ exercises per muscle group. Each exercise includes a description, a quality image showing start and end position, and a YouTube video link. The app is a tool for daily gym use — not a data tracker, but a visual exercise guide.
+GymUp is a personal web-based workout guidance app for Fernando Restoy. It presents 4 muscle-group routines, randomly generating 6 exercises per session from a library of 30+ exercises per muscle group. Each exercise includes a description, a quality image showing start and end position, and a YouTube video link. The app is a tool for daily gym use — not a data tracker, but a visual exercise guide.
 
 ## Core Value
 
@@ -12,7 +12,10 @@ Every session surfaces 6 varied, well-explained exercises so Fer never repeats t
 
 ### Validated
 
-(None yet — ship to validate)
+- [x] 4 routine types: Chest+Abs, Back+Abs, Arms/Shoulders+Abs, Legs — Validated in Phase 2
+- [x] Fully responsive — works on mobile, tablet, and desktop — Validated in Phase 2
+- [x] Pure web app (HTML/CSS/JS) — no build tools, no backend, no login — Validated in Phase 2
+- [x] Minimalist design using The Ripple Effect color palette — Validated in Phase 1+2
 
 ### Active
 
@@ -20,7 +23,7 @@ Every session surfaces 6 varied, well-explained exercises so Fer never repeats t
 - [ ] Each routine generates 6 exercises randomly from the library
 - [ ] Chest+Abs ratio: 3 chest + 3 abs (50/50)
 - [ ] Back+Abs ratio: 3 back + 3 abs (50/50)
-- [ ] Arms+Shoulders+Abs ratio: 3 arms/shoulders + 3 abs (50/50)
+- [ ] Arms+Shoulders+Abs ratio: 1 biceps + 1 triceps + 1 shoulders + 3 abs (50/50)
 - [ ] Legs ratio: 6 legs (100%, no abs)
 - [ ] 30+ exercises in the library for each muscle group (chest, back, arms, shoulders, abs, legs)
 - [ ] Each exercise shows: name, brief how-to description, quality start/end image, YouTube video link
@@ -83,4 +86,4 @@ This document evolves at phase transitions and milestone boundaries.
 4. Update Context with current state
 
 ---
-*Last updated: 2026-04-22 after initialization*
+*Last updated: 2026-04-25 — Phase 2 complete. App renamed GymUp. Home screen with 4 routine tiles and navigation to exercise screen verified.*
