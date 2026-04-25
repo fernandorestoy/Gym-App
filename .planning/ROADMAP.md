@@ -48,8 +48,8 @@ Plans:
   5. The layout is usable on a 375px mobile viewport, a tablet, and a desktop without horizontal scrolling
 **Plans**: 2 plans
 Plans:
-- [ ] 02-01-PLAN.md — muscleGroups export + CSS home/exercise screen styles + test updates (js/exercises.js, css/styles.css, test/app.test.js)
-- [ ] 02-02-PLAN.md — app.js full rewrite: routing, utilities, workoutDays, renderers, event delegation (js/app.js)
+- [x] 02-01-PLAN.md — muscleGroups export + CSS home/exercise screen styles + test updates (js/exercises.js, css/styles.css, test/app.test.js)
+- [x] 02-02-PLAN.md — app.js full rewrite: routing, utilities, workoutDays, renderers, event delegation (js/app.js)
 **UI hint**: yes
 
 ### Phase 3: Exercise Screen + Randomization + Cards
