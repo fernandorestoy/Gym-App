@@ -183,7 +183,8 @@ export const workoutDays = [
 // =============================================================================
 
 function renderCard(exercise) {
-  const videoUrl = `https://youtube.com/shorts/${escapeHtml(exercise.videoId)}`;
+  const videoUrl = `https://youtu.be/${escapeHtml(exercise.videoId)}`;
+  const thumbUrl = `https://img.youtube.com/vi/${escapeHtml(exercise.videoId)}/hqdefault.jpg`;
   const group    = escapeHtml((exercise._group || exercise.group).toUpperCase());
 
   return `
@@ -197,7 +198,11 @@ function renderCard(exercise) {
       </button>
       <div class="card-details" hidden>
         <p class="card-description">${escapeHtml(exercise.description)}</p>
-        ${exercise.videoId ? `<a class="youtube-btn" href="${videoUrl}" target="_blank" rel="noopener noreferrer" aria-label="Watch ${escapeHtml(exercise.name)} on YouTube Shorts">Watch Short ↗</a>` : ''}
+        ${exercise.videoId ? `
+        <a class="youtube-btn" href="${videoUrl}" target="_blank" rel="noopener noreferrer" aria-label="Watch ${escapeHtml(exercise.name)} on YouTube">
+          <img class="youtube-btn__thumbnail" src="${thumbUrl}" alt="" loading="lazy" width="320" height="180" />
+          <span class="youtube-btn__label">Watch video</span>
+        </a>` : ''}
       </div>
     </div>
   `;

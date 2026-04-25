@@ -324,19 +324,34 @@ p {
    ============================================= */
 
 .youtube-btn {
-  display: inline-flex;
-  align-items: center;
+  display: block;
+  width: 100%;
   margin-top: var(--space-md);
-  padding: var(--space-sm) var(--space-md);
   border: 2px solid var(--color-teal);
   border-radius: var(--radius-button);
+  overflow: hidden;
   min-height: var(--touch-target);
+  text-decoration: none;
+  transition: opacity var(--transition-speed) var(--transition-ease);
+}
+
+.youtube-btn__thumbnail {
+  width: 100%;
+  display: block;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+
+.youtube-btn__label {
+  display: block;
+  width: 100%;
+  text-align: center;
+  padding: var(--space-sm);
   font-family: var(--font-body);
   font-size: 16px;
   font-weight: 400;
   color: var(--color-navy);
-  text-decoration: none;
-  transition: opacity var(--transition-speed) var(--transition-ease);
+  background-color: var(--color-cream);
 }
 
 .youtube-btn:hover,
