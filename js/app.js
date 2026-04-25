@@ -170,7 +170,7 @@ export const workoutDays = [
         return f.length >= need ? f : pool;
       };
       const result = [
-        ...pickRandom(filter(exercises.legs, 3), 3).map(e => ({ ...e, _group: 'legs' })),
+        ...pickRandom(filter(exercises.legs, 6), 6).map(e => ({ ...e, _group: 'legs' })),
       ];
       storeRecentIds(this.id, result.map(e => e.id));
       return result;

@@ -62,7 +62,7 @@ test("workout days build the expected muscle-group mix", () => {
     day1: { biceps: 1, triceps: 1, shoulders: 1, abs: 3 },
     day2: { chest: 3, abs: 3 },
     day3: { back: 3, abs: 3 },
-    day4: { legs: 3 },
+    day4: { legs: 6 },
   };
 
   for (const day of workoutDays) {
