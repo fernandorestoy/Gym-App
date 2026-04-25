@@ -6,7 +6,6 @@
  */
 
 import { exercises } from './exercises.js';
-import { getSvg } from './svgIllustrations.js';
 
 // =============================================================================
 // ROUTING STATE
@@ -183,47 +182,22 @@ export const workoutDays = [
 // RENDERERS
 // =============================================================================
 
-/**
- * Renders a single exercise card as an HTML string.
- * SVG is injected via template literal — safe because getSvg() uses only
- * controlled internal data (exercise.svgKey comes from exercises.js, not user input).
- *
- * @param {Object} exercise — exercise object with _group added by build()
- * @returns {string} — HTML string for one .exercise-card
- */
 function renderCard(exercise) {
-  const svgMarkup = getSvg(exercise.svgKey, '#82CDD8');
-  const videoUrl  = `https://youtu.be/${escapeHtml(exercise.videoId)}`;
-  const thumbUrl  = `https://img.youtube.com/vi/${escapeHtml(exercise.videoId)}/hqdefault.jpg`;
-  const group     = escapeHtml((exercise._group || exercise.group).toUpperCase());
+  const videoUrl = `https://youtube.com/shorts/${escapeHtml(exercise.videoId)}`;
+  const group    = escapeHtml((exercise._group || exercise.group).toUpperCase());
 
   return `
-    <div class="exercise-card">
-      <div class="card-svg-container">
-        ${svgMarkup}
-      </div>
-      <div class="card-body">
-        <span class="exercise-group-tag">${group}</span>
-        <h2 class="card-title">${escapeHtml(exercise.name)}</h2>
+    <div class="exercise-card" data-card-id="${escapeHtml(exercise.id)}">
+      <button class="card-header" data-action="toggle-card" aria-expanded="false">
+        <div class="card-header-left">
+          <span class="exercise-group-tag">${group}</span>
+          <h2 class="card-title">${escapeHtml(exercise.name)}</h2>
+        </div>
+        <span class="card-chevron" aria-hidden="true">+</span>
+      </button>
+      <div class="card-details" hidden>
         <p class="card-description">${escapeHtml(exercise.description)}</p>
-        ${exercise.videoId ? `
-        <a
-          class="youtube-btn"
-          href="${videoUrl}"
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="Watch ${escapeHtml(exercise.name)} on YouTube"
-        >
-          <img
-            class="youtube-btn__thumbnail"
-            src="${thumbUrl}"
-            alt=""
-            loading="lazy"
-            width="320"
-            height="180"
-          />
-          <span class="youtube-btn__label">Watch video</span>
-        </a>` : ''}
+        ${exercise.videoId ? `<a class="youtube-btn" href="${videoUrl}" target="_blank" rel="noopener noreferrer" aria-label="Watch ${escapeHtml(exercise.name)} on YouTube Shorts">Watch Short ↗</a>` : ''}
       </div>
     </div>
   `;
@@ -284,9 +258,10 @@ function render() {
 if (typeof document !== 'undefined') {
   // Event delegation — set up once; survives innerHTML re-renders
   document.getElementById('app').addEventListener('click', (event) => {
-    const tile     = event.target.closest('[data-routine-id]');
-    const backBtn  = event.target.closest('[data-action="back"]');
-    const regenBtn = event.target.closest('[data-action="regenerate"]');
+    const tile       = event.target.closest('[data-routine-id]');
+    const backBtn    = event.target.closest('[data-action="back"]');
+    const regenBtn   = event.target.closest('[data-action="regenerate"]');
+    const cardHeader = event.target.closest('[data-action="toggle-card"]');
 
     if (tile) {
       currentRoutine = workoutDays.find(d => d.id === tile.dataset.routineId);
@@ -300,6 +275,21 @@ if (typeof document !== 'undefined') {
       if (!currentRoutine) return;
       render();
       document.querySelector('[data-action="regenerate"]')?.focus();
+    } else if (cardHeader) {
+      const card   = cardHeader.closest('.exercise-card');
+      const isOpen = card.classList.contains('is-open');
+      document.querySelectorAll('.exercise-card').forEach(c => {
+        c.classList.remove('is-open');
+        c.querySelector('[data-action="toggle-card"]').setAttribute('aria-expanded', 'false');
+        c.querySelector('.card-chevron').textContent = '+';
+        c.querySelector('.card-details').hidden = true;
+      });
+      if (!isOpen) {
+        card.classList.add('is-open');
+        cardHeader.setAttribute('aria-expanded', 'true');
+        card.querySelector('.card-chevron').textContent = '−';
+        card.querySelector('.card-details').hidden = false;
+      }
     }
   });
 

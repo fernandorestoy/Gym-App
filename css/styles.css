@@ -236,7 +236,7 @@ p {
 .exercise-list {
   display: flex;
   flex-direction: column;
-  gap: var(--space-xl);
+  gap: var(--space-sm);
   width: 100%;
   padding-bottom: var(--space-2xl);
 }
@@ -249,20 +249,37 @@ p {
   overflow: hidden;
 }
 
-.card-svg-container {
+.card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   width: 100%;
-  aspect-ratio: 400 / 280;
-  overflow: hidden;
+  padding: var(--space-md) var(--space-lg);
+  cursor: pointer;
+  background: none;
+  border: none;
+  text-align: left;
+  gap: var(--space-md);
 }
 
-.card-svg-container svg {
-  width: 100%;
-  height: 100%;
-  display: block;
+.card-header:focus-visible {
+  outline: 3px solid var(--color-teal);
+  outline-offset: -3px;
+  border-radius: calc(var(--radius-card) - 2px);
 }
 
-.card-body {
-  padding: var(--space-lg);
+.card-header-left {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-xs);
+}
+
+.card-chevron {
+  font-size: 20px;
+  color: var(--color-teal);
+  flex-shrink: 0;
+  line-height: 1;
 }
 
 .exercise-group-tag {
@@ -276,7 +293,6 @@ p {
   background-color: rgba(130, 205, 216, 0.15);
   border-radius: var(--radius-pill);
   padding: var(--space-xs) var(--space-sm);
-  margin-bottom: var(--space-xs);
 }
 
 .card-title {
@@ -285,7 +301,13 @@ p {
   font-weight: 300;
   line-height: 1.2;
   color: var(--color-navy);
-  margin: 0 0 var(--space-sm) 0;
+  margin: 0;
+  text-align: left;
+}
+
+.card-details {
+  padding: 0 var(--space-lg) var(--space-lg);
+  border-top: 1px solid rgba(130, 205, 216, 0.3);
 }
 
 .card-description {
@@ -294,7 +316,7 @@ p {
   font-weight: 400;
   line-height: 1.6;
   color: var(--color-navy);
-  margin: 0;
+  margin: var(--space-md) 0 0;
 }
 
 /* =============================================
@@ -302,34 +324,19 @@ p {
    ============================================= */
 
 .youtube-btn {
-  display: block;
-  width: 100%;
+  display: inline-flex;
+  align-items: center;
   margin-top: var(--space-md);
+  padding: var(--space-sm) var(--space-md);
   border: 2px solid var(--color-teal);
   border-radius: var(--radius-button);
-  overflow: hidden;
   min-height: var(--touch-target);
-  text-decoration: none;
-  transition: opacity var(--transition-speed) var(--transition-ease);
-}
-
-.youtube-btn__thumbnail {
-  width: 100%;
-  display: block;
-  aspect-ratio: 16 / 9;
-  object-fit: cover;
-}
-
-.youtube-btn__label {
-  display: block;
-  width: 100%;
-  text-align: center;
-  padding: var(--space-sm);
   font-family: var(--font-body);
   font-size: 16px;
   font-weight: 400;
   color: var(--color-navy);
-  background-color: var(--color-cream);
+  text-decoration: none;
+  transition: opacity var(--transition-speed) var(--transition-ease);
 }
 
 .youtube-btn:hover,
