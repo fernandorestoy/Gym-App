@@ -57,12 +57,15 @@ Plans:
 **Depends on**: Phase 2
 **Requirements**: ROUT-01, ROUT-02, ROUT-03, ROUT-04, ROUT-05, ROUT-06, ROUT-07, CARD-01, CARD-02, CARD-03, CARD-04
 **Success Criteria** (what must be TRUE):
-  1. Selecting a routine always produces exactly 6 exercise cards in the correct muscle group ratio (3+3 for Chest/Back, 1+1+1+3 for Arms/Shoulders, 6 legs)
+  1. Selecting a routine always produces exactly 6 exercise cards in the correct muscle group ratio (3+3 for Chest/Back, 1+1+1+3 for Arms/Shoulders, 3 legs)
   2. Running the same routine on consecutive sessions never repeats any of the previous session's 6 exercises (localStorage recency exclusion working)
   3. The Regenerate button produces a new set of 6 exercises with the same ratio constraint, without navigating away
   4. Each exercise card displays: SVG illustration, exercise name, how-to description, and a YouTube thumbnail button that opens the video in a new tab
   5. Exercise cards are full-width, vertically stacked, and readable at a glance without zooming on a mobile screen
-**Plans**: TBD
+**Plans**: 2 plans
+Plans:
+- [ ] 03-01-PLAN.md — svgKey reconciliation + svgIllustrations English strings + exercise library expansion to 18/group (js/exercises.js, js/svgIllustrations.js, test/app.test.js)
+- [ ] 03-02-PLAN.md — renderCard + renderExercise rewrite + localStorage helpers + CSS sections 6/7/8/11 (js/app.js, css/styles.css, test/app.test.js)
 **UI hint**: yes
 
 ### Phase 4: Exercise Content Population
@@ -94,7 +97,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5
 |-------|----------------|--------|-----------|
 | 1. Data Architecture + Design System | 2/2 | Complete | 2026-04-24 |
 | 2. App Shell + Home Screen | 0/2 | Not started | - |
-| 3. Exercise Screen + Randomization + Cards | 0/TBD | Not started | - |
+| 3. Exercise Screen + Randomization + Cards | 0/2 | Not started | - |
 | 4. Exercise Content Population | 0/TBD | Not started | - |
 | 5. Polish + Animation | 0/TBD | Not started | - |
 
