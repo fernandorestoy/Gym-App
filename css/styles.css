@@ -111,9 +111,102 @@ p {
    5. HOME SCREEN (routine tiles)
    ============================================= */
 
+.home-screen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.app-title {
+  margin-bottom: var(--space-sm);
+  text-align: center;
+}
+
+.home-subtitle {
+  margin-bottom: var(--space-xl);
+  text-align: center;
+  color: var(--color-navy);
+  opacity: 0.6;
+}
+
+.routine-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-md);
+  width: 100%;
+}
+
+.routine-tile {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: var(--touch-target);
+  padding: var(--space-lg);
+  background-color: var(--color-cream);
+  border: 2px solid var(--color-teal);
+  border-radius: var(--radius-card);
+  cursor: pointer;
+  text-align: center;
+  font-family: var(--font-heading);
+  font-weight: 300;
+  font-size: 20px;
+  color: var(--color-navy);
+  transition: opacity var(--transition-speed) var(--transition-ease);
+}
+
+.routine-tile:hover,
+.routine-tile:focus-visible {
+  outline: 3px solid var(--color-teal);
+  outline-offset: 3px;
+}
+
+.routine-tile:active {
+  opacity: 0.7;
+}
+
 /* =============================================
    6. EXERCISE SCREEN (header, back, regenerate)
    ============================================= */
+
+.exercise-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  margin-bottom: var(--space-xl);
+}
+
+.back-btn {
+  min-height: var(--touch-target);
+  padding: var(--space-sm) var(--space-md);
+  border: 2px solid var(--color-navy);
+  border-radius: var(--radius-button);
+  font-family: var(--font-body);
+  font-size: 16px;
+  color: var(--color-navy);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: opacity var(--transition-speed) var(--transition-ease);
+}
+
+.back-btn:hover,
+.back-btn:focus-visible {
+  outline: 3px solid var(--color-teal);
+  outline-offset: 3px;
+}
+
+.back-btn:active {
+  opacity: 0.7;
+}
+
+.exercise-screen h1 {
+  font-size: 24px;
+}
+
+.placeholder-text {
+  color: var(--color-navy);
+  opacity: 0.5;
+  font-style: italic;
+}
 
 /* =============================================
    7. EXERCISE CARDS

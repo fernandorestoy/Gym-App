@@ -16,6 +16,8 @@
  *   svgKey      {string}  Key into svgIllustrations map. camelCase. e.g. "benchPress"
  */
 
+export const muscleGroups = ['chest', 'back', 'biceps', 'triceps', 'shoulders', 'abs', 'legs'];
+
 export const exercises = {
 
   chest: [
