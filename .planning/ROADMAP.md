@@ -78,7 +78,7 @@ Plans:
   3. Running any routine 5 times in a row produces no repeated exercises (pool is large enough that recency exclusion works correctly)
 **Plans**: 2 plans
 Plans:
-- [ ] 04-01-PLAN.md — chest + back + shoulders expansion (18→30 each) (js/exercises.js)
+- [x] 04-01-PLAN.md — chest + back + shoulders expansion (18→30 each) (js/exercises.js)
 - [ ] 04-02-PLAN.md — biceps + triceps + abs + legs expansion (18→30 each) + test count update (js/exercises.js, test/app.test.js)
 
 ### Phase 5: Polish + Animation
@@ -101,7 +101,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5
 | 1. Data Architecture + Design System | 2/2 | Complete | 2026-04-24 |
 | 2. App Shell + Home Screen | 2/2 | Complete | 2026-04-25 |
 | 3. Exercise Screen + Randomization + Cards | 2/2 | Complete | 2026-04-25 |
-| 4. Exercise Content Population | 0/2 | Not started | - |
+| 4. Exercise Content Population | 1/2 | In Progress|  |
 | 5. Polish + Animation | 0/TBD | Not started | - |
 
 ---

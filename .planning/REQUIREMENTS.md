@@ -9,7 +9,7 @@
 
 - [ ] **DATA-01**: Exercise library is structured as a grouped JS object (by muscle group), not a flat array
 - [ ] **DATA-02**: Each exercise object contains: id, name, description (2–3 sentences), youtubeId, difficulty, equipment
-- [ ] **DATA-03**: Library contains 30+ exercises for each of 6 groups: chest, back, biceps, triceps, shoulders, abs, legs
+- [x] **DATA-03**: Library contains 30+ exercises for each of 6 groups: chest, back, biceps, triceps, shoulders, abs, legs
 - [ ] **DATA-04**: Unique stable IDs assigned to every exercise (for recency exclusion)
 
 ### Routines
@@ -76,7 +76,7 @@
 |-------------|-------|--------|
 | DATA-01 | Phase 1 | Pending |
 | DATA-02 | Phase 1 | Pending |
-| DATA-03 | Phase 4 | Pending |
+| DATA-03 | Phase 4 | Complete |
 | DATA-04 | Phase 1 | Pending |
 | ROUT-01 | Phase 3 | Pending |
 | ROUT-02 | Phase 3 | Pending |
