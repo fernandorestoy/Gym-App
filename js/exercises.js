@@ -26,7 +26,7 @@ export const exercises = {
       name: "Flat Barbell Bench Press",
       group: "chest",
       description: "Lie flat on a bench, grip the bar slightly wider than shoulder-width, and unrack it over your chest. Lower the bar with control to mid-chest, touching lightly, then press it back up to full lockout. Keep your shoulder blades pinched together and feet flat on the floor throughout.",
-      videoId: "4Y2ZdHCOXok",
+      videoId: "hWbUlkb5Ms4",
       svgKey: "press-pecho-plano",
     },
     {
@@ -34,7 +34,7 @@ export const exercises = {
       name: "Incline Dumbbell Press",
       group: "chest",
       description: "Set a bench to 30–45 degrees, hold dumbbells at shoulder height, and press them overhead to full extension. Lower with control until your elbows are slightly below bench level for a full stretch. The incline angle shifts emphasis to the upper (clavicular) head of the pec.",
-      videoId: "NsEbXsTwas8",
+      videoId: "8fXfwG4ftaQ",
       svgKey: "press-inclinado-mancuernas",
     },
     {
@@ -42,7 +42,7 @@ export const exercises = {
       name: "Dumbbell Flat Fly",
       group: "chest",
       description: "Lie on a flat bench holding dumbbells above your chest with a slight bend in your elbows. Lower the weights in a wide arc until you feel a deep stretch across your chest, then squeeze them back together at the top. Maintain the same elbow angle throughout — this is not a pressing movement.",
-      videoId: "eozdVDA78K0",
+      videoId: "rk8YayRoTRQ",
       svgKey: "aperturas-mancuernas",
     },
     {
@@ -50,7 +50,7 @@ export const exercises = {
       name: "Decline Dumbbell Press",
       group: "chest",
       description: "Set a bench to a 15–30 degree decline, secure your legs, and press dumbbells from shoulder height to full extension. The decline angle shifts emphasis to the lower chest fibers. Lower with control and feel the stretch at the bottom before driving back up.",
-      videoId: "4Y2ZdHCOXok",
+      videoId: "WbCEvFA0NJs",
       svgKey: "press-declinado-mancuernas",
     },
     {
@@ -58,7 +58,7 @@ export const exercises = {
       name: "Dumbbell Pullover",
       group: "chest",
       description: "Lie perpendicular across a bench with only your upper back supported, hold one dumbbell with both hands above your chest. Lower the dumbbell in an arc behind your head, feeling a deep stretch through your chest and lats. Pull it back to the starting position by contracting your chest.",
-      videoId: "eozdVDA78K0",
+      videoId: "JdzaVp3zEAM",
       svgKey: "pullover-mancuerna",
     },
     {
@@ -66,7 +66,7 @@ export const exercises = {
       name: "Squeeze Press",
       group: "chest",
       description: "Lie on a flat bench holding dumbbells together at the center of your chest, pressing them firmly against each other. Press straight up while maintaining that inward squeeze to maximally activate the inner pec fibers. Lower slowly, keeping the dumbbells in contact throughout the movement.",
-      videoId: "4Y2ZdHCOXok",
+      videoId: "G2j_lJf6ljk",
       svgKey: "squeeze-press",
     },
     {
@@ -74,7 +74,7 @@ export const exercises = {
       name: "Machine Chest Press",
       group: "chest",
       description: "Sit in the chest press machine with your back flat against the pad and handles at chest level. Press forward to full arm extension, squeezing your chest at the lockout. Return slowly under control — the machine provides constant tension through the full range.",
-      videoId: "4Y2ZdHCOXok",
+      videoId: "Qu7-ceCvq7w",
       svgKey: "press-pecho-maquina",
     },
     {
@@ -82,7 +82,7 @@ export const exercises = {
       name: "Pec Deck Fly",
       group: "chest",
       description: "Sit in the pec deck machine with your forearms resting on the pads and elbows at shoulder height. Bring the pads together in front of you by squeezing your chest, then return slowly to the starting position. Avoid letting the weight stack touch between reps to maintain constant tension.",
-      videoId: "eozdVDA78K0",
+      videoId: "fgXSA2-o0NM",
       svgKey: "pec-deck",
     },
     {
@@ -90,7 +90,7 @@ export const exercises = {
       name: "Incline Machine Press",
       group: "chest",
       description: "Adjust the incline chest press machine seat so the handles align with your upper chest. Press forward and slightly upward to full extension, then lower under control. The fixed path of the machine lets you focus entirely on contracting the upper chest.",
-      videoId: "NsEbXsTwas8",
+      videoId: "T0huVIujERo",
       svgKey: "press-inclinado-maquina",
     },
     {
@@ -98,7 +98,7 @@ export const exercises = {
       name: "Machine Crossover",
       group: "chest",
       description: "Stand between two cable towers set at shoulder height, hold the handles, and step forward. Bring both hands together in front of your chest in a hugging motion, squeezing hard at the peak contraction. Return slowly with control, feeling the stretch across your chest.",
-      videoId: "eozdVDA78K0",
+      videoId: "y4RJDSOBEl8",
       svgKey: "crossover-maquina",
     },
     {
@@ -106,7 +106,7 @@ export const exercises = {
       name: "Smith Machine Bench Press",
       group: "chest",
       description: "Set up the Smith machine bar at chest height, lie on the bench and grip the bar slightly wider than shoulder-width. Lower the bar to mid-chest with control, then press back up to full extension. The fixed bar path lets you focus on chest activation without balancing concerns.",
-      videoId: "4Y2ZdHCOXok",
+      videoId: "gQ3afio08V8",
       svgKey: "smith-press-pecho",
     },
     {
@@ -114,7 +114,7 @@ export const exercises = {
       name: "Decline Machine Press",
       group: "chest",
       description: "Sit in the decline chest press machine and press the handles forward and slightly downward to full extension. This angle targets the lower chest fibers more directly than a flat press. Return slowly to feel the full eccentric stretch.",
-      videoId: "4Y2ZdHCOXok",
+      videoId: "RW4x8oAqPGQ",
       svgKey: "press-declinado-maquina",
     },
     {
@@ -122,7 +122,7 @@ export const exercises = {
       name: "Cable Crossover",
       group: "chest",
       description: "Stand between two cable towers set at the top, grab one handle in each hand, and step forward. Bring both hands together in a sweeping arc downward and inward, squeezing your chest hard at the bottom. Return to start slowly, maintaining tension on the chest throughout.",
-      videoId: "eozdVDA78K0",
+      videoId: "M97ra0UR-40",
       svgKey: "crossover-cables",
     },
     {
@@ -130,7 +130,7 @@ export const exercises = {
       name: "Resistance Band Press",
       group: "chest",
       description: "Anchor a resistance band behind you at chest height, hold one end in each hand, and stand facing away. Press your hands forward to full extension, squeezing your chest at the lockout. Return under control, letting the band pull your arms back for an eccentric stretch.",
-      videoId: "4Y2ZdHCOXok",
+      videoId: "T0UJ0W-_yIE",
       svgKey: "press-bandas-pecho",
     },
     {
@@ -138,7 +138,7 @@ export const exercises = {
       name: "Low Cable Fly",
       group: "chest",
       description: "Set cables at the lowest point, stand between the towers, and bring both handles upward and inward in a sweeping arc to chest height. This angle targets the upper and mid chest with a strong stretch at the bottom. Squeeze hard at the peak and return slowly.",
-      videoId: "eozdVDA78K0",
+      videoId: "tGXIQR89-JE",
       svgKey: "aperturas-cables-bajo",
     },
     {
@@ -146,7 +146,7 @@ export const exercises = {
       name: "High Cable Fly",
       group: "chest",
       description: "Set cables at the highest point, grab the handles and step forward. Bring both hands downward and inward in a sweeping arc, finishing with hands together at hip level. This targets the lower chest fibers with a powerful stretch at the top of the movement.",
-      videoId: "eozdVDA78K0",
+      videoId: "I-Ue34qLxc4",
       svgKey: "aperturas-cables-alto",
     },
     {
@@ -154,7 +154,7 @@ export const exercises = {
       name: "Incline Cable Press",
       group: "chest",
       description: "Set a cable at the lowest setting, lie back on an incline bench, and press one or both handles upward at an incline angle to full extension. This isolates the upper chest with constant cable tension throughout the range of motion. Lower with control back to chest level.",
-      videoId: "NsEbXsTwas8",
+      videoId: "PfmfAeMpym4",
       svgKey: "press-inclinado-cable",
     },
     {
@@ -162,7 +162,7 @@ export const exercises = {
       name: "Single-Arm Cable Crossover",
       group: "chest",
       description: "Set a cable at shoulder height, grab the handle with one hand, and step away from the tower. Bring your arm across your body in a sweeping motion, finishing at hip level on the opposite side. This unilateral movement corrects imbalances and allows for a deeper pec stretch.",
-      videoId: "eozdVDA78K0",
+      videoId: "E_mT1JWOp90",
       svgKey: "cruce-cable-unilateral",
     },
   ],
@@ -173,7 +173,7 @@ export const exercises = {
       name: "Barbell Bent-Over Row",
       group: "back",
       description: "Hinge at the hips until your torso is roughly parallel to the floor, keeping your lower back flat. Pull the bar into your lower abdomen by driving your elbows back and squeezing your shoulder blades together. Lower with control and avoid using momentum from your legs.",
-      videoId: "FWJR5Ve8bnQ",
+      videoId: "UL8ZcK64KxA",
       svgKey: "remo-inclinado-bilateral",
     },
     {
@@ -181,7 +181,7 @@ export const exercises = {
       name: "Pull-Up",
       group: "back",
       description: "Hang from a bar with an overhand grip slightly wider than shoulder-width. Pull yourself up until your chin clears the bar by driving your elbows down toward your hips. Lower slowly under control — the descent is where much of the back development happens.",
-      videoId: "eGo4IYlbE5g",
+      videoId: "OEXosPwzFdc",
       svgKey: "jalon-pecho",
     },
     {
@@ -189,7 +189,7 @@ export const exercises = {
       name: "Lat Pulldown",
       group: "back",
       description: "Sit at a cable machine with your thighs secured under the pad and grip the bar slightly wider than shoulder-width. Pull the bar down to your upper chest by driving your elbows toward your hips while leaning back slightly. Squeeze your lats at the bottom and return the bar slowly to full arm extension.",
-      videoId: "CAwf7n6Luuc",
+      videoId: "SALxEARiMkw",
       svgKey: "jalon-pecho",
     },
     {
@@ -197,7 +197,7 @@ export const exercises = {
       name: "Dumbbell Row",
       group: "back",
       description: "Place one knee and hand on a bench for support, hold a dumbbell in the other hand, and let it hang straight down. Row the dumbbell up to your hip by driving your elbow back, squeezing your shoulder blade at the top. Lower fully to feel the lat stretch before each rep.",
-      videoId: "FWJR5Ve8bnQ",
+      videoId: "qN54-QNO1eQ",
       svgKey: "remo-mancuerna",
     },
     {
@@ -205,7 +205,7 @@ export const exercises = {
       name: "Dumbbell Deadlift",
       group: "back",
       description: "Stand with dumbbells in front of your thighs, hinge at the hips while keeping your back flat, and lower them toward the floor. Drive your hips forward to return to standing, squeezing your glutes at the top. Keep the dumbbells close to your legs throughout the movement.",
-      videoId: "FWJR5Ve8bnQ",
+      videoId: "Ipi8_vz8_z0",
       svgKey: "peso-muerto-mancuernas",
     },
     {
@@ -213,7 +213,7 @@ export const exercises = {
       name: "Pullover (Back Focus)",
       group: "back",
       description: "Lie on a bench holding a dumbbell with both hands overhead. Lower it in an arc behind your head until you feel a strong lat stretch, then pull it back overhead by contracting your lats and serratus. Keep a slight elbow bend throughout and focus on the lat contraction, not the chest.",
-      videoId: "FWJR5Ve8bnQ",
+      videoId: "Datv2L6t3-4",
       svgKey: "pullover-espalda",
     },
     {
@@ -221,7 +221,7 @@ export const exercises = {
       name: "Kroc Row",
       group: "back",
       description: "Set up like a standard dumbbell row but use a heavier weight with a controlled touch of momentum. Pull the dumbbell aggressively to your hip, focusing on maximum lat contraction at the top. Lower with control — this high-rep, heavier variant builds raw back thickness.",
-      videoId: "FWJR5Ve8bnQ",
+      videoId: "bX-LZ5nBLBk",
       svgKey: "remo-kroc",
     },
     {
@@ -229,7 +229,7 @@ export const exercises = {
       name: "Dumbbell Shrug",
       group: "back",
       description: "Stand holding dumbbells at your sides with arms fully extended. Elevate your shoulders straight up toward your ears as high as possible, hold briefly at the top, then lower slowly. Do not roll your shoulders — the movement is purely vertical to target the upper traps.",
-      videoId: "FWJR5Ve8bnQ",
+      videoId: "rFsSeClGnNA",
       svgKey: "encogimientos-mancuernas",
     },
     {
@@ -237,7 +237,7 @@ export const exercises = {
       name: "Seated Cable Row",
       group: "back",
       description: "Sit at a cable row machine with feet on the footplate and knees slightly bent. Pull the handle into your lower abdomen by driving your elbows back and squeezing your shoulder blades together. Return to full arm extension with a slight forward lean to stretch your lats between reps.",
-      videoId: "FWJR5Ve8bnQ",
+      videoId: "vwHG9Jfu4sw",
       svgKey: "remo-sentado-maquina",
     },
     {
@@ -245,7 +245,7 @@ export const exercises = {
       name: "Close-Grip Lat Pulldown",
       group: "back",
       description: "Attach a close-grip or V-bar handle to the cable machine and sit with thighs under the pad. Pull the handle down to your upper chest, driving your elbows toward your sides and squeezing your lats hard at the bottom. The narrow grip increases bicep involvement and shifts lat activation lower.",
-      videoId: "CAwf7n6Luuc",
+      videoId: "e3S820r53uk",
       svgKey: "jalon-agarre-cerrado",
     },
     {
@@ -253,7 +253,7 @@ export const exercises = {
       name: "T-Bar Row",
       group: "back",
       description: "Straddle a T-bar or landmine setup, hinge forward with a flat back, and grip the handles. Row the weight up to your lower chest by driving your elbows back, squeezing your shoulder blades together at the top. Lower with control — this is a powerful compound movement for mid-back thickness.",
-      videoId: "FWJR5Ve8bnQ",
+      videoId: "TyLoy3n_a10",
       svgKey: "remo-tbar",
     },
     {
@@ -261,7 +261,7 @@ export const exercises = {
       name: "Straight-Arm Pulldown",
       group: "back",
       description: "Stand at a cable machine with the bar set high, grab it with an overhand grip and arms extended. Keep your arms straight and pull the bar down in an arc until it reaches your thighs, squeezing your lats hard at the bottom. Return slowly — this isolates the lats without bicep involvement.",
-      videoId: "CAwf7n6Luuc",
+      videoId: "hAMcfubonDc",
       svgKey: "pulldown-brazos-rectos",
     },
     {
@@ -269,7 +269,7 @@ export const exercises = {
       name: "Hyperextension",
       group: "back",
       description: "Position yourself face-down on a hyperextension bench with your hips on the pad and feet secured. Lower your torso toward the floor, then raise it back to parallel by contracting your lower back and glutes. Keep your spine neutral — do not hyperextend beyond parallel at the top.",
-      videoId: "FWJR5Ve8bnQ",
+      videoId: "EBui4Bt5N7o",
       svgKey: "hiperextension",
     },
     {
@@ -277,7 +277,7 @@ export const exercises = {
       name: "Cable Row (Standing)",
       group: "back",
       description: "Stand at a cable machine with the pulley set at mid-height and grip the handle with one or both hands. Pull the handle into your torso by driving your elbow back, squeezing your shoulder blade at the end range. Step back slightly against the cable tension to maintain constant resistance.",
-      videoId: "FWJR5Ve8bnQ",
+      videoId: "hh-8Igj6wuo",
       svgKey: "remo-cable",
     },
     {
@@ -285,7 +285,7 @@ export const exercises = {
       name: "Band Face Pull",
       group: "back",
       description: "Anchor a resistance band at face height, hold an end in each hand, and step back to create tension. Pull the band toward your face by driving your elbows back and out, finishing with your hands beside your ears. This targets the rear delts and upper traps while improving shoulder health.",
-      videoId: "FWJR5Ve8bnQ",
+      videoId: "Qij3pSB-gNk",
       svgKey: "face-pull",
     },
     {
@@ -293,7 +293,7 @@ export const exercises = {
       name: "Band Lat Pulldown",
       group: "back",
       description: "Anchor a resistance band overhead and kneel or sit below it. Grab the band with both hands and pull it down to your upper chest by driving your elbows toward your hips. Return slowly to full arm extension — bands provide greater resistance at the top and a strong lat stretch at full extension.",
-      videoId: "CAwf7n6Luuc",
+      videoId: "nmY4MTSFln8",
       svgKey: "jalon-banda",
     },
     {
@@ -301,7 +301,7 @@ export const exercises = {
       name: "Low Cable Row",
       group: "back",
       description: "Sit on a cable machine with the pulley set at the lowest position and a straight bar or rope attached. Pull the handle into your lower abdomen with a slight forward lean at the start, then drive your elbows back and sit tall. This angle builds lower lat fullness and overall back thickness.",
-      videoId: "FWJR5Ve8bnQ",
+      videoId: "QelgBRgIsjY",
       svgKey: "remo-bajo-cable",
     },
     {
@@ -309,7 +309,7 @@ export const exercises = {
       name: "Cable Pullover",
       group: "back",
       description: "Stand at a cable machine with the pulley overhead, grip the bar or rope with both hands and arms extended. Pull the bar down in an arc to your thighs while keeping your arms straight, squeezing your lats at the bottom. This is the cable version of a pullover — constant tension through the full range.",
-      videoId: "CAwf7n6Luuc",
+      videoId: "MeczZ6iUYPo",
       svgKey: "pullover-cable",
     },
   ],
@@ -320,7 +320,7 @@ export const exercises = {
       name: "Barbell Curl",
       group: "biceps",
       description: "Stand holding a barbell with an underhand grip at shoulder width, arms fully extended. Curl the bar up toward your shoulders by contracting your biceps, keeping your elbows pinned to your sides. Lower the bar slowly back to full extension — do not swing your torso.",
-      videoId: "LY1V6UbRHFM",
+      videoId: "ez3YoWf62Eg",
       svgKey: "curl-biceps",
     },
     {
@@ -328,7 +328,7 @@ export const exercises = {
       name: "Dumbbell Hammer Curl",
       group: "biceps",
       description: "Hold dumbbells at your sides with a neutral (palms-facing-in) grip. Curl both dumbbells simultaneously up toward your shoulders without rotating your wrists. This neutral grip targets the brachialis and brachioradialis alongside the biceps for overall arm thickness.",
-      videoId: "zC3nLlEvin4",
+      videoId: "BRVDS6HVR9Q",
       svgKey: "curl-martillo",
     },
     {
@@ -336,7 +336,7 @@ export const exercises = {
       name: "Incline Dumbbell Curl",
       group: "biceps",
       description: "Set a bench to 60–70 degrees, sit back against it, and let your arms hang straight down. Curl the dumbbells up while keeping your upper arms stationary and perpendicular to the floor throughout. The incline position pre-stretches the long head of the biceps for a greater range of motion.",
-      videoId: "soxrZlIl35U",
+      videoId: "XhIsIcjIbCw",
       svgKey: "curl-concentrado",
     },
     {
@@ -344,7 +344,7 @@ export const exercises = {
       name: "Zottman Curl",
       group: "biceps",
       description: "Curl dumbbells up with an underhand (supinated) grip, rotating your wrists to an overhand (pronated) grip at the top. Lower slowly with the overhand grip to work the brachioradialis and forearm extensors eccentrically. Rotate back to underhand at the bottom before the next rep.",
-      videoId: "zC3nLlEvin4",
+      videoId: "D7bMA4WEKMI",
       svgKey: "curl-zottman",
     },
     {
@@ -352,7 +352,7 @@ export const exercises = {
       name: "Biceps Machine Curl",
       group: "biceps",
       description: "Sit in the biceps curl machine with your upper arms resting on the pad and elbows aligned with the pivot point. Curl the handles up to full contraction, squeezing your biceps hard at the top. Lower slowly to full extension — the pad isolates the biceps by preventing shoulder involvement.",
-      videoId: "LY1V6UbRHFM",
+      videoId: "Htw-s61mOw0",
       svgKey: "curl-maquina-biceps",
     },
     {
@@ -360,7 +360,7 @@ export const exercises = {
       name: "Overhead Triceps Extension",
       group: "biceps",
       description: "Hold a dumbbell with both hands overhead at full arm extension. Lower it behind your head by bending at the elbows, keeping your upper arms vertical. Press back up to full extension — the overhead position stretches the long head maximally for full triceps development.",
-      videoId: "YbX7Wd8jQ-Q",
+      videoId: "eYrAV7rnol0",
       svgKey: "extension-triceps-overhead",
     },
     {
@@ -368,7 +368,7 @@ export const exercises = {
       name: "Preacher Machine Curl",
       group: "biceps",
       description: "Sit at the preacher curl machine with your upper arms resting flat on the angled pad. Curl the handles up to full contraction, squeezing your biceps at the top. Lower with full control to complete extension — the pad eliminates cheating and puts maximum stress on the biceps peak.",
-      videoId: "LY1V6UbRHFM",
+      videoId: "OI6gZcAPUMU",
       svgKey: "curl-predicador-maquina",
     },
     {
@@ -376,7 +376,7 @@ export const exercises = {
       name: "Triceps Kickback",
       group: "biceps",
       description: "Hinge forward until your torso is nearly parallel to the floor, hold a dumbbell with your upper arm pinned to your side and elbow bent at 90 degrees. Extend your forearm back to full lockout, squeezing the triceps hard at the top. Lower with control — do not let your upper arm drop.",
-      videoId: "vB5OHsJ3EME",
+      videoId: "I_bKCYL2nL8",
       svgKey: "kickback-triceps",
     },
     {
@@ -384,7 +384,7 @@ export const exercises = {
       name: "Scott Machine Curl",
       group: "biceps",
       description: "Position yourself in the Scott curl machine with your upper arms resting on the angled pad. Curl the bar or handles up toward your shoulders, squeezing your biceps at the top contraction. Lower with full control to a stretched position — the Scott bench prevents any shoulder cheating.",
-      videoId: "LY1V6UbRHFM",
+      videoId: "NFzTWp2qpiE",
       svgKey: "curl-scott-maquina",
     },
     {
@@ -392,7 +392,7 @@ export const exercises = {
       name: "Triceps Machine Extension",
       group: "biceps",
       description: "Sit in the triceps extension machine with your upper arms resting on the pads. Push the handles down to full lockout by extending your elbows, squeezing your triceps hard at the bottom. Return slowly — the machine provides consistent resistance through the full range of motion.",
-      videoId: "vB5OHsJ3EME",
+      videoId: "20xtfGZ37nw",
       svgKey: "extension-triceps-maquina",
     },
     {
@@ -400,7 +400,7 @@ export const exercises = {
       name: "French Press Machine",
       group: "biceps",
       description: "Lie on the bench of the French press machine and grip the handles above your forehead. Lower toward your forehead by bending at the elbows, then press back up to full extension. This compound movement is ideal for loading the long head of the triceps at a full overhead stretch.",
-      videoId: "vB5OHsJ3EME",
+      videoId: "IJZhj9szYcw",
       svgKey: "press-frances-maquina",
     },
     {
@@ -408,7 +408,7 @@ export const exercises = {
       name: "Cable Curl",
       group: "biceps",
       description: "Stand at a cable machine with the pulley set low and grip the bar or rope with an underhand grip. Curl upward toward your shoulders, keeping your elbows stationary at your sides. Lower slowly — cables provide constant tension throughout the full range, unlike free weights.",
-      videoId: "LY1V6UbRHFM",
+      videoId: "yz2eCSWoY4E",
       svgKey: "curl-cable",
     },
     {
@@ -416,7 +416,7 @@ export const exercises = {
       name: "Triceps Pushdown",
       group: "biceps",
       description: "Stand at a cable machine with a rope or bar attached to the high pulley. Keeping your upper arms pinned to your sides, push the attachment down to full elbow extension. Squeeze your triceps at the bottom before returning slowly to the starting position.",
-      videoId: "vB5OHsJ3EME",
+      videoId: "qmQkt1Y-FX8",
       svgKey: "pushdown-triceps",
     },
     {
@@ -424,7 +424,7 @@ export const exercises = {
       name: "Band Curl",
       group: "biceps",
       description: "Stand on a resistance band with feet shoulder-width apart and hold one end in each hand. Curl both hands up toward your shoulders, squeezing your biceps at the top. Lower slowly — bands provide increasing resistance as you approach peak contraction, creating a unique strength curve.",
-      videoId: "LY1V6UbRHFM",
+      videoId: "jgmESOA4J5E",
       svgKey: "curl-banda",
     },
     {
@@ -432,7 +432,7 @@ export const exercises = {
       name: "Band Overhead Extension",
       group: "biceps",
       description: "Anchor a resistance band at a low point, hold the other end with both hands overhead at full arm extension. Lower the band behind your head by bending at the elbows, then press back up to full extension. This overhead position maximally stretches the long head of the triceps.",
-      videoId: "YbX7Wd8jQ-Q",
+      videoId: "16zAqGDsMI0",
       svgKey: "extension-banda-overhead",
     },
     {
@@ -440,7 +440,7 @@ export const exercises = {
       name: "Reverse Cable Curl",
       group: "biceps",
       description: "Stand at a cable machine with the pulley set low and grip the bar with an overhand (pronated) grip. Curl upward toward your shoulders, keeping your elbows pinned to your sides throughout. This pronated grip shifts emphasis to the brachioradialis and forearm extensors.",
-      videoId: "LY1V6UbRHFM",
+      videoId: "YC9QZiti-40",
       svgKey: "curl-inverso-polea",
     },
     {
@@ -448,7 +448,7 @@ export const exercises = {
       name: "Band Triceps Extension",
       group: "biceps",
       description: "Anchor a resistance band overhead and grip it with both hands behind your head. Extend your forearms upward to full lockout, squeezing your triceps hard at the top. Return slowly — bands add resistance at the lockout position where triceps are strongest.",
-      videoId: "YbX7Wd8jQ-Q",
+      videoId: "FHY_2t7R714",
       svgKey: "extension-triceps-banda",
     },
     {
@@ -456,7 +456,7 @@ export const exercises = {
       name: "Assisted Dip",
       group: "biceps",
       description: "Use the assisted dip machine to set your counterweight, grip the handles, and lower your body until your upper arms are parallel to the floor. Press back up to full lockout by extending your elbows, squeezing your triceps at the top. Progressively reduce assistance as your strength improves.",
-      videoId: "vB5OHsJ3EME",
+      videoId: "2LpuygMBn4Q",
       svgKey: "dip-asistido",
     },
   ],
@@ -467,7 +467,7 @@ export const exercises = {
       name: "Triceps Rope Pushdown",
       group: "triceps",
       description: "Stand at a cable machine with the rope attached to the high pulley. Keeping your upper arms pinned to your sides, push the rope down and apart until your arms are fully extended. Squeeze your triceps hard at the bottom before slowly returning to the start position.",
-      videoId: "vB5OHsJ3EME",
+      videoId: "NvZKjiZ8NYc",
       svgKey: "pushdown-triceps",
     },
     {
@@ -475,7 +475,7 @@ export const exercises = {
       name: "Overhead Triceps Extension (Dumbbell)",
       group: "triceps",
       description: "Hold one dumbbell with both hands and raise it overhead to full extension. Lower the dumbbell behind your head by bending at the elbows, keeping your upper arms vertical and close to your ears. Press back up to full extension — this overhead position maximally stretches the long head of the triceps.",
-      videoId: "YbX7Wd8jQ-Q",
+      videoId: "b_r_LW4HEcM",
       svgKey: "extension-triceps-overhead",
     },
     {
@@ -483,7 +483,7 @@ export const exercises = {
       name: "Close-Grip Bench Press",
       group: "triceps",
       description: "Lie flat on a bench and grip the bar with your hands shoulder-width apart or slightly narrower. Lower the bar to your lower chest while keeping your elbows close to your torso at roughly 45 degrees. Press back up to lockout — the narrow grip shifts the load from the pecs to the triceps.",
-      videoId: "cXbSJHtjrQQ",
+      videoId: "vEUyEOVn3yM",
       svgKey: "press-frances-maquina",
     },
     {
@@ -491,7 +491,7 @@ export const exercises = {
       name: "Barbell Curl",
       group: "triceps",
       description: "Stand holding a barbell with an underhand grip at shoulder width, arms fully extended. Curl the bar up toward your shoulders by contracting your biceps, keeping your elbows pinned to your sides. Lower the bar slowly back to full extension — do not swing your torso.",
-      videoId: "LY1V6UbRHFM",
+      videoId: "zR9gty7LUxE",
       svgKey: "curl-biceps",
     },
     {
@@ -499,7 +499,7 @@ export const exercises = {
       name: "Hammer Curl",
       group: "triceps",
       description: "Hold dumbbells at your sides with a neutral (palms-facing-in) grip. Curl both dumbbells simultaneously up toward your shoulders without rotating your wrists. This neutral grip targets the brachialis and brachioradialis alongside the biceps for overall arm thickness.",
-      videoId: "zC3nLlEvin4",
+      videoId: "3Bv1n7-DN7c",
       svgKey: "curl-martillo",
     },
     {
@@ -507,7 +507,7 @@ export const exercises = {
       name: "Concentration Curl",
       group: "triceps",
       description: "Sit on a bench, lean forward slightly, and rest your upper arm against the inside of your thigh for support. Curl the dumbbell up toward your shoulder with full supination, squeezing hard at the top. Lower completely to full extension to maximize the range of motion.",
-      videoId: "zC3nLlEvin4",
+      videoId: "Cr3KukvJh2Y",
       svgKey: "curl-concentrado",
     },
     {
@@ -515,7 +515,7 @@ export const exercises = {
       name: "Zottman Curl",
       group: "triceps",
       description: "Curl dumbbells up with an underhand grip, rotating your wrists to an overhand grip at the top. Lower slowly with the overhand grip to work the brachioradialis and forearm extensors eccentrically. Rotate back to underhand at the bottom before the next rep.",
-      videoId: "zC3nLlEvin4",
+      videoId: "9Ark9S11uXw",
       svgKey: "curl-zottman",
     },
     {
@@ -523,7 +523,7 @@ export const exercises = {
       name: "Biceps Machine Curl",
       group: "triceps",
       description: "Sit in the biceps curl machine with your upper arms resting on the pad and elbows aligned with the pivot. Curl the handles up to full contraction, squeezing your biceps hard at the top. Lower slowly to full extension — the pad prevents shoulder involvement and isolates the biceps.",
-      videoId: "LY1V6UbRHFM",
+      videoId: "4ua3MzaU0QU",
       svgKey: "curl-maquina-biceps",
     },
     {
@@ -531,7 +531,7 @@ export const exercises = {
       name: "Preacher Machine Curl",
       group: "triceps",
       description: "Sit at the preacher curl machine with upper arms flat on the angled pad. Curl the handles up to full contraction, then lower with full control to complete extension. The pad eliminates cheating and places maximum tension on the biceps peak.",
-      videoId: "LY1V6UbRHFM",
+      videoId: "v2wPD8fryIc",
       svgKey: "curl-predicador-maquina",
     },
     {
@@ -539,7 +539,7 @@ export const exercises = {
       name: "Triceps Kickback",
       group: "triceps",
       description: "Hinge forward until your torso is nearly parallel to the floor, hold a dumbbell with your upper arm pinned to your side and elbow at 90 degrees. Extend your forearm back to full lockout, squeezing the triceps hard at the top. Lower with control — keep your upper arm stationary throughout.",
-      videoId: "vB5OHsJ3EME",
+      videoId: "7lYeoKRXO-0",
       svgKey: "kickback-triceps",
     },
     {
@@ -547,7 +547,7 @@ export const exercises = {
       name: "Scott Machine Curl",
       group: "triceps",
       description: "Position yourself at the Scott curl machine with upper arms resting on the angled pad. Curl the bar up to a peak contraction, squeezing hard, then lower with full control to a stretched position. The Scott bench prevents any shoulder cheating for strict biceps isolation.",
-      videoId: "LY1V6UbRHFM",
+      videoId: "PtHlGbiCglY",
       svgKey: "curl-scott-maquina",
     },
     {
@@ -555,7 +555,7 @@ export const exercises = {
       name: "Triceps Machine Extension",
       group: "triceps",
       description: "Sit in the triceps extension machine with upper arms resting on the pads. Push the handles down to full lockout, squeezing your triceps hard at the bottom. Return slowly — the machine provides consistent resistance through the full range of motion.",
-      videoId: "vB5OHsJ3EME",
+      videoId: "8IK6BkC0lWE",
       svgKey: "extension-triceps-maquina",
     },
     {
@@ -563,7 +563,7 @@ export const exercises = {
       name: "Cable Curl",
       group: "triceps",
       description: "Stand at a cable machine with the pulley set low and grip the bar with an underhand grip. Curl upward toward your shoulders, keeping your elbows stationary at your sides. Lower slowly — cables provide constant tension throughout the full range unlike free weights.",
-      videoId: "LY1V6UbRHFM",
+      videoId: "7_C9_SWHZbo",
       svgKey: "curl-cable",
     },
     {
@@ -571,7 +571,7 @@ export const exercises = {
       name: "Band Curl",
       group: "triceps",
       description: "Stand on a resistance band and hold one end in each hand. Curl both hands up toward your shoulders, squeezing your biceps at the top. Lower slowly — bands provide increasing resistance as you approach peak contraction.",
-      videoId: "LY1V6UbRHFM",
+      videoId: "LH9iZNaO7oU",
       svgKey: "curl-banda",
     },
     {
@@ -579,7 +579,7 @@ export const exercises = {
       name: "Band Overhead Extension",
       group: "triceps",
       description: "Anchor a resistance band low and hold the other end overhead with both hands at full arm extension. Lower the band behind your head by bending at the elbows, then press back up to full extension. This overhead position maximally stretches the long head of the triceps.",
-      videoId: "YbX7Wd8jQ-Q",
+      videoId: "YEdjByGD_A4",
       svgKey: "extension-banda-overhead",
     },
     {
@@ -587,7 +587,7 @@ export const exercises = {
       name: "Reverse Cable Curl",
       group: "triceps",
       description: "Stand at a cable machine with the pulley low and grip the bar with an overhand (pronated) grip. Curl upward toward your shoulders, keeping your elbows pinned to your sides. This pronated grip shifts emphasis to the brachioradialis and forearm extensors.",
-      videoId: "LY1V6UbRHFM",
+      videoId: "WhBxKbe1-NU",
       svgKey: "curl-inverso-polea",
     },
     {
@@ -595,7 +595,7 @@ export const exercises = {
       name: "Band Triceps Extension",
       group: "triceps",
       description: "Anchor a resistance band overhead and grip it with both hands behind your head. Extend your forearms upward to full lockout, squeezing your triceps hard at the top. Return slowly to the start with control.",
-      videoId: "YbX7Wd8jQ-Q",
+      videoId: "cNNTAQcQa7I",
       svgKey: "extension-triceps-banda",
     },
     {
@@ -603,7 +603,7 @@ export const exercises = {
       name: "Assisted Dip",
       group: "triceps",
       description: "Use the assisted dip machine to set your counterweight, grip the handles, and lower your body until your upper arms are parallel to the floor. Press back up to full lockout, squeezing your triceps at the top. Progressively reduce assistance as your strength improves.",
-      videoId: "vB5OHsJ3EME",
+      videoId: "9llvBAV4RHI",
       svgKey: "dip-asistido",
     },
   ],
@@ -614,7 +614,7 @@ export const exercises = {
       name: "Dumbbell Overhead Press",
       group: "shoulders",
       description: "Sit or stand holding dumbbells at shoulder height with palms facing forward. Press the dumbbells overhead to full arm extension, bringing them together slightly at the top. Lower with control back to shoulder height — avoid arching your lower back by bracing your core throughout.",
-      videoId: "qEwKCR5JCog",
+      videoId: "OLePvpxQEGk",
       svgKey: "press-militar-mancuernas",
     },
     {
@@ -622,7 +622,7 @@ export const exercises = {
       name: "Dumbbell Lateral Raise",
       group: "shoulders",
       description: "Stand holding dumbbells at your sides with a slight bend in your elbows. Raise the dumbbells out to your sides until your arms are parallel to the floor, leading with your elbows. Lower slowly — resist gravity on the way down for greater medial deltoid development.",
-      videoId: "3VcKaXpzqRo",
+      videoId: "Kl3LEzQ5Zqs",
       svgKey: "elevacion-lateral",
     },
     {
@@ -630,7 +630,7 @@ export const exercises = {
       name: "Face Pull",
       group: "shoulders",
       description: "Attach a rope to a cable machine at face height. Pull the rope toward your face by driving your elbows back and outward, separating your hands as the rope reaches your forehead. This exercise directly targets the rear delts and external rotators — crucial for shoulder health and posture.",
-      videoId: "rep-qVOkqgk",
+      videoId: "IeOqdw9WI90",
       svgKey: "face-pull",
     },
     {
@@ -638,7 +638,7 @@ export const exercises = {
       name: "Dumbbell Front Raise",
       group: "shoulders",
       description: "Stand holding dumbbells in front of your thighs with palms facing down. Raise both dumbbells in front of you to shoulder height, keeping a slight elbow bend throughout. Lower slowly to the starting position — this isolates the anterior (front) head of the deltoid.",
-      videoId: "qEwKCR5JCog",
+      videoId: "yHx8wPv4RPo",
       svgKey: "elevacion-frontal",
     },
     {
@@ -646,7 +646,7 @@ export const exercises = {
       name: "Reverse Fly (Dumbbell)",
       group: "shoulders",
       description: "Hinge forward until your torso is nearly parallel to the floor, holding dumbbells below your chest with a slight elbow bend. Raise both arms out to your sides in a reverse fly motion until they reach shoulder height, squeezing your rear delts. Lower slowly — do not let momentum take over.",
-      videoId: "3VcKaXpzqRo",
+      videoId: "xvEkgGUrGPM",
       svgKey: "pajaros-reversefly",
     },
     {
@@ -654,7 +654,7 @@ export const exercises = {
       name: "Arnold Press",
       group: "shoulders",
       description: "Start with dumbbells at shoulder height, palms facing you, elbows in front. As you press overhead, rotate your palms forward, finishing with thumbs facing back at full extension. Reverse the rotation as you lower — this rotation recruits all three heads of the deltoid through the full range.",
-      videoId: "qEwKCR5JCog",
+      videoId: "6K_N9AGhItQ",
       svgKey: "press-arnold",
     },
     {
@@ -662,7 +662,7 @@ export const exercises = {
       name: "Dumbbell Shrug",
       group: "shoulders",
       description: "Stand holding dumbbells at your sides with arms fully extended. Elevate your shoulders straight up toward your ears as high as possible, hold briefly at the top, then lower slowly. Do not roll your shoulders — the movement is purely vertical to isolate the upper trapezius.",
-      videoId: "qEwKCR5JCog",
+      videoId: "1OY7v02l2vA",
       svgKey: "encogimientos-hombros",
     },
     {
@@ -670,7 +670,7 @@ export const exercises = {
       name: "Machine Shoulder Press",
       group: "shoulders",
       description: "Sit in the shoulder press machine with handles at shoulder height and your back against the pad. Press the handles overhead to full extension, then lower with control. The machine's fixed path lets you focus on deltoid activation without balancing free weights.",
-      videoId: "qEwKCR5JCog",
+      videoId: "6v4nrRVySj0",
       svgKey: "press-hombro-maquina",
     },
     {
@@ -678,7 +678,7 @@ export const exercises = {
       name: "Machine Lateral Raise",
       group: "shoulders",
       description: "Sit in the lateral raise machine with pads against your upper arms just above the elbows. Raise your arms out to shoulder height against the resistance, squeezing your medial delts at the top. Lower slowly — the machine maintains constant tension throughout the range.",
-      videoId: "3VcKaXpzqRo",
+      videoId: "Zi9nYtLsuz0",
       svgKey: "elevacion-lateral-maquina",
     },
     {
@@ -686,7 +686,7 @@ export const exercises = {
       name: "Reverse Pec Deck",
       group: "shoulders",
       description: "Sit facing the pec deck machine with your chest against the pad and grip the handles in front of you. Pull the handles out to your sides in a reverse fly motion, squeezing your rear delts at the end range. Return slowly — this machine provides constant tension and great rear delt isolation.",
-      videoId: "3VcKaXpzqRo",
+      videoId: "7tgx6QHB0-A",
       svgKey: "reverse-pec-deck",
     },
     {
@@ -694,7 +694,7 @@ export const exercises = {
       name: "Smith Machine Shoulder Press",
       group: "shoulders",
       description: "Sit under a Smith machine bar set at shoulder height and grip slightly wider than shoulder-width. Press the bar overhead to full extension, then lower with control to shoulder height. The fixed bar path eliminates lateral stability demands, letting you focus purely on shoulder pressing strength.",
-      videoId: "qEwKCR5JCog",
+      videoId: "E7ngsffMPR0",
       svgKey: "smith-press-hombro",
     },
     {
@@ -702,7 +702,7 @@ export const exercises = {
       name: "Machine Shrug",
       group: "shoulders",
       description: "Stand or sit in the shrug machine, gripping the handles at your sides. Elevate your shoulders straight up toward your ears as high as possible, hold briefly, then lower with full control. The machine allows heavier loading than dumbbells, building upper trap mass effectively.",
-      videoId: "qEwKCR5JCog",
+      videoId: "NJ8U95vMtZg",
       svgKey: "maquina-encogimientos",
     },
     {
@@ -710,7 +710,7 @@ export const exercises = {
       name: "Seated Machine Shoulder Press",
       group: "shoulders",
       description: "Sit in the seated shoulder press machine adjusted to your torso height. Press the handles straight overhead to full lockout, then lower with control. This variation provides full back support for strict pressing, ideal for isolating the deltoids without lower back involvement.",
-      videoId: "qEwKCR5JCog",
+      videoId: "Nxwict54-Q0",
       svgKey: "press-sentado-maquina-hombro",
     },
     {
@@ -718,7 +718,7 @@ export const exercises = {
       name: "Cable Lateral Raise",
       group: "shoulders",
       description: "Set a cable at the lowest point, stand to one side, and grip the handle with the far hand. Raise your arm out to shoulder height, keeping a slight elbow bend and leading with your elbow. Lower slowly — cables maintain tension at the bottom of the range where dumbbells drop off.",
-      videoId: "3VcKaXpzqRo",
+      videoId: "lMJUXEvcMkQ",
       svgKey: "elevacion-lateral-cable",
     },
     {
@@ -726,7 +726,7 @@ export const exercises = {
       name: "Cable Face Pull",
       group: "shoulders",
       description: "Attach a rope to a cable machine at face height. Pull the rope toward your face by driving your elbows back and outward, separating your hands as the rope reaches your forehead. Squeeze your rear delts and external rotators hard at the peak — this is a key shoulder health movement.",
-      videoId: "rep-qVOkqgk",
+      videoId: "cXn9j-Uah7k",
       svgKey: "face-pull-cable",
     },
     {
@@ -734,7 +734,7 @@ export const exercises = {
       name: "Band Front Raise",
       group: "shoulders",
       description: "Stand on a resistance band and hold the ends at thigh level with palms down. Raise both arms in front of you to shoulder height, keeping a slight elbow bend. Lower slowly — bands increase resistance as you raise higher, matching the strength curve of the anterior deltoid.",
-      videoId: "qEwKCR5JCog",
+      videoId: "pYVlZiu2Mps",
       svgKey: "elevacion-frontal-banda",
     },
     {
@@ -742,7 +742,7 @@ export const exercises = {
       name: "Band Shoulder Press",
       group: "shoulders",
       description: "Stand on a resistance band with feet shoulder-width apart and hold one end in each hand at shoulder height. Press both hands overhead to full extension, then lower with control. Bands add accommodating resistance — harder at lockout where you're strongest.",
-      videoId: "qEwKCR5JCog",
+      videoId: "1-VfJqjYquQ",
       svgKey: "press-banda-hombros",
     },
     {
@@ -750,7 +750,7 @@ export const exercises = {
       name: "Band Pull-Apart",
       group: "shoulders",
       description: "Hold a resistance band in front of you at shoulder height with both hands, arms extended and grip shoulder-width apart. Pull the band apart horizontally by driving both hands out to your sides until the band touches your chest. Squeeze your rear delts and return slowly — excellent for posture and shoulder health.",
-      videoId: "3VcKaXpzqRo",
+      videoId: "osRimvxXlKQ",
       svgKey: "pull-apart-banda",
     },
   ],
@@ -761,7 +761,7 @@ export const exercises = {
       name: "Plank",
       group: "abs",
       description: "Start in a push-up position but rest on your forearms instead of your hands. Keep your body in a straight line from head to heels by squeezing your core, glutes, and quads simultaneously. Hold for the target duration — do not let your hips sag or pike upward.",
-      videoId: "ASdvN_XEl_c",
+      videoId: "v25dawSzRTM",
       svgKey: "plancha-banda",
     },
     {
@@ -769,7 +769,7 @@ export const exercises = {
       name: "Cable Crunch",
       group: "abs",
       description: "Kneel at a cable machine with the rope attachment at the high pulley. Hold the rope beside your head and crunch your elbows toward your knees by flexing your spine — not by pulling with your arms. The movement is entirely spinal flexion; your hips stay stationary throughout.",
-      videoId: "2fbujeH3F0E",
+      videoId: "dkGwcfo9zto",
       svgKey: "crunch-cable",
     },
     {
@@ -777,7 +777,7 @@ export const exercises = {
       name: "Hanging Leg Raise",
       group: "abs",
       description: "Hang from a pull-up bar with your arms fully extended and your body still. Raise your legs by flexing your hips and rounding your lower back slightly at the top — this posterior pelvic tilt ensures the abs do the work, not just the hip flexors. Lower slowly without swinging.",
-      videoId: "hdng3Nm1x_E",
+      videoId: "2n4UqRIJyk4",
       svgKey: "elevacion-piernas-romana",
     },
     {
@@ -785,7 +785,7 @@ export const exercises = {
       name: "Dumbbell Crunch",
       group: "abs",
       description: "Lie on your back with knees bent and hold a dumbbell on your chest for resistance. Crunch your upper body toward your knees by flexing your spine, lifting your shoulder blades off the floor. Lower with control — do not pull on your neck and keep the movement short and focused.",
-      videoId: "ASdvN_XEl_c",
+      videoId: "G9XfQJPBJVI",
       svgKey: "crunch-mancuerna",
     },
     {
@@ -793,7 +793,7 @@ export const exercises = {
       name: "Russian Twist",
       group: "abs",
       description: "Sit with knees bent and feet hovering above the floor, lean back until your torso forms roughly a 45-degree angle. Rotate your torso from side to side, touching the floor beside each hip. Hold a weight plate or dumbbell to increase difficulty — the rotational movement targets your obliques.",
-      videoId: "ASdvN_XEl_c",
+      videoId: "aRUMRbl7KS4",
       svgKey: "russian-twist",
     },
     {
@@ -801,7 +801,7 @@ export const exercises = {
       name: "Plank Row",
       group: "abs",
       description: "Start in a push-up position with hands on dumbbells shoulder-width apart. Row one dumbbell up to your hip while stabilizing your body against rotation, then lower and repeat on the other side. The anti-rotation demand makes this one of the most effective compound core exercises.",
-      videoId: "ASdvN_XEl_c",
+      videoId: "dFRNH1YigEk",
       svgKey: "plancha-remo",
     },
     {
@@ -809,7 +809,7 @@ export const exercises = {
       name: "Woodchop (Dumbbell)",
       group: "abs",
       description: "Stand holding a dumbbell with both hands above one shoulder. Rotate your torso and swing the dumbbell diagonally downward to the opposite hip in a chopping motion. Control the return — this rotational exercise develops oblique strength through a full diagonal range.",
-      videoId: "ASdvN_XEl_c",
+      videoId: "YIU0U_B57rU",
       svgKey: "woodchop-mancuerna",
     },
     {
@@ -817,7 +817,7 @@ export const exercises = {
       name: "Farmer's Carry",
       group: "abs",
       description: "Hold heavy dumbbells or kettlebells at your sides and walk for a set distance or time. Keep your shoulders packed, chest tall, and core braced against the lateral pull of the weights. This loaded carry builds grip strength, core stability, and total-body conditioning simultaneously.",
-      videoId: "ASdvN_XEl_c",
+      videoId: "z7E_YU9P1jU",
       svgKey: "farmers-carry",
     },
     {
@@ -825,7 +825,7 @@ export const exercises = {
       name: "Side Bend",
       group: "abs",
       description: "Stand holding a dumbbell in one hand at your side. Lean to that side by contracting your obliques, lowering the weight toward your knee, then return upright by contracting the obliques on the opposite side. Complete all reps on one side before switching.",
-      videoId: "ASdvN_XEl_c",
+      videoId: "44DazvtgpGE",
       svgKey: "side-bend",
     },
     {
@@ -833,7 +833,7 @@ export const exercises = {
       name: "Machine Crunch",
       group: "abs",
       description: "Sit in the ab crunch machine and grip the handles above your head or at chest level. Crunch forward by flexing your spine, bringing your elbows toward your knees against the resistance. Return slowly — the machine allows heavier progressive overload than bodyweight crunches.",
-      videoId: "2fbujeH3F0E",
+      videoId: "7T0ZUEt1m8s",
       svgKey: "crunch-maquina",
     },
     {
@@ -841,7 +841,7 @@ export const exercises = {
       name: "Machine Torso Rotation",
       group: "abs",
       description: "Sit in the torso rotation machine with your hips fixed and grip the handles in front of you. Rotate your torso against the resistance as far as possible, then return to center. Perform all reps in one direction before switching — this isolates the obliques through pure rotation.",
-      videoId: "ASdvN_XEl_c",
+      videoId: "tP3S7tAVXy8",
       svgKey: "rotacion-torso-maquina",
     },
     {
@@ -849,7 +849,7 @@ export const exercises = {
       name: "Ab Roller Machine",
       group: "abs",
       description: "Sit in the ab roller machine and grip the handles. Roll forward by extending your hips and spine, controlling the descent, then contract your abs hard to pull yourself back to the starting position. This movement trains the abs through a full range of motion under load.",
-      videoId: "ASdvN_XEl_c",
+      videoId: "MinlHnG7j4k",
       svgKey: "ab-roller-maquina",
     },
     {
@@ -857,7 +857,7 @@ export const exercises = {
       name: "Reverse Hyperextension",
       group: "abs",
       description: "Lie face down on a hyperextension bench with your hips at the edge and legs hanging. Raise your legs behind you by contracting your glutes and lower back, then lower with control. This targets the posterior chain — glutes, hamstrings, and spinal erectors simultaneously.",
-      videoId: "ASdvN_XEl_c",
+      videoId: "4oBIoWieJB8",
       svgKey: "hiperextension-inversa",
     },
     {
@@ -865,7 +865,7 @@ export const exercises = {
       name: "High Pulley Crunch",
       group: "abs",
       description: "Kneel at a cable machine with the pulley set high and hold the rope attachment behind your neck. Crunch your elbows toward the floor by flexing your spine, keeping your hips stationary. Return slowly to full extension — this is a loaded spinal flexion movement for maximum ab overload.",
-      videoId: "2fbujeH3F0E",
+      videoId: "JzaIPJ8GV_w",
       svgKey: "crunch-polea-alta",
     },
     {
@@ -873,7 +873,7 @@ export const exercises = {
       name: "Pallof Press",
       group: "abs",
       description: "Stand perpendicular to a cable machine with the pulley at chest height. Hold the handle at your chest with both hands, then press it straight out in front of you and hold for a count before returning. The anti-rotation demand of this exercise trains core stability, not spinal flexion.",
-      videoId: "ASdvN_XEl_c",
+      videoId: "5aZ0IhJS8O8",
       svgKey: "pallof-press",
     },
     {
@@ -881,7 +881,7 @@ export const exercises = {
       name: "Cable Woodchop",
       group: "abs",
       description: "Set a cable at shoulder height on one side, grab the handle with both hands, and rotate your torso to pull it diagonally downward across your body. Control the return — the cable maintains constant tension through the full rotational range of the obliques.",
-      videoId: "2fbujeH3F0E",
+      videoId: "pAplQXk3dkU",
       svgKey: "woodchop-cable",
     },
     {
@@ -889,7 +889,7 @@ export const exercises = {
       name: "Band Anti-Rotation",
       group: "abs",
       description: "Anchor a resistance band at chest height and hold it with both hands extended in front of you, standing sideways to the anchor. Hold the position against the rotational pull for a set duration. This isometric core stability exercise builds anti-rotation strength crucial for all athletic movements.",
-      videoId: "ASdvN_XEl_c",
+      videoId: "8vflPTMBQ_g",
       svgKey: "anti-rotacion-banda",
     },
     {
@@ -897,7 +897,7 @@ export const exercises = {
       name: "Dead Bug",
       group: "abs",
       description: "Lie on your back with arms pointing toward the ceiling and knees bent at 90 degrees. Simultaneously lower one arm overhead and extend the opposite leg, then return to start and alternate sides. Keep your lower back pressed into the floor throughout — this trains deep core stability and coordination.",
-      videoId: "ASdvN_XEl_c",
+      videoId: "4XLEnwUr1d8",
       svgKey: "dead-bug-banda",
     },
   ],
@@ -908,7 +908,7 @@ export const exercises = {
       name: "Goblet Squat",
       group: "legs",
       description: "Hold a dumbbell or kettlebell at your chest with both hands. Descend into a squat, keeping your chest upright and knees tracking over your toes. Drive through your heels to return to standing — the counterbalance of the weight helps you sit deeper with an upright torso.",
-      videoId: "ultWZbUMPL8",
+      videoId: "lRYBbchqxtI",
       svgKey: "sentadilla-goblet",
     },
     {
@@ -916,7 +916,7 @@ export const exercises = {
       name: "Romanian Deadlift",
       group: "legs",
       description: "Stand holding a barbell at hip height with an overhand grip. Hinge at your hips while keeping your back flat, pushing your hips backward as the bar travels down your thighs to mid-shin level. Drive your hips forward to return to standing — feel the stretch in your hamstrings at the bottom.",
-      videoId: "JCXUYuzwNrM",
+      videoId: "CBOhr6H7BEY",
       svgKey: "peso-muerto-rumano-mancuernas",
     },
     {
@@ -924,7 +924,7 @@ export const exercises = {
       name: "Leg Press",
       group: "legs",
       description: "Sit in the leg press machine with your feet shoulder-width apart on the platform. Lower the platform toward your chest until your thighs reach 90 degrees, then press back up to near-full extension — stop just short of locking out your knees. Keep your lower back flat against the pad throughout.",
-      videoId: "IZxyjW7MPJQ",
+      videoId: "EotSw18oR9w",
       svgKey: "prensa-piernas",
     },
     {
@@ -932,7 +932,7 @@ export const exercises = {
       name: "Walking Lunge",
       group: "legs",
       description: "Step forward with one leg and lower your back knee toward the floor in a controlled lunge. Drive through your front heel to step forward into the next rep on the opposite leg. Keep your torso upright and your front knee tracking over your toes throughout the movement.",
-      videoId: "ultWZbUMPL8",
+      videoId: "Pbmj6xPo-Hw",
       svgKey: "zancada-caminando",
     },
     {
@@ -940,7 +940,7 @@ export const exercises = {
       name: "Sumo Squat",
       group: "legs",
       description: "Stand with feet significantly wider than shoulder-width and toes pointed out at 45 degrees. Descend by pushing your knees out in line with your toes while sitting your hips straight down. Drive through your heels to return to standing — the wide stance shifts emphasis to the inner thighs and glutes.",
-      videoId: "ultWZbUMPL8",
+      videoId: "kjlfpqXnyL8",
       svgKey: "sentadilla-sumo",
     },
     {
@@ -948,7 +948,7 @@ export const exercises = {
       name: "Step-Up",
       group: "legs",
       description: "Stand facing a box or bench, step up with one foot and drive through that heel to bring your other foot up. Step back down with control and repeat on the same leg before switching. Hold dumbbells at your sides to add resistance — this unilateral movement corrects strength imbalances.",
-      videoId: "ultWZbUMPL8",
+      videoId: "S9uzCELLo_0",
       svgKey: "step-up",
     },
     {
@@ -956,7 +956,7 @@ export const exercises = {
       name: "Bulgarian Split Squat",
       group: "legs",
       description: "Place your rear foot on a bench behind you and hold dumbbells at your sides. Lower your front knee toward the floor until your front thigh is parallel, then drive through your front heel to return. This is one of the most effective single-leg exercises for glute and quad development.",
-      videoId: "ultWZbUMPL8",
+      videoId: "uODWo4YqbT8",
       svgKey: "sentadilla-bulgara",
     },
     {
@@ -964,7 +964,7 @@ export const exercises = {
       name: "Leg Extension",
       group: "legs",
       description: "Sit in the leg extension machine with the pad resting on your lower shins just above the ankle. Extend both legs to full lockout, squeezing your quads hard at the top, then lower with control. This isolation exercise directly targets the quadriceps through pure knee extension.",
-      videoId: "IZxyjW7MPJQ",
+      videoId: "w72YiHz15CA",
       svgKey: "extension-cuadriceps",
     },
     {
@@ -972,7 +972,7 @@ export const exercises = {
       name: "Leg Curl",
       group: "legs",
       description: "Lie face down on the leg curl machine with the pad resting just above your heels. Curl your heels toward your glutes by contracting your hamstrings, then lower with full control. This is the primary isolation exercise for the hamstrings — move through the full range without momentum.",
-      videoId: "IZxyjW7MPJQ",
+      videoId: "MAbThtU8Sis",
       svgKey: "curl-isquiotibiales",
     },
     {
@@ -980,7 +980,7 @@ export const exercises = {
       name: "Hack Squat",
       group: "legs",
       description: "Position yourself in the hack squat machine with your shoulders against the pads and feet on the platform. Lower with control until your thighs are parallel or below, then press back up without locking out. The machine-guided path allows for a deep squat with emphasis on the quads.",
-      videoId: "IZxyjW7MPJQ",
+      videoId: "g9i05umL5vc",
       svgKey: "hack-squat",
     },
     {
@@ -988,7 +988,7 @@ export const exercises = {
       name: "Hip Adduction Machine",
       group: "legs",
       description: "Sit in the adduction machine with pads on the inside of your thighs. Squeeze your thighs together against the resistance, then return slowly. This machine directly isolates the adductors (inner thigh muscles) — essential for hip stability and injury prevention.",
-      videoId: "IZxyjW7MPJQ",
+      videoId: "ktLkqP1upq0",
       svgKey: "aduccion-cadera",
     },
     {
@@ -996,7 +996,7 @@ export const exercises = {
       name: "Hip Abduction Machine",
       group: "legs",
       description: "Sit in the abduction machine with pads on the outside of your thighs. Push your thighs apart against the resistance, then return with control. This machine targets the gluteus medius and hip abductors — key muscles for knee alignment and lateral hip stability.",
-      videoId: "IZxyjW7MPJQ",
+      videoId: "01HilwRf8m8",
       svgKey: "abduccion-cadera",
     },
     {
@@ -1004,7 +1004,7 @@ export const exercises = {
       name: "Cable Glute Kickback",
       group: "legs",
       description: "Attach an ankle cuff to the low cable pulley and stand facing the machine. Kick your leg back and upward in a controlled arc, squeezing your glute at the top. Keep your torso upright and avoid rotating your hips — the movement should be purely hip extension.",
-      videoId: "IZxyjW7MPJQ",
+      videoId: "n-cgsNePyFo",
       svgKey: "patada-gluteo-polea",
     },
     {
@@ -1012,7 +1012,7 @@ export const exercises = {
       name: "Band Squat",
       group: "legs",
       description: "Stand on a resistance band with feet shoulder-width apart and hold the ends at shoulder height. Squat down by pushing your knees out and sitting your hips back, then drive through your heels to stand. The band provides accommodating resistance — hardest at the top where you're strongest.",
-      videoId: "ultWZbUMPL8",
+      videoId: "6rE0IYlMPZA",
       svgKey: "sentadilla-banda",
     },
     {
@@ -1020,7 +1020,7 @@ export const exercises = {
       name: "Band Romanian Deadlift",
       group: "legs",
       description: "Stand on a resistance band and hold the ends at hip height. Hinge at your hips while keeping your back flat, pushing your hips back as the bands lower toward your mid-shin. Drive your hips forward to return to standing, feeling the hamstring stretch at the bottom.",
-      videoId: "JCXUYuzwNrM",
+      videoId: "jaRAR9l1e2o",
       svgKey: "peso-muerto-banda",
     },
     {
@@ -1028,7 +1028,7 @@ export const exercises = {
       name: "Clamshell",
       group: "legs",
       description: "Lie on your side with a resistance band just above your knees, hips stacked, and knees bent at 90 degrees. Rotate your top knee upward like a clamshell opening while keeping your feet together and hips from rolling back. Return slowly — this targets the gluteus medius for hip abduction strength.",
-      videoId: "IZxyjW7MPJQ",
+      videoId: "TT__6i6hS5w",
       svgKey: "clamshell-banda",
     },
     {
@@ -1036,7 +1036,7 @@ export const exercises = {
       name: "Glute Bridge",
       group: "legs",
       description: "Lie on your back with knees bent and a resistance band across your hips. Drive your hips upward by squeezing your glutes, pushing your knees outward against the band at the top. Hold for a moment at full hip extension, then lower with control.",
-      videoId: "IZxyjW7MPJQ",
+      videoId: "OUgsJ8-Vi0E",
       svgKey: "puente-gluteos-banda",
     },
     {
@@ -1044,7 +1044,7 @@ export const exercises = {
       name: "Monster Walk",
       group: "legs",
       description: "Place a resistance band around your ankles and stand in a half-squat position. Step laterally in a wide stride, keeping tension in the band throughout and maintaining the squat depth. Walk in one direction for a set number of steps, then return — this builds glute medius and hip abductor endurance.",
-      videoId: "IZxyjW7MPJQ",
+      videoId: "TeyfkdXAgUg",
       svgKey: "monster-walk",
     },
   ],
