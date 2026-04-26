@@ -13,8 +13,8 @@ Antigravity is built in five phases. Phase 1 locks the data model and design tok
 Decimal phases appear between their surrounding integers in numeric order.
 
 - [x] **Phase 1: Data Architecture + Design System** - Lock the data model and CSS design tokens before any UI is built
-- [ ] **Phase 2: App Shell + Home Screen** - Routing skeleton, 2x2 routine tile grid, mobile-first layout
-- [ ] **Phase 3: Exercise Screen + Randomization + Cards** - Fisher-Yates shuffle, recency exclusion, 6-card layout, YouTube thumbnails
+- [x] **Phase 2: App Shell + Home Screen** - Routing skeleton, 2x2 routine tile grid, mobile-first layout
+- [x] **Phase 3: Exercise Screen + Randomization + Cards** - Fisher-Yates shuffle, recency exclusion, 6-card layout, YouTube thumbnails
 - [ ] **Phase 4: Exercise Content Population** - Enter all 30+ exercises per muscle group with descriptions and verified YouTube IDs
 - [ ] **Phase 5: Polish + Animation** - Staggered card fade-in, View Transitions, button feedback, performance audit
 
@@ -33,7 +33,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 **Plans**: 2 plans
 Plans:
 - [x] 01-01-PLAN.md — HTML shell + CSS design tokens (index.html + css/styles.css)
-- [ ] 01-02-PLAN.md — Exercise data schema + app entry point (js/exercises.js + js/app.js)
+- [x] 01-02-PLAN.md — Exercise data schema + app entry point (js/exercises.js + js/app.js)
 **UI hint**: yes
 
 ### Phase 2: App Shell + Home Screen
@@ -64,8 +64,8 @@ Plans:
   5. Exercise cards are full-width, vertically stacked, and readable at a glance without zooming on a mobile screen
 **Plans**: 2 plans
 Plans:
-- [ ] 03-01-PLAN.md — svgKey reconciliation + svgIllustrations English strings + exercise library expansion to 18/group (js/exercises.js, js/svgIllustrations.js, test/app.test.js)
-- [ ] 03-02-PLAN.md — renderCard + renderExercise rewrite + localStorage helpers + CSS sections 6/7/8/11 (js/app.js, css/styles.css, test/app.test.js)
+- [x] 03-01-PLAN.md — svgKey reconciliation + svgIllustrations English strings + exercise library expansion to 18/group (js/exercises.js, js/svgIllustrations.js, test/app.test.js)
+- [x] 03-02-PLAN.md — renderCard + renderExercise rewrite + localStorage helpers + CSS sections 6/7/8/11 (js/app.js, css/styles.css, test/app.test.js)
 **UI hint**: yes
 
 ### Phase 4: Exercise Content Population
@@ -96,8 +96,8 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. Data Architecture + Design System | 2/2 | Complete | 2026-04-24 |
-| 2. App Shell + Home Screen | 0/2 | Not started | - |
-| 3. Exercise Screen + Randomization + Cards | 0/2 | Not started | - |
+| 2. App Shell + Home Screen | 2/2 | Complete | 2026-04-25 |
+| 3. Exercise Screen + Randomization + Cards | 2/2 | Complete | 2026-04-25 |
 | 4. Exercise Content Population | 0/TBD | Not started | - |
 | 5. Polish + Animation | 0/TBD | Not started | - |
 
