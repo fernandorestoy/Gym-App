@@ -268,11 +268,32 @@ function renderExercise(routine) {
   `;
 }
 
+/**
+ * Apply staggered animation-delay to each .exercise-card after a render.
+ * Each card gets an additional 80ms delay per index position.
+ * Cards inside .exercise-pair inherit the card index based on DOM order,
+ * not pair order — so all 6 cards stagger individually.
+ */
+function applyCardStagger() {
+  document.querySelectorAll('.exercise-card').forEach((card, index) => {
+    card.style.animationDelay = `${index * 80}ms`;
+  });
+}
+
 function render() {
-  document.getElementById('app').innerHTML =
-    currentScreen === 'home'
-      ? renderHome()
-      : renderExercise(currentRoutine);
+  const doRender = () => {
+    document.getElementById('app').innerHTML =
+      currentScreen === 'home'
+        ? renderHome()
+        : renderExercise(currentRoutine);
+    applyCardStagger();
+  };
+
+  if (document.startViewTransition) {
+    document.startViewTransition(doRender);
+  } else {
+    doRender();
+  }
 }
 
 // =============================================================================
