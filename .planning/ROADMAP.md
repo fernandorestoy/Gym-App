@@ -15,7 +15,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 - [x] **Phase 1: Data Architecture + Design System** - Lock the data model and CSS design tokens before any UI is built
 - [x] **Phase 2: App Shell + Home Screen** - Routing skeleton, 2x2 routine tile grid, mobile-first layout
 - [x] **Phase 3: Exercise Screen + Randomization + Cards** - Fisher-Yates shuffle, recency exclusion, 6-card layout, YouTube thumbnails
-- [ ] **Phase 4: Exercise Content Population** - Enter all 30+ exercises per muscle group with descriptions and verified YouTube IDs
+- [x] **Phase 4: Exercise Content Population** - Enter all 30+ exercises per muscle group with descriptions and verified YouTube IDs (completed 2026-04-26)
 - [ ] **Phase 5: Polish + Animation** - Staggered card fade-in, View Transitions, button feedback, performance audit
 
 ## Phase Details
@@ -79,7 +79,7 @@ Plans:
 **Plans**: 2 plans
 Plans:
 - [x] 04-01-PLAN.md — chest + back + shoulders expansion (18→30 each) (js/exercises.js)
-- [ ] 04-02-PLAN.md — biceps + triceps + abs + legs expansion (18→30 each) + test count update (js/exercises.js, test/app.test.js)
+- [x] 04-02-PLAN.md — biceps + triceps + abs + legs expansion (18→30 each) + test count update (js/exercises.js, test/app.test.js)
 
 ### Phase 5: Polish + Animation
 **Goal**: The app feels intentional and responsive at the gym — smooth transitions, visual confirmation of regeneration, and verified load performance
@@ -101,7 +101,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5
 | 1. Data Architecture + Design System | 2/2 | Complete | 2026-04-24 |
 | 2. App Shell + Home Screen | 2/2 | Complete | 2026-04-25 |
 | 3. Exercise Screen + Randomization + Cards | 2/2 | Complete | 2026-04-25 |
-| 4. Exercise Content Population | 1/2 | In Progress|  |
+| 4. Exercise Content Population | 2/2 | Complete   | 2026-04-26 |
 | 5. Polish + Animation | 0/TBD | Not started | - |
 
 ---
