@@ -208,6 +208,13 @@ function renderCard(exercise) {
   `;
 }
 
+const tileImages = {
+  day1: 'assets/muscle-arm.png',
+  day2: 'assets/muscle-chest.png',
+  day3: 'assets/muscle-back.png',
+  day4: 'assets/muscle-leg.png',
+};
+
 function renderHome() {
   return `
     <div class="home-screen">
@@ -221,7 +228,8 @@ function renderHome() {
             aria-label="${escapeHtml(day.label)}"
             role="listitem"
           >
-            ${escapeHtml(day.label)}
+            <img class="tile-icon" src="${tileImages[day.id]}" alt="" aria-hidden="true" />
+            <span class="tile-label">${escapeHtml(day.label)}</span>
           </button>
         `).join('')}
       </div>
