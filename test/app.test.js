@@ -17,10 +17,10 @@ function countGroups(routine) {
 
 test("exercise database has complete, unique exercise definitions", () => {
   assert.equal(muscleGroups.length, 7);
-  assert.equal(allExercises.length, 126);
+  assert.equal(allExercises.length, 210);
 
   for (const [groupId, groupExercises] of Object.entries(exercises)) {
-    assert.equal(groupExercises.length, 18, `${groupId} should have 18 exercises`);
+    assert.equal(groupExercises.length, 30, `${groupId} should have 30 exercises`);
   }
 
   assert.equal(byId.size, allExercises.length, "exercise ids must be unique");
