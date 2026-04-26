@@ -89,7 +89,10 @@ Plans:
   1. Tapping Regenerate produces a visible staggered card animation (cards fade in sequentially, not all at once) confirming a new set has loaded
   2. Navigating between home and exercise screens has a smooth crossfade transition (200-250ms) rather than an abrupt swap
   3. The app loads and is interactive in under 2 seconds on a simulated mobile connection (Chrome DevTools 4G throttle)
-**Plans**: TBD
+**Plans**: 2 plans
+Plans:
+- [ ] 05-01-PLAN.md — CSS animations + View Transitions wiring (css/styles.css, js/app.js)
+- [ ] 05-02-PLAN.md — Performance audit, PERF-01 determination (PERF-REPORT.md)
 
 ## Progress
 
@@ -102,7 +105,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5
 | 2. App Shell + Home Screen | 2/2 | Complete | 2026-04-25 |
 | 3. Exercise Screen + Randomization + Cards | 2/2 | Complete | 2026-04-25 |
 | 4. Exercise Content Population | 2/2 | Complete   | 2026-04-26 |
-| 5. Polish + Animation | 0/TBD | Not started | - |
+| 5. Polish + Animation | 0/2 | Not started | - |
 
 ---
 *Roadmap created: 2026-04-24*
