@@ -160,7 +160,6 @@ p {
   width: 72px;
   height: 72px;
   object-fit: contain;
-  mix-blend-mode: multiply;
 }
 
 .tile-label {
