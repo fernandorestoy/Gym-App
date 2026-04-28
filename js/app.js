@@ -209,10 +209,10 @@ function renderCard(exercise) {
 }
 
 const tileImages = {
-  day1: 'assets/muscle-arm.png',
-  day2: 'assets/muscle-chest.png',
-  day3: 'assets/muscle-back.png',
-  day4: 'assets/muscle-leg.png',
+  day1: 'assets/muscle-arm.png?v=2',
+  day2: 'assets/muscle-chest.png?v=2',
+  day3: 'assets/muscle-back.png?v=2',
+  day4: 'assets/muscle-leg.png?v=2',
 };
 
 function renderHome() {
