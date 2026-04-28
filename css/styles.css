@@ -219,13 +219,13 @@ p {
   width: 100%;
   min-height: var(--touch-target);
   padding: var(--space-sm) var(--space-md);
-  background-color: var(--color-dusty-rose);
+  background-color: var(--color-navy);
   border: none;
   border-radius: var(--radius-button);
   font-family: var(--font-body);
   font-size: 16px;
   font-weight: 400;
-  color: var(--color-navy);
+  color: var(--color-cream);
   cursor: pointer;
   margin-bottom: var(--space-xl);
   transition: opacity var(--transition-speed) var(--transition-ease);
