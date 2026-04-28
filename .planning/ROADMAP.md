@@ -91,8 +91,8 @@ Plans:
   3. The app loads and is interactive in under 2 seconds on a simulated mobile connection (Chrome DevTools 4G throttle)
 **Plans**: 2 plans
 Plans:
-- [ ] 05-01-PLAN.md — CSS animations + View Transitions wiring (css/styles.css, js/app.js)
-- [ ] 05-02-PLAN.md — Performance audit, PERF-01 determination (PERF-REPORT.md)
+- [x] 05-01-PLAN.md — CSS animations + View Transitions wiring (css/styles.css, js/app.js)
+- [x] 05-02-PLAN.md — Performance audit, PERF-01 determination (PERF-REPORT.md)
 
 ## Progress
 
