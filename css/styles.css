@@ -466,3 +466,356 @@ p {
     align-self: flex-start;
   }
 }
+
+/* =============================================
+   12. SETS FORMULA
+   ============================================= */
+
+.sets-formula {
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-teal);
+  background-color: rgba(130, 205, 216, 0.12);
+  display: inline-block;
+  padding: 3px var(--space-sm);
+  border-radius: var(--radius-pill);
+  margin: var(--space-md) 0 var(--space-sm);
+}
+
+/* =============================================
+   13. WEIGHT TRACKER
+   ============================================= */
+
+.weight-tracker {
+  margin-top: var(--space-md);
+  padding-top: var(--space-md);
+  border-top: 1px solid rgba(26, 39, 66, 0.12);
+}
+
+.weight-label {
+  display: block;
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--color-navy);
+  opacity: 0.65;
+  margin-bottom: var(--space-sm);
+}
+
+.weight-input-row {
+  display: flex;
+  gap: var(--space-sm);
+}
+
+.weight-input {
+  flex: 1;
+  min-height: var(--touch-target);
+  padding: var(--space-sm) var(--space-md);
+  border: 1.5px solid rgba(26, 39, 66, 0.35);
+  border-radius: var(--radius-button);
+  font-family: var(--font-body);
+  font-size: 16px;
+  font-weight: 400;
+  color: var(--color-navy);
+  background: white;
+  outline: none;
+  transition: border-color var(--transition-speed) var(--transition-ease);
+}
+
+.weight-input:focus {
+  border-color: var(--color-navy);
+}
+
+.weight-input::placeholder {
+  color: rgba(26, 39, 66, 0.35);
+}
+
+.weight-save-btn {
+  min-height: var(--touch-target);
+  padding: var(--space-sm) var(--space-md);
+  background-color: var(--color-navy);
+  color: var(--color-cream);
+  border: none;
+  border-radius: var(--radius-button);
+  font-family: var(--font-body);
+  font-size: 15px;
+  font-weight: 400;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: opacity var(--transition-speed) var(--transition-ease);
+}
+
+.weight-save-btn:hover,
+.weight-save-btn:focus-visible {
+  outline: 3px solid var(--color-navy);
+  outline-offset: 2px;
+}
+
+.weight-save-btn:active {
+  opacity: 0.7;
+}
+
+.weight-saved-note {
+  margin-top: var(--space-sm);
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--color-sage);
+}
+
+/* =============================================
+   14. CARDIO FOOTER
+   ============================================= */
+
+.cardio-footer {
+  text-align: center;
+  margin-top: var(--space-xl);
+  margin-bottom: var(--space-xl);
+  padding: var(--space-lg) var(--space-md);
+  background-color: var(--color-navy);
+  color: var(--color-cream);
+  border-radius: var(--radius-card);
+}
+
+.cardio-label {
+  display: block;
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  opacity: 0.7;
+  margin-bottom: var(--space-xs);
+}
+
+.cardio-text {
+  font-family: var(--font-heading);
+  font-size: 22px;
+  font-weight: 300;
+  color: var(--color-cream);
+  margin: 0;
+}
+
+/* =============================================
+   15. NUTRITION SCREEN
+   ============================================= */
+
+.nutrition-screen {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+}
+
+.nutrition-screen .exercise-header {
+  margin-bottom: 0;
+}
+
+.reminder-card {
+  background-color: white;
+  border: 2px solid var(--color-navy);
+  border-radius: var(--radius-card);
+  padding: var(--space-lg);
+}
+
+.reminder-title {
+  font-family: var(--font-heading);
+  font-size: 18px;
+  font-weight: 300;
+  color: var(--color-navy);
+  margin-bottom: var(--space-md);
+}
+
+/* IF window blocks */
+.if-window {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.if-block {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-sm) var(--space-md);
+  border-radius: var(--radius-button);
+}
+
+.if-block.eat {
+  background-color: rgba(91, 160, 138, 0.15);
+  border: 1.5px solid var(--color-sage);
+}
+
+.if-block.fast {
+  background-color: rgba(130, 205, 216, 0.12);
+  border: 1.5px solid var(--color-teal);
+}
+
+.if-time {
+  font-family: var(--font-body);
+  font-size: 15px;
+  font-weight: 400;
+  color: var(--color-navy);
+}
+
+.if-label {
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--color-navy);
+  opacity: 0.7;
+}
+
+/* Daily reminders grid */
+.reminders-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-sm);
+}
+
+.reminder-item {
+  background-color: var(--color-cream);
+  border: 1px solid rgba(26, 39, 66, 0.15);
+  border-radius: var(--radius-button);
+  padding: var(--space-sm) var(--space-md);
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--color-navy);
+  line-height: 1.4;
+}
+
+/* Recipe section */
+.recipe-section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.recipe-intro {
+  font-size: 14px;
+  color: var(--color-navy);
+  opacity: 0.65;
+  margin-top: calc(var(--space-xs) * -1);
+}
+
+.recipe-card {
+  background-color: white;
+  border: 2px solid var(--color-navy);
+  border-radius: var(--radius-card);
+  overflow: hidden;
+  margin-top: var(--space-sm);
+}
+
+.recipe-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  display: block;
+}
+
+.recipe-card-body {
+  padding: var(--space-lg);
+}
+
+.recipe-card-body h3 {
+  font-family: var(--font-heading);
+  font-size: 20px;
+  font-weight: 300;
+  color: var(--color-navy);
+  margin-bottom: var(--space-sm);
+}
+
+.recipe-ingredients {
+  list-style: disc;
+  padding-left: var(--space-lg);
+  margin-bottom: var(--space-md);
+  font-family: var(--font-body);
+  font-size: 15px;
+  color: var(--color-navy);
+  line-height: 1.7;
+}
+
+.recipe-method {
+  font-family: var(--font-body);
+  font-size: 15px;
+  line-height: 1.65;
+  color: var(--color-navy);
+  opacity: 0.85;
+}
+
+/* Nutrition tile emoji */
+.tile-emoji {
+  font-size: 52px;
+  line-height: 1;
+  display: block;
+}
+
+/* =============================================
+   16. MEAL BUTTONS (Recipe Generator)
+   ============================================= */
+
+.meal-buttons {
+  display: flex;
+  gap: var(--space-sm);
+}
+
+.meal-btn {
+  flex: 1;
+  min-height: var(--touch-target);
+  padding: var(--space-sm) var(--space-md);
+  background-color: var(--color-navy);
+  color: var(--color-cream);
+  border: none;
+  border-radius: var(--radius-button);
+  font-family: var(--font-body);
+  font-size: 15px;
+  font-weight: 400;
+  cursor: pointer;
+  transition: opacity var(--transition-speed) var(--transition-ease);
+}
+
+.meal-btn:hover,
+.meal-btn:focus-visible {
+  outline: 3px solid var(--color-navy);
+  outline-offset: 2px;
+  opacity: 0.85;
+}
+
+.meal-btn:active {
+  opacity: 0.7;
+}
+
+/* =============================================
+   17. TILE SUBTITLE & CORE FINISHER
+   ============================================= */
+
+.tile-subtitle {
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-navy);
+  opacity: 0.5;
+  margin-top: 3px;
+}
+
+.core-finisher-section {
+  margin-top: var(--space-lg);
+}
+
+.core-finisher-label {
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-teal);
+  opacity: 0.85;
+  margin-bottom: var(--space-sm);
+}

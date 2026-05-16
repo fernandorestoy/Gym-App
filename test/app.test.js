@@ -16,11 +16,11 @@ function countGroups(routine) {
 }
 
 test("exercise database has complete, unique exercise definitions", () => {
-  assert.equal(muscleGroups.length, 7);
-  assert.equal(allExercises.length, 210);
+  assert.equal(muscleGroups.length, 4);
+  assert.equal(allExercises.length, 48);
 
   for (const [groupId, groupExercises] of Object.entries(exercises)) {
-    assert.equal(groupExercises.length, 30, `${groupId} should have 30 exercises`);
+    assert.equal(groupExercises.length, 12, `${groupId} should have 12 exercises`);
   }
 
   assert.equal(byId.size, allExercises.length, "exercise ids must be unique");
@@ -58,18 +58,48 @@ test("exercise SVG internals are namespaced by exercise id", () => {
 });
 
 test("workout days build the expected muscle-group mix", () => {
+  const workoutRoutines = workoutDays.filter(d => d.type === 'workout');
+
   const expected = {
-    day1: { biceps: 1, triceps: 1, shoulders: 1, abs: 3 },
-    day2: { chest: 3, abs: 3 },
-    day3: { back: 3, abs: 3 },
-    day4: { legs: 6 },
+    push:  { push: 4 },
+    pull:  { pull: 5 },
+    legs:  { legs: 4 },
+    upper: { upper: 5 },
   };
 
-  for (const day of workoutDays) {
+  for (const day of workoutRoutines) {
     const routine = day.build();
-    assert.equal(routine.length, Object.values(expected[day.id]).reduce((a, b) => a + b, 0), `${day.id} should produce the expected number of exercises`);
-    assert.deepEqual(countGroups(routine), expected[day.id]);
+    const exp = expected[day.id];
+    const total = Object.values(exp).reduce((a, b) => a + b, 0);
+    assert.equal(routine.length, total, `${day.id} should produce ${total} exercises`);
+    assert.deepEqual(countGroups(routine), exp);
   }
+});
+
+test("push day always includes the 3 anchor exercises", () => {
+  const pushDay = workoutDays.find(d => d.id === 'push');
+  const routine = pushDay.build();
+  const ids = routine.map(e => e.id);
+  assert.ok(ids.includes('push-001'), 'Overhead Press must always appear');
+  assert.ok(ids.includes('push-002'), 'Incline Dumbbell Press must always appear');
+  assert.ok(ids.includes('push-003'), 'Dips must always appear');
+});
+
+test("pull day always includes the 2 anchor exercises", () => {
+  const pullDay = workoutDays.find(d => d.id === 'pull');
+  const routine = pullDay.build();
+  const ids = routine.map(e => e.id);
+  assert.ok(ids.includes('pull-001'), 'Pull-Ups must always appear');
+  assert.ok(ids.includes('pull-002'), 'Barbell Row must always appear');
+});
+
+test("legs day always includes the 3 anchor exercises", () => {
+  const legsDay = workoutDays.find(d => d.id === 'legs');
+  const routine = legsDay.build();
+  const ids = routine.map(e => e.id);
+  assert.ok(ids.includes('legs-001'), 'Back Squat must always appear');
+  assert.ok(ids.includes('legs-002'), 'Bulgarian Split Squat must always appear');
+  assert.ok(ids.includes('legs-003'), 'Barbell Hip Thrust must always appear');
 });
 
 test("pickRandom uses a bounded Fisher-Yates shuffle and never mutates input", () => {

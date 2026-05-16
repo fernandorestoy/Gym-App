@@ -1,8 +1,11 @@
 /**
  * GymUp — App Entry Point
  *
- * Phase 2: Routing state, screen renderers, event delegation.
- * Phase 3 adds: exercise cards, Fisher-Yates recency exclusion, Regenerate button.
+ * Screens: home | exercise | nutrition
+ * Workout split: Push / Pull / Legs / Upper Body
+ * Push anchors: Overhead Press, Incline DB Press, Dips
+ * Pull anchors: Pull-Ups, Barbell Row
+ * Legs anchors: Back Squat, Bulgarian Split Squat, Hip Thrust
  */
 
 import { exercises } from './exercises.js';
@@ -11,7 +14,7 @@ import { exercises } from './exercises.js';
 // ROUTING STATE
 // =============================================================================
 
-let currentScreen = 'home';    // 'home' | 'exercise'
+let currentScreen  = 'home';   // 'home' | 'exercise' | 'nutrition'
 let currentRoutine = null;     // null | object from workoutDays
 
 // =============================================================================
@@ -20,8 +23,6 @@ let currentRoutine = null;     // null | object from workoutDays
 
 /**
  * Escape dynamic text before injecting into innerHTML.
- * Prevents XSS from exercise names, descriptions, or routine labels.
- *
  * @param {*} str — value to escape (coerced to string)
  * @returns {string}
  */
@@ -54,16 +55,9 @@ export function pickRandom(source, count, randFn = Math.random) {
 }
 
 // =============================================================================
-// LOCALSTORAGE RECENCY HELPERS (private — not exported)
+// LOCALSTORAGE HELPERS (private)
 // =============================================================================
 
-/**
- * Read recent exercise IDs for a routine from localStorage.
- * Returns [] on SecurityError (private browsing) or missing key.
- *
- * @param {string} routineId — e.g. "day2"
- * @returns {string[]}
- */
 function getRecentIds(routineId) {
   try {
     const raw = localStorage.getItem(`gymup_recent_${routineId}`);
@@ -73,19 +67,24 @@ function getRecentIds(routineId) {
   }
 }
 
-/**
- * Write the exercise IDs from a completed build to localStorage.
- * Silently no-ops on SecurityError or when localStorage is unavailable.
- *
- * @param {string} routineId — e.g. "day2"
- * @param {string[]} ids — exercise IDs from the most recent build
- */
 function storeRecentIds(routineId, ids) {
   try {
     localStorage.setItem(`gymup_recent_${routineId}`, JSON.stringify(ids));
+  } catch { /* SecurityError — private browsing or storage full */ }
+}
+
+function getSavedWeight(exerciseId) {
+  try {
+    return localStorage.getItem(`gymup_weight_${exerciseId}`) || '';
   } catch {
-    // SecurityError — private browsing or storage full. Ignore silently.
+    return '';
   }
+}
+
+function saveWeight(exerciseId, value) {
+  try {
+    localStorage.setItem(`gymup_weight_${exerciseId}`, value);
+  } catch { /* SecurityError — ignore silently */ }
 }
 
 // =============================================================================
@@ -93,88 +92,239 @@ function storeRecentIds(routineId, ids) {
 // =============================================================================
 
 /**
- * The 4 workout routines. Each has:
- *   id     {string} — matches data-routine-id in the DOM
- *   label  {string} — display name shown on tiles and exercise screen
- *   build  {function} — returns an array of exercises with _group set
+ * Workout routines + Nutrition tile.
  *
- * _group must equal the exercises.js group key exactly (English, lowercase).
+ * type: 'workout' — has build(), appears as exercise screen
+ * type: 'nutrition' — no build(), renders nutrition screen
  *
- * Exercise counts per day (matching test contract):
- *   day1: 1 biceps + 1 triceps + 1 shoulders + 3 abs = 6 total
- *   day2: 3 chest + 3 abs = 6 total
- *   day3: 3 back + 3 abs = 6 total
- *   day4: 3 legs = 3 total
+ * Anchor logic (always shown first):
+ *   push:  index 0–2 (Overhead Press, Incline DB Press, Dips)       + 2 random from 3–11
+ *   pull:  index 0–1 (Pull-Ups, Barbell Row)                        + 3 random from 2–11
+ *   legs:  index 0–2 (Back Squat, Bulgarian Split Squat, Hip Thrust) + 2 random from 3–11
+ *   upper: guaranteed 2 push + 2 pull + 1 bonus                     = 5 total
  */
 export const workoutDays = [
   {
-    id: 'day1',
-    label: 'Arms / Shoulders + Abs',
+    id: 'push',
+    label: 'Push',
+    subtitle: 'Day 1',
+    type: 'workout',
     build() {
       const recentIds = getRecentIds(this.id);
-      const filter = (pool, need) => {
-        const f = pool.filter(e => !recentIds.includes(e.id));
-        return f.length >= need ? f : pool;
-      };
-      const result = [
-        ...pickRandom(filter(exercises.biceps,    1), 1).map(e => ({ ...e, _group: 'biceps' })),
-        ...pickRandom(filter(exercises.triceps,   1), 1).map(e => ({ ...e, _group: 'triceps' })),
-        ...pickRandom(filter(exercises.shoulders, 1), 1).map(e => ({ ...e, _group: 'shoulders' })),
-        ...pickRandom(filter(exercises.abs,       3), 3).map(e => ({ ...e, _group: 'abs' })),
-      ];
+      const anchors = exercises.push.slice(0, 3);
+      const pool    = exercises.push.slice(3);
+      const filtered = pool.filter(e => !recentIds.includes(e.id));
+      const rand = pickRandom(filtered.length >= 1 ? filtered : pool, 1);
+      const result = [...anchors, ...rand].map(e => ({ ...e, _group: 'push' }));
       storeRecentIds(this.id, result.map(e => e.id));
       return result;
     },
   },
   {
-    id: 'day2',
-    label: 'Chest + Abs',
+    id: 'pull',
+    label: 'Pull',
+    subtitle: 'Day 2',
+    type: 'workout',
     build() {
       const recentIds = getRecentIds(this.id);
-      const filter = (pool, need) => {
-        const f = pool.filter(e => !recentIds.includes(e.id));
-        return f.length >= need ? f : pool;
-      };
-      const result = [
-        ...pickRandom(filter(exercises.chest, 3), 3).map(e => ({ ...e, _group: 'chest' })),
-        ...pickRandom(filter(exercises.abs,   3), 3).map(e => ({ ...e, _group: 'abs' })),
-      ];
+      const anchors = exercises.pull.slice(0, 2);
+      const pool    = exercises.pull.slice(2);
+      const filtered = pool.filter(e => !recentIds.includes(e.id));
+      const rand = pickRandom(filtered.length >= 3 ? filtered : pool, 3);
+      const result = [...anchors, ...rand].map(e => ({ ...e, _group: 'pull' }));
       storeRecentIds(this.id, result.map(e => e.id));
       return result;
     },
   },
   {
-    id: 'day3',
-    label: 'Back + Abs',
-    build() {
-      const recentIds = getRecentIds(this.id);
-      const filter = (pool, need) => {
-        const f = pool.filter(e => !recentIds.includes(e.id));
-        return f.length >= need ? f : pool;
-      };
-      const result = [
-        ...pickRandom(filter(exercises.back, 3), 3).map(e => ({ ...e, _group: 'back' })),
-        ...pickRandom(filter(exercises.abs,  3), 3).map(e => ({ ...e, _group: 'abs' })),
-      ];
-      storeRecentIds(this.id, result.map(e => e.id));
-      return result;
-    },
-  },
-  {
-    id: 'day4',
+    id: 'legs',
     label: 'Legs',
+    subtitle: 'Day 3',
+    type: 'workout',
     build() {
       const recentIds = getRecentIds(this.id);
-      const filter = (pool, need) => {
-        const f = pool.filter(e => !recentIds.includes(e.id));
-        return f.length >= need ? f : pool;
-      };
-      const result = [
-        ...pickRandom(filter(exercises.legs, 6), 6).map(e => ({ ...e, _group: 'legs' })),
-      ];
+      const anchors = exercises.legs.slice(0, 3);
+      const pool    = exercises.legs.slice(3);
+      const filtered = pool.filter(e => !recentIds.includes(e.id));
+      const rand = pickRandom(filtered.length >= 1 ? filtered : pool, 1);
+      const result = [...anchors, ...rand].map(e => ({ ...e, _group: 'legs' }));
       storeRecentIds(this.id, result.map(e => e.id));
       return result;
     },
+  },
+  {
+    id: 'upper',
+    label: 'Upper Body',
+    subtitle: 'Day 4',
+    type: 'workout',
+    build() {
+      const recentIds = getRecentIds(this.id);
+      const pushIds = new Set(['upper-001', 'upper-002', 'upper-005', 'upper-006', 'upper-009', 'upper-011']);
+      const pushPool = exercises.upper.filter(e => pushIds.has(e.id));
+      const pullPool = exercises.upper.filter(e => !pushIds.has(e.id));
+      const filteredPush = pushPool.filter(e => !recentIds.includes(e.id));
+      const filteredPull = pullPool.filter(e => !recentIds.includes(e.id));
+      const selPush = pickRandom(filteredPush.length >= 2 ? filteredPush : pushPool, 2);
+      const selPull = pickRandom(filteredPull.length >= 2 ? filteredPull : pullPool, 2);
+      const selectedIds = new Set([...selPush, ...selPull].map(e => e.id));
+      const remaining = exercises.upper.filter(e => !selectedIds.has(e.id) && !recentIds.includes(e.id));
+      const fifth = pickRandom(
+        remaining.length >= 1 ? remaining : exercises.upper.filter(e => !selectedIds.has(e.id)),
+        1
+      );
+      const result = [...selPush, ...selPull, ...fifth].map(e => ({ ...e, _group: 'upper' }));
+      storeRecentIds(this.id, result.map(e => e.id));
+      return result;
+    },
+  },
+  {
+    id: 'nutrition',
+    label: 'Nutrition',
+    type: 'nutrition',
+  },
+];
+
+// =============================================================================
+// RECIPE DATA
+// =============================================================================
+
+const lunchRecipes = [
+  {
+    name: 'Steak & Avocado Bowl',
+    ingredients: ['Steak', 'Avocado', 'Vegetables'],
+    method: 'Season steak with salt and pepper. Sear in a hot pan 3–4 minutes per side for medium. Rest 5 minutes, then slice thin. Plate with sliced avocado and seasonal vegetables.',
+    imageUrl: 'https://images.unsplash.com/photo-1659432764759-46ad8acc6527?w=600&auto=format&fit=crop',
+  },
+  {
+    name: 'Turkey Lettuce Wraps',
+    ingredients: ['Turkey', 'Avocado', 'Cheese', 'Vegetables'],
+    method: 'Lay large lettuce leaves flat. Layer sliced turkey, thin cheese slices, and avocado strips in the center. Add raw vegetables, roll up firmly, and secure with a toothpick. Ready in 5 minutes.',
+    imageUrl: 'https://images.unsplash.com/photo-1655556030356-f8457170dd0d?w=600&auto=format&fit=crop',
+  },
+  {
+    name: 'Salmon & Cottage Cheese Plate',
+    ingredients: ['Smoked salmon', 'Cottage cheese', 'Vegetables'],
+    method: 'Spoon a generous scoop of cottage cheese onto a plate. Drape smoked salmon slices alongside. Add cucumber, tomatoes, or leafy greens. Season with black pepper.',
+    imageUrl: 'https://images.unsplash.com/photo-1546970361-407ddc8053fc?w=600&auto=format&fit=crop',
+  },
+  {
+    name: 'Turkey & Cheese Omelette',
+    ingredients: ['Eggs', 'Turkey', 'Cheese', 'Vegetables'],
+    method: 'Beat 3 eggs with salt. Pour into a hot oiled pan over medium heat. When the edges set, layer diced turkey, cheese, and vegetables on one half. Fold and cook 1 more minute until the cheese melts.',
+    imageUrl: 'https://images.unsplash.com/photo-1563690449029-d6e1b8d6003d?w=600&auto=format&fit=crop',
+  },
+  {
+    name: 'Salmon & Egg Scramble',
+    ingredients: ['Smoked salmon', 'Eggs', 'Vegetables'],
+    method: 'Beat 3 eggs and pour into a lightly oiled pan. Scramble gently over medium-low heat. When almost set, fold in flaked smoked salmon and diced vegetables. Remove from heat — residual heat finishes the eggs.',
+    imageUrl: 'https://images.unsplash.com/photo-1765100778131-a4b8f1005e82?w=600&auto=format&fit=crop',
+  },
+  {
+    name: 'Turkey Parmesan Patties',
+    ingredients: ['Turkey', 'Eggs', 'Parmesan', 'Vegetables'],
+    method: 'Mix ground turkey with one beaten egg, grated parmesan, and diced vegetables. Shape into patties and cook in a pan over medium heat 4–5 minutes per side until cooked through.',
+    imageUrl: 'https://images.unsplash.com/photo-1609658938891-32dd655106af?w=600&auto=format&fit=crop',
+  },
+  {
+    name: 'Steak with Fried Egg & Avocado',
+    ingredients: ['Steak', 'Eggs', 'Avocado', 'Vegetables'],
+    method: 'Sear steak 3 minutes per side, rest and slice thin. Fry 2 eggs in the same pan. Arrange steak, fried eggs, and sliced avocado in a bowl with any vegetables. Season well.',
+    imageUrl: 'https://images.unsplash.com/photo-1452967712862-0cca1839ff27?w=600&auto=format&fit=crop',
+  },
+  {
+    name: 'Turkey & Avocado Stack',
+    ingredients: ['Turkey', 'Avocado', 'Parmesan', 'Vegetables'],
+    method: 'Slice avocado thickly and lay as a base. Top with folded turkey slices and shaved parmesan. Add sliced vegetables on the side. A no-cook, high-protein plate ready in 3 minutes.',
+    imageUrl: 'https://images.unsplash.com/photo-1661182260393-a3918d4e8571?w=600&auto=format&fit=crop',
+  },
+  {
+    name: 'Ground Beef & Cottage Cheese Bowl',
+    ingredients: ['Ground beef', 'Cottage cheese', 'Vegetables'],
+    method: 'Brown ground beef in a pan with diced vegetables and season well. Spoon over a generous scoop of cottage cheese. The warmth from the meat gently softens the cheese into a creamy base.',
+    imageUrl: 'https://images.unsplash.com/photo-1543339308-43e59d6b73a6?w=600&auto=format&fit=crop',
+  },
+  {
+    name: 'Smoked Salmon & Avocado Plate',
+    ingredients: ['Smoked salmon', 'Avocado', 'Vegetables'],
+    method: 'Fan sliced avocado across a plate. Arrange smoked salmon alongside, alternating for presentation. Add seasonal vegetables. Finish with black pepper and a squeeze of lemon.',
+    imageUrl: 'https://images.unsplash.com/photo-1712334562767-5d366d0c40d9?w=600&auto=format&fit=crop',
+  },
+  {
+    name: 'Turkey Egg Muffins',
+    ingredients: ['Turkey', 'Eggs', 'Vegetables', 'Parmesan'],
+    method: 'Preheat oven to 180°C. Dice turkey and vegetables. Beat 4 eggs with salt and mix everything together. Pour into a greased muffin tin and top with parmesan. Bake 18–20 minutes until set. Makes 6 muffins.',
+    imageUrl: 'https://images.unsplash.com/photo-1471477985614-a55f7db053db?w=600&auto=format&fit=crop',
+  },
+  {
+    name: 'Scrambled Eggs with Avocado & Cheese',
+    ingredients: ['Eggs', 'Avocado', 'Cheese', 'Vegetables'],
+    method: 'Beat 3 eggs. Scramble in a pan over medium-low heat with diced vegetables until just set — slightly underdone is perfect. Top with sliced avocado and crumbled cheese. Season with salt and pepper.',
+    imageUrl: 'https://images.unsplash.com/photo-1608039829572-78524f79c4c7?w=600&auto=format&fit=crop',
+  },
+  {
+    name: 'Grilled Steak & Vegetable Bowl',
+    ingredients: ['Steak', 'Vegetables', 'Avocado'],
+    method: 'Grill or pan-sear steak to your preferred doneness. Rest 5 minutes, then slice against the grain. Serve over a bed of sautéed or roasted vegetables. Add sliced avocado alongside.',
+    imageUrl: 'https://images.unsplash.com/photo-1432139555190-58524dae6a55?w=600&auto=format&fit=crop',
+  },
+  {
+    name: 'Salmon & Cheese Scramble',
+    ingredients: ['Smoked salmon', 'Eggs', 'Cottage cheese', 'Vegetables'],
+    method: 'Scramble 3 eggs with diced vegetables over medium-low heat. When nearly set, stir in a spoonful of cottage cheese and torn pieces of smoked salmon. The cottage cheese melts into a creamy sauce.',
+    imageUrl: 'https://images.unsplash.com/photo-1572862905000-c5b6244027a5?w=600&auto=format&fit=crop',
+  },
+  {
+    name: 'Turkey & Avocado Egg Bake',
+    ingredients: ['Turkey', 'Eggs', 'Avocado', 'Parmesan', 'Vegetables'],
+    method: 'Preheat oven to 190°C. Mix diced turkey, chopped vegetables, and 4 beaten eggs in a baking dish. Top with sliced avocado and grated parmesan. Bake 20–22 minutes until set and golden.',
+    imageUrl: 'https://images.unsplash.com/photo-1543339308-43e59d6b73a6?w=600&auto=format&fit=crop',
+  },
+];
+
+// =============================================================================
+// CORE FINISHER EXERCISES (Push + Legs days only)
+// =============================================================================
+
+const coreExercises = [
+  {
+    id: 'core-001',
+    name: 'Hanging Leg Raise',
+    group: 'core',
+    description: 'Hang from a pull-up bar with arms fully extended. Keeping legs straight (or slightly bent), raise them until parallel to the floor. Lower slowly under control. Targets lower abs.',
+    videoId: 'Pr1ieGZ5atk',
+    svgKey: 'core-hanging',
+  },
+  {
+    id: 'core-002',
+    name: 'Ab Wheel Rollout',
+    group: 'core',
+    description: 'Kneel on the floor holding an ab wheel. Brace your core and roll forward until your body is parallel to the ground. Pull back using your abs, not your hips. Gold standard anti-extension.',
+    videoId: 'PwqJTPsI6i0',
+    svgKey: 'core-abwheel',
+  },
+  {
+    id: 'core-003',
+    name: 'Pallof Press',
+    group: 'core',
+    description: 'Set a cable at chest height. Stand perpendicular to the cable and hold the handle at your chest. Press it straight out, hold 2 seconds, then bring back. Resists rotation — builds true core stability.',
+    videoId: 'axgv7H_VQOo',
+    svgKey: 'core-pallof',
+  },
+  {
+    id: 'core-004',
+    name: 'Cable Crunch',
+    group: 'core',
+    description: 'Attach a rope to the high cable. Kneel facing the machine, holding the rope behind your head. Crunch down toward the floor, rounding your spine. The cable allows progressive overload unlike most ab exercises.',
+    videoId: 'aBd6T01PBqw',
+    svgKey: 'core-cable-crunch',
+  },
+  {
+    id: 'core-005',
+    name: 'Dragon Flag',
+    group: 'core',
+    description: 'Lie on a bench and grip it behind your head. Lift your entire body into a straight-line position on your shoulder blades. Lower your body slowly while keeping it rigid. Advanced full-body core challenge.',
+    videoId: '7fRemwjcXOQ',
+    svgKey: 'core-dragon-flag',
   },
 ];
 
@@ -182,10 +332,23 @@ export const workoutDays = [
 // RENDERERS
 // =============================================================================
 
+function renderRecipeCard(recipe) {
+  return `
+    <div class="recipe-card-body">
+      <h3>${escapeHtml(recipe.name)}</h3>
+      <ul class="recipe-ingredients">
+        ${recipe.ingredients.map(ing => `<li>${escapeHtml(ing)}</li>`).join('')}
+      </ul>
+      <p class="recipe-method">${escapeHtml(recipe.method)}</p>
+    </div>
+  `;
+}
+
 function renderCard(exercise) {
-  const videoUrl = `https://youtu.be/${escapeHtml(exercise.videoId)}`;
-  const thumbUrl = `https://img.youtube.com/vi/${escapeHtml(exercise.videoId)}/hqdefault.jpg`;
-  const group    = escapeHtml((exercise._group || exercise.group).toUpperCase());
+  const videoUrl    = `https://youtu.be/${escapeHtml(exercise.videoId)}`;
+  const thumbUrl    = `https://img.youtube.com/vi/${escapeHtml(exercise.videoId)}/hqdefault.jpg`;
+  const group       = escapeHtml((exercise._group || exercise.group).toUpperCase());
+  const savedWeight = getSavedWeight(exercise.id);
 
   return `
     <div class="exercise-card" data-card-id="${escapeHtml(exercise.id)}">
@@ -197,28 +360,48 @@ function renderCard(exercise) {
         <span class="card-chevron" aria-hidden="true">+</span>
       </button>
       <div class="card-details" hidden>
+        <p class="sets-formula">Sets: 10 · 8 · 6</p>
         <p class="card-description">${escapeHtml(exercise.description)}</p>
         ${exercise.videoId ? `
         <a class="youtube-btn" href="${videoUrl}" target="_blank" rel="noopener noreferrer" aria-label="Watch ${escapeHtml(exercise.name)} on YouTube">
           <img class="youtube-btn__thumbnail" src="${thumbUrl}" alt="" loading="lazy" width="320" height="180" />
           <span class="youtube-btn__label">Watch video</span>
         </a>` : ''}
+        <div class="weight-tracker">
+          <label class="weight-label" for="weight-${escapeHtml(exercise.id)}">Weight logged:</label>
+          <div class="weight-input-row">
+            <input
+              id="weight-${escapeHtml(exercise.id)}"
+              class="weight-input"
+              type="text"
+              data-exercise-id="${escapeHtml(exercise.id)}"
+              value="${escapeHtml(savedWeight)}"
+              placeholder="e.g. 60 kg"
+              inputmode="decimal"
+            />
+            <button class="weight-save-btn" data-action="save-weight" data-exercise-id="${escapeHtml(exercise.id)}">
+              Save
+            </button>
+          </div>
+          ${savedWeight ? `<p class="weight-saved-note">Last session: ${escapeHtml(savedWeight)}</p>` : '<p class="weight-saved-note" hidden></p>'}
+        </div>
       </div>
     </div>
   `;
 }
 
 const tileImages = {
-  day1: 'assets/muscle-arm.png?v=2',
-  day2: 'assets/muscle-chest.png?v=2',
-  day3: 'assets/muscle-back.png?v=2',
-  day4: 'assets/muscle-leg.png?v=2',
+  push:      'assets/muscle-arm.png?v=2',
+  pull:      'assets/muscle-back.png?v=2',
+  legs:      'assets/muscle-leg.png?v=2',
+  upper:     'assets/muscle-chest.png?v=2',
+  nutrition: '5.png?v=3',
 };
 
 function renderHome() {
   return `
     <div class="home-screen">
-      <h1 class="app-title">GymUp</h1>
+      <h1 class="app-title">Antigravity</h1>
       <p class="home-subtitle">Choose your routine</p>
       <div class="routine-grid" role="list">
         ${workoutDays.map(day => `
@@ -228,8 +411,11 @@ function renderHome() {
             aria-label="${escapeHtml(day.label)}"
             role="listitem"
           >
-            <img class="tile-icon" src="${tileImages[day.id]}" alt="" aria-hidden="true" />
+            ${tileImages[day.id]
+              ? `<img class="tile-icon" src="${tileImages[day.id]}" alt="" aria-hidden="true" />`
+              : `<span class="tile-emoji" aria-hidden="true">🥗</span>`}
             <span class="tile-label">${escapeHtml(day.label)}</span>
+            ${day.subtitle ? `<span class="tile-subtitle">${escapeHtml(day.subtitle)}</span>` : ''}
           </button>
         `).join('')}
       </div>
@@ -239,12 +425,8 @@ function renderHome() {
 
 function renderExercise(routine) {
   const exerciseList = routine.build();
-  const mainExs = exerciseList.filter(e => (e._group || e.group) !== 'abs');
-  const absExs  = exerciseList.filter(e => (e._group || e.group) === 'abs');
-
-  const pairs = absExs.length > 0
-    ? mainExs.map((ex, i) => [ex, absExs[i]].filter(Boolean))
-    : exerciseList.map(ex => [ex]);
+  const showCore = routine.id === 'push' || routine.id === 'legs';
+  const coreEx = showCore ? coreExercises[Math.floor(Math.random() * coreExercises.length)] : null;
 
   return `
     <div class="exercise-screen">
@@ -258,11 +440,64 @@ function renderExercise(routine) {
         aria-label="Generate new exercises"
       >New exercises</button>
       <div class="exercise-list">
-        ${pairs.map(pair => `
+        ${exerciseList.map(ex => `
           <div class="exercise-pair">
-            ${pair.map(ex => renderCard(ex)).join('')}
+            ${renderCard(ex)}
           </div>
         `).join('')}
+      </div>
+      ${coreEx ? `
+      <div class="core-finisher-section">
+        <p class="core-finisher-label">Core Finisher</p>
+        <div class="exercise-pair">
+          ${renderCard({ ...coreEx, _group: 'core' })}
+        </div>
+      </div>` : ''}
+      <div class="cardio-footer">
+        <span class="cardio-label">Finish with</span>
+        <p class="cardio-text">Incline Walking + Running</p>
+      </div>
+    </div>
+  `;
+}
+
+function renderNutrition() {
+  return `
+    <div class="nutrition-screen">
+      <div class="exercise-header">
+        <button class="back-btn" data-action="back" aria-label="Back to home">&larr; Back</button>
+        <h1>Nutrition</h1>
+      </div>
+
+      <div class="reminder-card if-card">
+        <h2 class="reminder-title">Intermittent Fasting</h2>
+        <div class="if-window">
+          <div class="if-block eat">
+            <span class="if-time">12:00 PM → 8:00 PM</span>
+            <span class="if-label">Eat</span>
+          </div>
+          <div class="if-block fast">
+            <span class="if-time">8:00 PM → 12:00 PM</span>
+            <span class="if-label">Fast</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="reminder-card">
+        <h2 class="reminder-title">Daily Rules</h2>
+        <div class="reminders-grid">
+          <div class="reminder-item">🔥 Food is fuel</div>
+          <div class="reminder-item">🚫 No alcohol</div>
+          <div class="reminder-item">💧 Drink water</div>
+          <div class="reminder-item">😴 Sleep 8 hours</div>
+        </div>
+      </div>
+
+      <div class="recipe-section">
+        <h2 class="reminder-title">Recipe Generator</h2>
+        <p class="recipe-intro">High-protein recipes using only your allowed ingredients.</p>
+        <button class="regenerate-btn" data-action="get-recipe">Get a Lunch Recipe</button>
+        <div id="recipe-card" class="recipe-card" hidden></div>
       </div>
     </div>
   `;
@@ -270,9 +505,6 @@ function renderExercise(routine) {
 
 /**
  * Apply staggered animation-delay to each .exercise-card after a render.
- * Each card gets an additional 80ms delay per index position.
- * Cards inside .exercise-pair inherit the card index based on DOM order,
- * not pair order — so all 6 cards stagger individually.
  */
 function applyCardStagger() {
   document.querySelectorAll('.exercise-card').forEach((card, index) => {
@@ -285,7 +517,9 @@ function render() {
     document.getElementById('app').innerHTML =
       currentScreen === 'home'
         ? renderHome()
-        : renderExercise(currentRoutine);
+        : currentScreen === 'nutrition'
+          ? renderNutrition()
+          : renderExercise(currentRoutine);
     applyCardStagger();
   };
 
@@ -301,25 +535,34 @@ function render() {
 // =============================================================================
 
 if (typeof document !== 'undefined') {
-  // Event delegation — set up once; survives innerHTML re-renders
-  document.getElementById('app').addEventListener('click', (event) => {
+  const appEl = document.getElementById('app');
+
+  // Click delegation — survives innerHTML re-renders
+  appEl.addEventListener('click', (event) => {
     const tile       = event.target.closest('[data-routine-id]');
     const backBtn    = event.target.closest('[data-action="back"]');
     const regenBtn   = event.target.closest('[data-action="regenerate"]');
     const cardHeader = event.target.closest('[data-action="toggle-card"]');
+    const weightBtn  = event.target.closest('[data-action="save-weight"]');
+    const recipeBtn  = event.target.closest('[data-action="get-recipe"]');
 
     if (tile) {
-      currentRoutine = workoutDays.find(d => d.id === tile.dataset.routineId);
-      currentScreen  = 'exercise';
+      const day = workoutDays.find(d => d.id === tile.dataset.routineId);
+      if (!day) return;
+      currentRoutine = day;
+      currentScreen  = day.type === 'nutrition' ? 'nutrition' : 'exercise';
       render();
+
     } else if (backBtn) {
       currentScreen  = 'home';
       currentRoutine = null;
       render();
+
     } else if (regenBtn) {
       if (!currentRoutine) return;
       render();
       document.querySelector('[data-action="regenerate"]')?.focus();
+
     } else if (cardHeader) {
       const card   = cardHeader.closest('.exercise-card');
       const isOpen = card.classList.contains('is-open');
@@ -335,6 +578,49 @@ if (typeof document !== 'undefined') {
         card.querySelector('.card-chevron').textContent = '−';
         card.querySelector('.card-details').hidden = false;
       }
+
+    } else if (weightBtn) {
+      const id    = weightBtn.dataset.exerciseId;
+      const input = appEl.querySelector(`.weight-input[data-exercise-id="${id}"]`);
+      if (!input) return;
+      const value = input.value.trim();
+      saveWeight(id, value);
+      const note = weightBtn.closest('.weight-tracker').querySelector('.weight-saved-note');
+      if (note) {
+        note.textContent = value ? `Last session: ${value}` : '';
+        note.hidden = !value;
+      }
+      weightBtn.textContent = 'Saved ✓';
+      setTimeout(() => { weightBtn.textContent = 'Save'; }, 1500);
+
+    } else if (recipeBtn) {
+      const recipe = lunchRecipes[Math.floor(Math.random() * lunchRecipes.length)];
+      const card   = document.getElementById('recipe-card');
+      if (!card) return;
+      card.hidden = false;
+      card.innerHTML = renderRecipeCard(recipe);
+    }
+  });
+
+  // Save weight on Enter key inside any weight input
+  appEl.addEventListener('keydown', (event) => {
+    if (event.key !== 'Enter') return;
+    const input = event.target.closest('.weight-input');
+    if (!input) return;
+    event.preventDefault();
+    const id    = input.dataset.exerciseId;
+    const value = input.value.trim();
+    saveWeight(id, value);
+    const tracker = input.closest('.weight-tracker');
+    const note = tracker?.querySelector('.weight-saved-note');
+    if (note) {
+      note.textContent = value ? `Last session: ${value}` : '';
+      note.hidden = !value;
+    }
+    const btn = tracker?.querySelector('.weight-save-btn');
+    if (btn) {
+      btn.textContent = 'Saved ✓';
+      setTimeout(() => { btn.textContent = 'Save'; }, 1500);
     }
   });
 
