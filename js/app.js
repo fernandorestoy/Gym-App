@@ -1,5 +1,5 @@
 /**
- * GymUp — App Entry Point
+ * Gym App — App Entry Point
  *
  * Screens: home | exercise | nutrition
  * Workout split: Push / Pull / Legs / Upper Body
@@ -73,9 +73,30 @@ function storeRecentIds(routineId, ids) {
   } catch { /* SecurityError — private browsing or storage full */ }
 }
 
+const WEIGHT_KEY_MAP = {
+  // Push ↔ Upper duplicates
+  'push-001': 'overhead-press',    'upper-002': 'overhead-press',
+  'push-002': 'incline-db-press',  'upper-005': 'incline-db-press',
+  'push-003': 'dips',              'upper-006': 'dips',
+  'push-004': 'barbell-bench',     'upper-001': 'barbell-bench',
+  'push-005': 'db-shoulder-press', 'upper-009': 'db-shoulder-press',
+  'push-006': 'close-grip-bench',  'upper-011': 'close-grip-bench',
+  // Pull ↔ Upper duplicates
+  'pull-001': 'pull-ups',          'upper-003': 'pull-ups',
+  'pull-002': 'barbell-row',       'upper-004': 'barbell-row',
+  'pull-003': 'lat-pulldown',      'upper-008': 'lat-pulldown',
+  'pull-004': 'seated-cable-row',  'upper-007': 'seated-cable-row',
+  'pull-005': 't-bar-row',         'upper-012': 't-bar-row',
+  'pull-006': 'single-arm-row',    'upper-010': 'single-arm-row',
+};
+
+function getWeightKey(exerciseId) {
+  return WEIGHT_KEY_MAP[exerciseId] || exerciseId;
+}
+
 function getSavedWeight(exerciseId) {
   try {
-    return localStorage.getItem(`gymup_weight_${exerciseId}`) || '';
+    return localStorage.getItem(`gymup_weight_${getWeightKey(exerciseId)}`) || '';
   } catch {
     return '';
   }
@@ -83,7 +104,7 @@ function getSavedWeight(exerciseId) {
 
 function saveWeight(exerciseId, value) {
   try {
-    localStorage.setItem(`gymup_weight_${exerciseId}`, value);
+    localStorage.setItem(`gymup_weight_${getWeightKey(exerciseId)}`, value);
   } catch { /* SecurityError — ignore silently */ }
 }
 
@@ -401,7 +422,7 @@ const tileImages = {
 function renderHome() {
   return `
     <div class="home-screen">
-      <h1 class="app-title">Antigravity</h1>
+      <h1 class="app-title">Gym App</h1>
       <p class="home-subtitle">Choose your routine</p>
       <div class="routine-grid" role="list">
         ${workoutDays.map(day => `

@@ -113,11 +113,11 @@ export const exercises = {
     },
     {
       id: "push-012",
-      name: "Landmine Press",
+      name: "Machine Chest Press",
       group: "push",
-      description: "Anchor one end of a barbell in a landmine attachment or corner, hold the other end at shoulder height, and press it forward and up in an arc to full extension. The arc-shaped path is shoulder-friendly and allows heavy loading. Press with one arm for shoulder focus, or cup the end with both hands for a chest-dominant variation.",
-      videoId: "gH7PDepHNck",
-      svgKey: "press-landmine",
+      description: "Sit at the chest press machine, adjust the seat so the handles are at mid-chest height, and grip the handles with a shoulder-width grip. Press forward to full extension, hold briefly, then return under control to a full stretch. The guided arc of the machine is shoulder-friendly and allows you to train to failure safely without a spotter. Focus on squeezing the chest at full extension.",
+      videoId: "xUm0BiZCKug",
+      svgKey: "press-pecho-plano",
     },
   ],
 
