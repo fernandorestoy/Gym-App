@@ -247,7 +247,7 @@ export const exercises = {
       name: "Dumbbell Hip Thrust",
       group: "legs",
       description: "Sit against a bench with a dumbbell held vertically on your hips and feet flat on the floor at shoulder-width. Drive through your heels to thrust your hips up until your torso is parallel to the floor, squeezing your glutes hard at lockout. Lower your hips without letting them touch the floor, then repeat. The most direct and effective exercise for maximum glute development.",
-      videoId: "mvBTGx5zu6I",
+      videoId: "ky39jt6BWFE",
       svgKey: "empuje-cadera",
     },
     // === RANDOM POOL — 3 picked per session from exercises below (index 3–11) ===
@@ -277,11 +277,11 @@ export const exercises = {
     },
     {
       id: "legs-007",
-      name: "Hack Squat",
+      name: "Leg Extension",
       group: "legs",
-      description: "Load the hack squat machine, position your shoulders under the pads and feet at shoulder-width on the platform, and release the safety handles. Lower your hips until your thighs reach parallel, then drive through your feet to push the platform back up. The guided path allows you to overload the quadriceps with reduced spinal stress.",
-      videoId: "g9i05umL5vc",
-      svgKey: "sentadilla-hack",
+      description: "Sit in the leg extension machine with your back flat against the pad and the ankle roller just above your feet. Extend your legs to full lockout, pausing briefly at the top to maximise quadriceps contraction, then lower with control — do not let the weight stack bounce. Adjust the seat so your knees align with the machine's pivot point. The only isolation exercise that targets the quads through their full range without loading the spine.",
+      videoId: "YyvSfVjQeL0",
+      svgKey: "extension-cuadriceps",
     },
     {
       id: "legs-008",
@@ -304,7 +304,7 @@ export const exercises = {
       name: "Dumbbell Sumo Squat",
       group: "legs",
       description: "Stand with feet wider than shoulder-width, toes pointing out 45 degrees, and hold a single dumbbell vertically with both hands between your legs. Sit straight down into a deep squat, keeping your chest tall and knees tracking over your toes. Drive through your heels to return to standing. The wide stance targets the inner thighs, glutes, and quads in the same pattern as the sumo deadlift.",
-      videoId: "Zx2dSGEiSOE",
+      videoId: "sB2SzYcHgK4",
       svgKey: "sentadilla-sumo",
     },
     {
