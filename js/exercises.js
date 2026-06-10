@@ -161,7 +161,7 @@ export const exercises = {
       name: "Chest-Supported Dumbbell Row",
       group: "pull",
       description: "Set an incline bench to 30–45 degrees and lie face down with your chest firmly against the pad, holding a dumbbell in each hand. Row both dumbbells simultaneously toward your hips, driving your elbows back and squeezing your shoulder blades hard at the top. Lower with full control to a complete stretch. The chest support removes all lower-back involvement so you can isolate the upper back and lats completely.",
-      videoId: "4FobVzHuqKk",
+      videoId: "09wri23R4SU",
       svgKey: "remo-inclinado-bilateral",
     },
     {
