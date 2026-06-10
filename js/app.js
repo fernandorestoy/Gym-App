@@ -86,7 +86,7 @@ const WEIGHT_KEY_MAP = {
   'pull-002': 'barbell-row',       'upper-004': 'barbell-row',
   'pull-003': 'lat-pulldown',      'upper-008': 'lat-pulldown',
   'pull-004': 'seated-cable-row',  'upper-007': 'seated-cable-row',
-  'pull-005': 't-bar-row',         'upper-012': 't-bar-row',
+  'upper-012': 't-bar-row',
   'pull-006': 'single-arm-row',    'upper-010': 'single-arm-row',
 };
 
@@ -120,7 +120,7 @@ function saveWeight(exerciseId, value) {
  *
  * Anchor logic (always shown first):
  *   push:  index 0–2 (Overhead Press, Incline DB Press, Dips)       + 2 random from 3–11
- *   pull:  index 0–1 (Pull-Ups, Barbell Row)                        + 3 random from 2–11
+ *   pull:  index 0–1 (Pull-Ups, Barbell Row)                        + 2 random back + 1 random abs from 2–11
  *   legs:  index 0–2 (Back Squat, Bulgarian Split Squat, Hip Thrust) + 2 random from 3–11
  *   upper: guaranteed 2 push + 2 pull + 1 bonus                     = 5 total
  */
@@ -148,11 +148,15 @@ export const workoutDays = [
     type: 'workout',
     build() {
       const recentIds = getRecentIds(this.id);
-      const anchors = exercises.pull.slice(0, 2);
-      const pool    = exercises.pull.slice(2);
-      const filtered = pool.filter(e => !recentIds.includes(e.id));
-      const rand = pickRandom(filtered.length >= 3 ? filtered : pool, 3);
-      const result = [...anchors, ...rand].map(e => ({ ...e, _group: 'pull' }));
+      const anchors  = exercises.pull.slice(0, 2);
+      const pool     = exercises.pull.slice(2);
+      const backPool = pool.filter(e => !e.subgroup);
+      const absPool  = pool.filter(e => e.subgroup === 'abs');
+      const filteredBack = backPool.filter(e => !recentIds.includes(e.id));
+      const filteredAbs  = absPool.filter(e => !recentIds.includes(e.id));
+      const randBack = pickRandom(filteredBack.length >= 2 ? filteredBack : backPool, 2);
+      const randAbs  = pickRandom(filteredAbs.length >= 1 ? filteredAbs : absPool, 1);
+      const result = [...anchors, ...randBack, ...randAbs].map(e => ({ ...e, _group: 'pull' }));
       storeRecentIds(this.id, result.map(e => e.id));
       return result;
     },
