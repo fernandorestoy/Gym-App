@@ -244,11 +244,11 @@ export const exercises = {
     },
     {
       id: "legs-003",
-      name: "Dumbbell Hip Thrust",
+      name: "Cable Glute Kickback",
       group: "legs",
-      description: "Sit against a bench with a dumbbell held vertically on your hips and feet flat on the floor at shoulder-width. Drive through your heels to thrust your hips up until your torso is parallel to the floor, squeezing your glutes hard at lockout. Lower your hips without letting them touch the floor, then repeat. The most direct and effective exercise for maximum glute development.",
-      videoId: "ky39jt6BWFE",
-      svgKey: "empuje-cadera",
+      description: "Attach an ankle cuff to the low cable pulley and face the machine. Hold the frame for balance, brace your core, and kick one leg back and up by extending your hip, squeezing your glute hard at the top. Lower with control and repeat all reps before switching sides. Keep your torso still throughout — the movement is entirely at the hip. The cable provides constant resistance through the full range, making it one of the most effective direct glute isolation exercises.",
+      videoId: "n-cgsNePyFo",
+      svgKey: "patada-gluteo-polea",
     },
     // === RANDOM POOL — 3 picked per session from exercises below (index 3–11) ===
     {
